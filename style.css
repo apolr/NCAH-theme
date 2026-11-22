@@ -286,3 +286,9 @@ html.ncah-lb-open{overflow:hidden}
 /* Four footer columns: stack on tablets and phones */
 @media (max-width: 1000px) { .ncah-footer .wp-block-columns { flex-wrap: wrap !important; } .ncah-footer .wp-block-column { flex-basis: calc(50% - 1rem) !important; } }
 @media (max-width: 600px) { .ncah-footer .wp-block-column { flex-basis: 100% !important; } }
+
+/* Land Acknowledgment and Nigerian Pledge sit side by side above the main footer columns */
+.ncah-footer-notes { margin-bottom: 0; gap: 3rem; }
+.ncah-footer-notes h3.ncah-eyebrow.wp-block-heading { margin-top: 0; }
+.ncah-footer-rule { margin: 2rem 0 2.5rem; }
+@media (max-width: 781px) { .ncah-footer-notes { gap: 1.5rem; } .ncah-footer-notes .wp-block-column { flex-basis: 100% !important; } }
