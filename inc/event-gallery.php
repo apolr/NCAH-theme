@@ -38,8 +38,7 @@ add_shortcode( 'ncah_year_tabs', function () {
 
 /** Filter the gallery grid to the chosen year. */
 add_filter( 'query_loop_block_query_vars', function ( $vars, $block ) {
-	$class = isset( $block->parsed_block['attrs']['className'] ) ? $block->parsed_block['attrs']['className'] : '';
-	if ( false !== strpos( $class, 'ncah-event-gallery' ) ) {
+	if ( is_page( 'event-gallery' ) && isset( $vars['post_type'] ) && 'post' === $vars['post_type'] ) {
 		$vars['date_query'] = array( array( 'year' => ncah_event_year() ) );
 	}
 	return $vars;
