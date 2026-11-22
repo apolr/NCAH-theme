@@ -56,93 +56,68 @@
 			"fontFamilies": [
 				{
 					"slug": "heading",
-					"name": "Heading (Arsenal)",
-					"fontFamily": "Arsenal, \"Helvetica Neue\", Arial, sans-serif",
+					"name": "Heading (Cormorant Garamond)",
+					"fontFamily": "\"Cormorant Garamond\", Georgia, serif",
 					"fontFace": [
 						{
-							"fontFamily": "Arsenal",
+							"fontFamily": "Cormorant Garamond",
 							"fontStyle": "normal",
-							"fontWeight": "400",
+							"fontWeight": "500",
 							"fontDisplay": "swap",
 							"src": [
-								"file:./assets/fonts/arsenal-latin-400-normal.woff2"
+								"file:./assets/fonts/cormorant-garamond-latin-500-normal.woff2"
 							]
 						},
 						{
-							"fontFamily": "Arsenal",
+							"fontFamily": "Cormorant Garamond",
 							"fontStyle": "normal",
-							"fontWeight": "700",
+							"fontWeight": "600",
 							"fontDisplay": "swap",
 							"src": [
-								"file:./assets/fonts/arsenal-latin-700-normal.woff2"
+								"file:./assets/fonts/cormorant-garamond-latin-600-normal.woff2"
 							]
 						}
 					]
 				},
 				{
 					"slug": "body",
-					"name": "Body (Fira Sans)",
-					"fontFamily": "\"Fira Sans\", \"Helvetica Neue\", Arial, sans-serif",
+					"name": "Body (Nunito Sans)",
+					"fontFamily": "\"Nunito Sans\", \"Helvetica Neue\", Arial, sans-serif",
 					"fontFace": [
 						{
-							"fontFamily": "Fira Sans",
+							"fontFamily": "Nunito Sans",
+							"fontStyle": "normal",
+							"fontWeight": "300",
+							"fontDisplay": "swap",
+							"src": [
+								"file:./assets/fonts/nunito-sans-latin-300-normal.woff2"
+							]
+						},
+						{
+							"fontFamily": "Nunito Sans",
 							"fontStyle": "normal",
 							"fontWeight": "400",
 							"fontDisplay": "swap",
 							"src": [
-								"file:./assets/fonts/fira-sans-latin-400-normal.woff2"
+								"file:./assets/fonts/nunito-sans-latin-400-normal.woff2"
 							]
 						},
 						{
-							"fontFamily": "Fira Sans",
+							"fontFamily": "Nunito Sans",
 							"fontStyle": "normal",
-							"fontWeight": "500",
+							"fontWeight": "600",
 							"fontDisplay": "swap",
 							"src": [
-								"file:./assets/fonts/fira-sans-latin-500-normal.woff2"
+								"file:./assets/fonts/nunito-sans-latin-600-normal.woff2"
 							]
 						},
 						{
-							"fontFamily": "Fira Sans",
+							"fontFamily": "Nunito Sans",
 							"fontStyle": "normal",
-							"fontWeight": "700",
+							"fontWeight": "800",
 							"fontDisplay": "swap",
 							"src": [
-								"file:./assets/fonts/fira-sans-latin-700-normal.woff2"
-							]
-						}
-					]
-				},
-				{
-					"slug": "button",
-					"name": "Button (Roboto)",
-					"fontFamily": "Roboto, \"Helvetica Neue\", Arial, sans-serif",
-					"fontFace": [
-						{
-							"fontFamily": "Roboto",
-							"fontStyle": "normal",
-							"fontWeight": "400",
-							"fontDisplay": "swap",
-							"src": [
-								"file:./assets/fonts/roboto-latin-400-normal.woff2"
-							]
-						},
-						{
-							"fontFamily": "Roboto",
-							"fontStyle": "normal",
-							"fontWeight": "500",
-							"fontDisplay": "swap",
-							"src": [
-								"file:./assets/fonts/roboto-latin-500-normal.woff2"
-							]
-						},
-						{
-							"fontFamily": "Roboto",
-							"fontStyle": "normal",
-							"fontWeight": "700",
-							"fontDisplay": "swap",
-							"src": [
-								"file:./assets/fonts/roboto-latin-700-normal.woff2"
+								"file:./assets/fonts/nunito-sans-latin-800-normal.woff2"
 							]
 						}
 					]
@@ -167,12 +142,12 @@
 				{
 					"slug": "x-large",
 					"name": "Extra large",
-					"size": "clamp(2rem, 1.4rem + 2vw, 3rem)"
+					"size": "clamp(2.25rem, 1.6rem + 2vw, 3.5rem)"
 				},
 				{
 					"slug": "hero",
 					"name": "Hero",
-					"size": "clamp(2.75rem, 1.5rem + 5vw, 6rem)"
+					"size": "clamp(2.75rem, 1.6rem + 4.2vw, 4.5rem)"
 				}
 			]
 		},
@@ -221,14 +196,15 @@
 		"typography": {
 			"fontFamily": "var(--wp--preset--font-family--body)",
 			"fontSize": "var(--wp--preset--font-size--medium)",
-			"lineHeight": "1.6"
+			"lineHeight": "1.7",
+			"fontWeight": "400"
 		},
 		"elements": {
 			"heading": {
 				"typography": {
 					"fontFamily": "var(--wp--preset--font-family--heading)",
-					"lineHeight": "1.15",
-					"fontWeight": "700"
+					"lineHeight": "1.1",
+					"fontWeight": "500"
 				}
 			},
 			"link": {
@@ -243,16 +219,18 @@
 			},
 			"button": {
 				"color": {
-					"background": "var(--wp--preset--color--ncah-green)",
+					"background": "var(--wp--preset--color--ncah-red)",
 					"text": "var(--wp--preset--color--white)"
 				},
 				"border": {
-					"radius": "6px"
+					"radius": "0px"
 				},
 				"typography": {
-					"fontWeight": "700",
-					"fontFamily": "var(--wp--preset--font-family--button)",
-					"fontSize": "0.875rem"
+					"fontFamily": "var(--wp--preset--font-family--body)",
+					"fontWeight": "600",
+					"fontSize": "0.78rem",
+					"textTransform": "uppercase",
+					"letterSpacing": "0.12em"
 				},
 				"spacing": {
 					"padding": {
