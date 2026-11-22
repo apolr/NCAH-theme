@@ -261,3 +261,22 @@ html.ncah-lb-open{overflow:hidden}
 .ncah-lb__next{right:.75rem}
 @media (max-width:600px){.ncah-lb{padding:3.5rem .5rem}.ncah-lb__nav{top:auto;bottom:.75rem;transform:none}}
 @media (prefers-reduced-motion:reduce){.ncah-lb__img{transition:none}}
+
+/* Green footer (NCAH Green #008000) with white, legible text */
+.ncah-footer { background: var(--ncah-green, #008000); color: #fff; }
+.ncah-footer p, .ncah-footer li, .ncah-footer strong, .ncah-footer h3, .ncah-footer .ncah-eyebrow { color: #fff; opacity: 1; }
+.ncah-footer a, .ncah-footer .wp-block-navigation-item__content { color: #fff; text-decoration: underline; text-decoration-color: rgba(255, 255, 255, .55); text-underline-offset: 3px; }
+.ncah-footer a:hover, .ncah-footer a:focus-visible, .ncah-footer .wp-block-navigation-item__content:hover { color: #fff; text-decoration-color: #fff; text-decoration-thickness: 2px; }
+.ncah-footer-nav .wp-block-navigation-item__content { text-decoration: none; }
+.ncah-footer-nav .wp-block-navigation-item__content:hover { text-decoration: underline; }
+.ncah-footer-logo img { filter: drop-shadow(0 1px 3px rgba(0, 0, 0, .45)); }
+.ncah-footer-rule { border-color: rgba(255, 255, 255, .45) !important; }
+.ncah-footsocial .wp-block-social-link { background: rgba(255, 255, 255, .18) !important; }
+.ncah-footsocial .wp-block-social-link a { text-decoration: none; }
+.ncah-footer input[type="text"], .ncah-footer input[type="email"] { background: #fff; color: #1a1a1a; border: 2px solid #fff; border-radius: 4px; padding: .6rem .75rem; }
+.ncah-footer input::placeholder { color: #595959; opacity: 1; }
+.ncah-footer input[type="submit"], .ncah-footer button[type="submit"], .ncah-footer .mailpoet_submit { background: #fff; color: var(--ncah-green, #008000); border: 2px solid #fff; border-radius: 4px; font-weight: 800; padding: .6rem 1.2rem; cursor: pointer; }
+.ncah-footer input[type="submit"]:hover, .ncah-footer .mailpoet_submit:hover { background: #d40000; border-color: #fff; color: #fff; }
+.ncah-footer .mailpoet_paragraph, .ncah-footer .mailpoet_message, .ncah-footer label { color: #fff; }
+.ncah-footer-bar { background: #005a00; color: #fff; }
+.ncah-footer-bar p, .ncah-footer-bar a { color: #fff; }
