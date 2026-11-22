@@ -226,7 +226,7 @@ body.home .ncah-donate .wp-block-button__link:hover { background: #fff !importan
 /* Transparent logo: light-background version by default, white-text version over the home hero and in the green footer */
 body.home .ncah-logo img { content: url('assets/brand/ncah-logo-dark.png'); filter: drop-shadow(0 1px 3px rgba(0,0,0,.45)); }
 .ncah-footer-logo { background: transparent !important; border-radius: 0; padding: 0; }
-.ncah-footer-logo img { content: url('assets/brand/ncah-logo-dark.png'); border-radius: 0 !important; height: 80px; width: auto; }
+.ncah-footer-logo img { content: url('assets/brand/ncah-logo-footer.png'); border-radius: 0 !important; height: 80px; width: auto; }
 .wp-block-button__link.wp-element-button:not(.has-text-color) { color: #fff; }
 @media (min-width: 601px) and (max-width: 1100px) {
 	.ncah-nav { font-size: .68rem; letter-spacing: .08em; gap: .75rem !important; }
@@ -280,3 +280,5 @@ html.ncah-lb-open{overflow:hidden}
 .ncah-footer .mailpoet_paragraph, .ncah-footer .mailpoet_message, .ncah-footer label { color: #fff; }
 .ncah-footer-bar { background: #005a00; color: #fff; }
 .ncah-footer-bar p, .ncah-footer-bar a { color: #fff; }
+.ncah-footer .mailpoet_submit, .ncah-footer .mailpoet_form input[type="submit"] { background: #d40000 !important; color: #fff !important; border: 2px solid #d40000 !important; font-weight: 800; }
+.ncah-footer .mailpoet_submit:hover, .ncah-footer .mailpoet_form input[type="submit"]:hover { background: #a80000 !important; border-color: #a80000 !important; }
