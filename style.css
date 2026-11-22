@@ -212,3 +212,9 @@ body.home .ncah-donate .wp-block-button__link:hover { background: #fff !importan
 @media (max-width: 781px) { .ncah-page-head.wp-block-cover { min-height: 280px !important; } .ncah-split { gap: 1.25rem; } }
 .ncah-green-band .ncah-eyebrow, .ncah-green-band .ncah-eyebrow.has-ncah-red-color { color: #fff !important; opacity: .85; }
 .ncah-green-band h2, .ncah-green-band h2.wp-block-heading { color: #fff !important; }
+
+/* Fixes from review: executive grid on small screens, footer heading spacing */
+@media (max-width: 900px) { .ncah-exec-grid.wp-block-group { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; } }
+@media (max-width: 560px) { .ncah-exec-grid.wp-block-group { grid-template-columns: minmax(0, 1fr) !important; } .ncah-exec-photo img { aspect-ratio: 1/1; } }
+.ncah-footer h3.ncah-eyebrow.wp-block-heading { margin-top: 1.75rem; }
+.ncah-footer .wp-block-column:first-child h3.ncah-eyebrow.wp-block-heading, .ncah-footer .wp-block-column > h3.ncah-eyebrow.wp-block-heading:first-child { margin-top: 0; }
