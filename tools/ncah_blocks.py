@@ -85,13 +85,28 @@ def logo(src, alt):
     return f'<!-- wp:image {{"sizeSlug":"medium","linkDestination":"none"}} -->\n<figure class="wp-block-image size-medium"><img src="{src}" alt="{html.escape(alt)}"/></figure>\n<!-- /wp:image -->'
 
 
-def page_head(title, img):
-    """Page title band: photo with dark overlay and the page title as H1, as on the live inner pages."""
-    a = {'url': img, 'dimRatio': 57, 'align': 'full', 'minHeight': 320, 'contentPosition': 'bottom left', 'className': 'ncah-page-head'}
-    return (f'<!-- wp:cover {j(a)} -->\n<div class="wp-block-cover alignfull ncah-page-head" style="min-height:320px">'
+def page_head(title, img, eyebrow='Nigerian Canadian Association, Hamilton and Environs'):
+    """ncabc-style page title: full-width photo, dark overlay, centred serif H1 with a short red rule."""
+    a = {'url': img, 'dimRatio': 55, 'align': 'full', 'minHeight': 380, 'contentPosition': 'center center', 'className': 'ncah-page-head'}
+    return (f'<!-- wp:cover {j(a)} -->\n<div class="wp-block-cover alignfull ncah-page-head" style="min-height:380px">'
             f'<span aria-hidden="true" class="wp-block-cover__background has-background-dim-60 has-background-dim"></span>'
             f'<img class="wp-block-cover__image-background" alt="" src="{img}" data-object-fit="cover"/>'
-            f'<div class="wp-block-cover__inner-container">' + heading(title, 1, '', None, 'hero', 'white') + '</div></div>\n<!-- /wp:cover -->')
+            f'<div class="wp-block-cover__inner-container">' + para(eyebrow, 'ncah-eyebrow', 'center', None, 'white') + '\n\n' + heading(title, 1, '', 'center', 'hero', 'white') + '</div></div>\n<!-- /wp:cover -->')
+
+def split(img, eyebrow, title, text, reverse=False, extra=''):
+    """Square image beside text, as in the ncabc.org content blocks."""
+    im = f'<!-- wp:image {{"sizeSlug":"large","className":"ncah-split-img"}} -->\n<figure class="wp-block-image size-large ncah-split-img"><img src="{img}" alt="{html.escape(title)}"/></figure>\n<!-- /wp:image -->'
+    tx = (para(eyebrow, 'ncah-eyebrow', None, None, 'ncah-red') + '\n\n' + heading(title, 2, '', None, 'x-large') + '\n\n' + para(text) + (('\n\n' + extra) if extra else ''))
+    cols = [column(im, '50%'), column(tx, '50%')]
+    if reverse: cols = cols[::-1]
+    a = {'verticalAlignment': 'center', 'className': 'ncah-split'}
+    return ('<!-- wp:columns {"verticalAlignment":"center","className":"ncah-split"} -->\n<div class="wp-block-columns are-vertically-aligned-center ncah-split">'
+            + '\n\n'.join(cols).replace('<!-- wp:column {"width":"50%"} -->', '<!-- wp:column {"verticalAlignment":"center","width":"50%"} -->').replace('<div class="wp-block-column" style', '<div class="wp-block-column is-vertically-aligned-center" style')
+            + '</div>\n<!-- /wp:columns -->')
+
+def section_title(eyebrow, title, center=True):
+    al = 'center' if center else None
+    return para(eyebrow, 'ncah-eyebrow', al, None, 'ncah-red') + '\n\n' + heading(title, 2, '', al, 'x-large')
 
 def write(name, blocks):
     p = pathlib.Path(__file__).resolve().parent.parent / 'content' / name
