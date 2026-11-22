@@ -105,3 +105,13 @@ add_filter( 'render_block', function ( $html, $block ) {
 	}
 	return $html;
 }, 12, 2 );
+
+/**
+ * Footer newsletter signup. Uses the existing MailPoet plugin: set the form with
+ * wp option update ncah_mailpoet_form_id <id> (or in Tools > NCAH migrate). Until set, shows a mail link.
+ */
+add_shortcode('ncah_newsletter', function () {
+    $id = (int) get_option('ncah_mailpoet_form_id');
+    if ($id && shortcode_exists('mailpoet_form')) return do_shortcode('[mailpoet_form id="' . $id . '"]');
+    return '<p class="has-small-font-size">Newsletter signup coming soon. Email <a href="mailto:info@ncahamilton.ca?subject=Newsletter">info@ncahamilton.ca</a> to be added.</p>';
+});

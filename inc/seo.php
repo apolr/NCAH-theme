@@ -98,9 +98,12 @@ add_action( 'wp_head', function () {
 		'alternateName' => 'NCAH',
 		'url'         => home_url( '/' ),
 		'description' => get_bloginfo( 'description' ),
-		// [Confirm before launch: email, telephone, address, founding date. Left out until verified.]
+		'email'       => 'info@ncahamilton.ca',
+		'telephone'   => '+1-289-244-2568',
+		'foundingDate' => '1999',
+		// [Confirm before launch: registered mailing address. Left out until verified.]
 		'areaServed'  => 'Hamilton, Ontario',
-		// [Confirm: social profile URLs for sameAs]
+		'sameAs'      => array( 'https://www.facebook.com/NCAHamilton', 'https://www.instagram.com/ncahamilton/', 'https://www.youtube.com/@NCAHamilton' ),
 	);
 	if ( $logo ) {
 		$org['logo'] = wp_get_attachment_image_url( (int) $logo, 'full' );

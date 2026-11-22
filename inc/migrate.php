@@ -65,7 +65,8 @@ function ncah_migrate_page() {
     $apply = $run && ($_POST['ncah_run'] === 'apply');
     echo '<div class="wrap"><h1>NCAH migrate</h1><form method="post">';
     wp_nonce_field('ncah_migrate');
-    echo '<p><button class="button" name="ncah_run" value="dry">Dry run</button> <button class="button button-primary" name="ncah_run" value="apply">Convert posts</button> <button class="button" name="ncah_undo" value="1">Undo last conversion</button> <button class="button" name="ncah_seed" value="1">Create starter programs</button></p></form>';
+    echo '<p><button class="button" name="ncah_run" value="dry">Dry run</button> <button class="button button-primary" name="ncah_run" value="apply">Convert posts</button> <button class="button" name="ncah_undo" value="1">Undo last conversion</button> <button class="button" name="ncah_seed" value="1">Create starter programs</button></p><p><label>MailPoet form ID for the footer signup: <input type="number" name="ncah_mp" value="'.(int) get_option("ncah_mailpoet_form_id").'" style="width:6em"></label> <button class="button" name="ncah_mpsave" value="1">Save</button></p></form>';
+    if (isset($_POST["ncah_mpsave"]) && check_admin_referer("ncah_migrate")) { update_option("ncah_mailpoet_form_id", (int) ($_POST["ncah_mp"] ?? 0)); echo "<p><strong>Saved.</strong></p>"; }
     if (isset($_POST["ncah_seed"]) && check_admin_referer("ncah_migrate")) echo "<p><strong>Created " . (int) ncah_seed_programs() . " programs.</strong></p>";
     $ids = get_posts(['post_type' => 'post', 'post_status' => 'any', 'numberposts' => -1, 'fields' => 'ids']);
     if ($run || $undo) {

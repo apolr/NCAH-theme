@@ -83,8 +83,7 @@ info = (heading('Contact', 3, '', None, 'medium', 'ncah-green') + '\n\n' +
 mapb = ('<!-- wp:html -->\n<iframe title="Map of Hamilton, Ontario" src="https://maps.google.com/maps?q=Hamilton%2C%20Ontario&amp;output=embed" '
         'width="100%" height="320" style="border:0;border-radius:12px" loading="lazy"></iframe>\n<!-- /wp:html -->')
 c.append(band(columns([column(info, '40%'), column(heading('Find Us', 3, '', None, 'medium', 'ncah-green') + '\n\n' + mapb, '60%')]), 'mist', 'ncah-contact-info'))
-formph = ('<!-- wp:html -->\n<!-- [Replace with the Fluent Forms shortcode once the form exists: name, email, message, Cloudflare Turnstile; notifications to info@ncahamilton.ca] -->\n'
-          '<p class="ncah-form-placeholder">The contact form will appear here. Until then, email <a href="mailto:info@ncahamilton.ca">info@ncahamilton.ca</a>.</p>\n<!-- /wp:html -->')
+formph = '<!-- wp:shortcode -->\n[wpforms id="810"]\n<!-- /wp:shortcode -->'
 c.append(band(heading('Send us a message', 2, '', None, 'x-large', 'ncah-green') + '\n\n' + formph, None, 'ncah-contact-form', '800px'))
 write('contact-us.html', c)
 
