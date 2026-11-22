@@ -19,6 +19,12 @@
 		return best;
 	}
 
+	// A photo is enlargeable when it has no link, or links straight to an image file.
+	function plain( img ) {
+		var a = img.closest( 'a' );
+		return ! a || /\.(webp|jpe?g|png|gif|avif)(\?.*)?$/i.test( a.getAttribute( 'href' ) || '' );
+	}
+
 	function groups() {
 		var root = document.querySelector( SCOPE );
 		if ( ! root ) { return []; }
@@ -28,11 +34,11 @@
 		if ( master && master.closest( '.wp-block-gallery' ) ) { master = null; }
 		root.querySelectorAll( '.wp-block-gallery' ).forEach( function ( g ) {
 			if ( g.matches( EXCLUDE ) ) { return; }
-			var imgs = [].slice.call( g.querySelectorAll( 'img' ) ).filter( function ( i ) { return ! i.closest( 'a' ); } );
+			var imgs = [].slice.call( g.querySelectorAll( 'img' ) ).filter( plain );
 			if ( imgs.length ) { sets.push( imgs ); }
 		} );
 		root.querySelectorAll( '.wp-block-image img' ).forEach( function ( i ) {
-			if ( i === master || i.closest( '.wp-block-gallery' ) || i.closest( 'a' ) || i.closest( EXCLUDE ) ) { return; }
+			if ( i === master || i.closest( '.wp-block-gallery' ) || ! plain( i ) || i.closest( EXCLUDE ) ) { return; }
 			sets.push( [ i ] );
 		} );
 		return sets;
@@ -132,7 +138,9 @@
 				img.setAttribute( 'tabindex', '0' );
 				img.setAttribute( 'role', 'button' );
 				img.setAttribute( 'aria-label', 'Enlarge photo' + ( img.alt ? ': ' + img.alt : '' ) );
-				img.addEventListener( 'click', function () { open( set, i ); } );
+				img.addEventListener( 'click', function ( e ) { e.preventDefault(); open( set, i ); } );
+				var link = img.closest( 'a' );
+				if ( link ) { link.addEventListener( 'click', function ( e ) { e.preventDefault(); } ); }
 				img.addEventListener( 'keydown', function ( e ) {
 					if ( e.key === 'Enter' || e.key === ' ' ) { e.preventDefault(); open( set, i ); }
 				} );
