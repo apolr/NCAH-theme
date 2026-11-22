@@ -1,0 +1,203 @@
+/*
+ * NCAH motion layer.
+ * Hidden start states only apply when the script has run (html.ncah-js),
+ * so the site stays fully readable without JavaScript.
+ */
+
+/* ---------- Hero: crossfade slides ---------- */
+.ncah-hero {
+	position: relative;
+	overflow: hidden;
+	min-height: 86vh;
+	background: var(--wp--preset--color--black);
+}
+.ncah-hero > .ncah-hero__slide {
+	position: absolute;
+	inset: 0;
+	margin: 0;
+	min-height: 100%;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity var(--ncah-fade) ease, visibility 0s linear var(--ncah-fade);
+}
+.ncah-hero > .ncah-hero__slide:first-child,
+.ncah-hero > .ncah-hero__slide.is-active {
+	opacity: 1;
+	visibility: visible;
+	transition: opacity var(--ncah-fade) ease, visibility 0s;
+}
+/* With JS running, only the slide marked active shows. */
+.ncah-js .ncah-hero > .ncah-hero__slide:first-child:not(.is-active) {
+	opacity: 0;
+	visibility: hidden;
+}
+
+/* ---------- Hero: slow background zoom (100% to 115%) ---------- */
+.ncah-hero__slide .wp-block-cover__image-background,
+.ncah-hero__slide .wp-block-cover__video-background {
+	transform: scale(1);
+	transform-origin: center;
+}
+.ncah-js .ncah-hero__slide.is-active .wp-block-cover__image-background,
+.ncah-js .ncah-hero__slide.is-active .wp-block-cover__video-background {
+	animation: ncah-zoom var(--ncah-zoom) ease-out forwards;
+}
+@keyframes ncah-zoom {
+	from { transform: scale(1); }
+	to { transform: scale(1.15); }
+}
+
+/* ---------- Text rise: 50px over 1s, staggered ---------- */
+.ncah-js .ncah-hero__slide .ncah-rise {
+	opacity: 0;
+	transform: translateY(var(--ncah-rise-distance));
+}
+.ncah-js .ncah-hero__slide.is-active .ncah-rise {
+	animation: ncah-rise var(--ncah-rise) cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+}
+.ncah-js .ncah-hero__slide.is-active .ncah-rise:nth-child(1) { animation-delay: var(--ncah-stagger-1); }
+.ncah-js .ncah-hero__slide.is-active .ncah-rise:nth-child(2) { animation-delay: var(--ncah-stagger-2); }
+.ncah-js .ncah-hero__slide.is-active .ncah-rise:nth-child(n+3) { animation-delay: var(--ncah-stagger-3); }
+@keyframes ncah-rise {
+	from { opacity: 0; transform: translateY(var(--ncah-rise-distance)); }
+	to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- Hero controls (dots) ---------- */
+.ncah-hero__dots {
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 1.25rem;
+	z-index: 5;
+	display: flex;
+	justify-content: center;
+	gap: 0.6rem;
+}
+.ncah-hero__dots button {
+	width: 0.75rem;
+	height: 0.75rem;
+	padding: 0;
+	border: 2px solid var(--wp--preset--color--white);
+	border-radius: 50%;
+	background: transparent;
+	cursor: pointer;
+	transition: background-color var(--ncah-button) ease;
+}
+.ncah-hero__dots button[aria-current="true"],
+.ncah-hero__dots button:hover {
+	background: var(--wp--preset--color--ncah-green);
+	border-color: var(--wp--preset--color--ncah-green);
+}
+
+/* ---------- Scroll reveal: the band stays put, its content rises in, staggered ---------- */
+.ncah-js .ncah-reveal > * {
+	opacity: 0;
+	transform: translateY(var(--ncah-rise-distance));
+	transition: opacity var(--ncah-rise) ease, transform var(--ncah-rise) cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.ncah-js .ncah-reveal.is-visible > * { opacity: 1; transform: none; }
+.ncah-js .ncah-reveal.is-visible > *:nth-child(2) { transition-delay: 120ms; }
+.ncah-js .ncah-reveal.is-visible > *:nth-child(3) { transition-delay: 240ms; }
+.ncah-js .ncah-reveal.is-visible > *:nth-child(n+4) { transition-delay: 360ms; }
+/* Columns inside a revealed band arrive one after another. */
+.ncah-js .ncah-reveal .wp-block-columns > .wp-block-column {
+	opacity: 0;
+	transform: translateY(30px);
+	transition: opacity var(--ncah-rise) ease, transform var(--ncah-rise) cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.ncah-js .ncah-reveal.is-visible .wp-block-columns > .wp-block-column { opacity: 1; transform: none; }
+.ncah-js .ncah-reveal.is-visible .wp-block-columns > .wp-block-column:nth-child(2) { transition-delay: 150ms; }
+.ncah-js .ncah-reveal.is-visible .wp-block-columns > .wp-block-column:nth-child(3) { transition-delay: 300ms; }
+
+/* ---------- Floating shapes (injected by motion.js, decorative only) ---------- */
+.ncah-has-shapes { position: relative; overflow: hidden; isolation: isolate; }
+.ncah-shapes { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+.ncah-band.ncah-has-shapes > *:not(.ncah-shapes) { position: relative; z-index: 1; }
+.ncah-hero > .ncah-shapes { z-index: 2; }
+.ncah-shape {
+	position: absolute;
+	border-radius: 999px;
+	opacity: .9;
+	animation: ncah-float 9s ease-in-out infinite;
+	will-change: transform;
+}
+.ncah-shape--1 { width: 22px; height: 22px; background: var(--wp--preset--color--ncah-green); top: 14%; left: 6%; }
+.ncah-shape--2 { width: 14px; height: 14px; background: var(--wp--preset--color--ncah-green); top: 70%; left: 12%; animation-duration: 11s; animation-delay: -3s; }
+.ncah-shape--3 { width: 30px; height: 30px; background: var(--wp--preset--color--mist); top: 20%; right: 8%; animation-duration: 13s; animation-delay: -5s; }
+.ncah-shape--4 { width: 12px; height: 12px; background: var(--wp--preset--color--ncah-red); bottom: 16%; right: 18%; animation-duration: 10s; animation-delay: -2s; }
+.ncah-shape--5 { width: 180px; height: 46px; background: var(--wp--preset--color--ncah-green); bottom: -14px; right: -40px; transform: rotate(-55deg); opacity: .85; animation-name: ncah-float-pill; animation-duration: 14s; }
+/* On coloured bands only the corner accents show, softer, so text stays easy to read. */
+.ncah-band .ncah-shape--1, .ncah-band .ncah-shape--2, .ncah-band .ncah-shape--4 { display: none; }
+.ncah-band .ncah-shape--3 { top: 10%; right: 3%; }
+.ncah-band .ncah-shape { opacity: .35; }
+.ncah-band .ncah-shape--5 { opacity: .25; }
+.has-orange-background-color.ncah-band .ncah-shape--1,
+.has-orange-background-color.ncah-band .ncah-shape--5 { background: var(--wp--preset--color--black); opacity: .12; }
+.has-green-background-color.ncah-band .ncah-shape--2 { background: var(--wp--preset--color--black); opacity: .15; }
+@keyframes ncah-float {
+	0%, 100% { transform: translate(0, 0); }
+	50% { transform: translate(10px, -18px); }
+}
+@keyframes ncah-float-pill {
+	0%, 100% { transform: rotate(-55deg) translateY(0); }
+	50% { transform: rotate(-55deg) translateY(-16px); }
+}
+@media (max-width: 600px) {
+	.ncah-shape--5 { width: 110px; height: 30px; }
+	.ncah-shape--3 { width: 20px; height: 20px; }
+}
+
+/* ---------- Photos zoom gently on hover ---------- */
+.ncah-reveal .wp-block-image:not(.ncah-person__photo) { overflow: hidden; }
+.ncah-reveal .wp-block-image:not(.ncah-person__photo) img,
+.wp-block-post-featured-image img {
+	transition: transform .7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.ncah-reveal .wp-block-image:not(.ncah-person__photo):hover img,
+.wp-block-post-featured-image:hover img { transform: scale(1.06); }
+.wp-block-post-featured-image { overflow: hidden; border-radius: 12px; }
+
+/* ---------- Text cards (title plus short text) lift on hover ---------- */
+.ncah-reveal .wp-block-column:not(:has(.wp-block-image, .wp-block-column, .wp-block-list, .wp-block-group)):has(> h3:first-child + p:last-child) {
+	padding: 1.75rem;
+	border-radius: 18px;
+	background: rgba(255, 255, 255, .06);
+	box-shadow: inset 0 0 0 1px rgba(127, 127, 127, .18);
+	transition: transform .35s ease, box-shadow .35s ease, background-color .35s ease;
+}
+.ncah-reveal:not(.has-background) .wp-block-column:not(:has(.wp-block-image, .wp-block-column, .wp-block-list, .wp-block-group)):has(> h3:first-child + p:last-child) {
+	background: #f6f5f2;
+	box-shadow: none;
+}
+.ncah-reveal .wp-block-column:not(:has(.wp-block-image, .wp-block-column, .wp-block-list, .wp-block-group)):has(> h3:first-child + p:last-child):hover {
+	transform: translateY(-8px);
+	box-shadow: 0 18px 40px rgba(0, 0, 0, .14);
+}
+
+/* ---------- Partner and funder logos scroll sideways, pausing on hover ---------- */
+.ncah-marquee { overflow: hidden; width: 100%; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.ncah-marquee__track { display: flex !important; flex-wrap: nowrap !important; gap: 3.5rem !important; width: max-content; align-items: center; animation: ncah-marquee var(--ncah-marquee, 30s) linear infinite; }
+.ncah-marquee:hover .ncah-marquee__track { animation-play-state: paused; }
+.ncah-marquee__track > figure { flex: 0 0 auto; margin: 0 !important; }
+@keyframes ncah-marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+/* ---------- Reduced motion: no zoom, no rise, no cycling ---------- */
+@media (prefers-reduced-motion: reduce) {
+	.ncah-js .ncah-hero__slide .ncah-rise,
+	.ncah-js .ncah-reveal > *,
+	.ncah-js .ncah-reveal .wp-block-columns > .wp-block-column {
+		opacity: 1 !important;
+		transform: none !important;
+		animation: none !important;
+		transition: none !important;
+	}
+	.ncah-hero__slide .wp-block-cover__image-background,
+	.ncah-hero__slide .wp-block-cover__video-background,
+	.ncah-shape, .ncah-marquee__track {
+		animation: none !important;
+	}
+	.ncah-hero__slide .wp-block-cover__image-background { transform: none !important; }
+	.ncah-marquee__track { flex-wrap: wrap !important; width: auto; justify-content: center; }
+	.ncah-marquee { -webkit-mask-image: none; mask-image: none; }
+}

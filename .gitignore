@@ -1,0 +1,5 @@
+.DS_Store
+*.zip
+exports/
+*.csv
+__pycache__/

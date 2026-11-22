@@ -1,0 +1,249 @@
+/*
+ * NCAH motion layer script. No dependencies.
+ * Cycles hero slides, and reveals blocks as they scroll into view.
+ */
+( function () {
+	'use strict';
+
+	var root = document.documentElement;
+	root.classList.add( 'ncah-js' );
+
+	var reduce = window.matchMedia && window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches;
+	var INTERVAL = 7000;
+
+	function initHero( hero ) {
+		var slides = Array.prototype.slice.call( hero.querySelectorAll( ':scope > .ncah-hero__slide' ) );
+		if ( slides.length === 0 ) {
+			return;
+		}
+		var current = 0;
+		var timer = null;
+
+		slides[ 0 ].classList.add( 'is-active' );
+		if ( slides.length === 1 ) {
+			return;
+		}
+
+		var dots = document.createElement( 'div' );
+		dots.className = 'ncah-hero__dots';
+		var buttons = slides.map( function ( slide, i ) {
+			var b = document.createElement( 'button' );
+			b.type = 'button';
+			b.setAttribute( 'aria-label', 'Show slide ' + ( i + 1 ) + ' of ' + slides.length );
+			b.addEventListener( 'click', function () {
+				show( i );
+				restart();
+			} );
+			dots.appendChild( b );
+			return b;
+		} );
+		hero.appendChild( dots );
+
+		function show( index ) {
+			slides[ current ].classList.remove( 'is-active' );
+			current = ( index + slides.length ) % slides.length;
+			slides[ current ].classList.add( 'is-active' );
+			buttons.forEach( function ( b, i ) {
+				if ( i === current ) {
+					b.setAttribute( 'aria-current', 'true' );
+				} else {
+					b.removeAttribute( 'aria-current' );
+				}
+			} );
+		}
+
+		function start() {
+			if ( reduce || timer ) {
+				return;
+			}
+			timer = window.setInterval( function () {
+				show( current + 1 );
+			}, INTERVAL );
+		}
+		function stop() {
+			window.clearInterval( timer );
+			timer = null;
+		}
+		function restart() {
+			stop();
+			start();
+		}
+
+		show( 0 );
+		start();
+
+		hero.addEventListener( 'mouseenter', stop );
+		hero.addEventListener( 'mouseleave', start );
+		hero.addEventListener( 'focusin', stop );
+		hero.addEventListener( 'focusout', start );
+		document.addEventListener( 'visibilitychange', function () {
+			if ( document.hidden ) {
+				stop();
+			} else {
+				start();
+			}
+		} );
+	}
+
+	function initReveal() {
+		var items = document.querySelectorAll( '.ncah-reveal' );
+		if ( ! items.length ) {
+			return;
+		}
+		if ( reduce || ! ( 'IntersectionObserver' in window ) ) {
+			items.forEach( function ( el ) {
+				el.classList.add( 'is-visible' );
+			} );
+			return;
+		}
+		var io = new IntersectionObserver(
+			function ( entries ) {
+				entries.forEach( function ( entry ) {
+					if ( entry.isIntersecting ) {
+						entry.target.classList.add( 'is-visible' );
+						io.unobserve( entry.target );
+					}
+				} );
+			},
+			{ threshold: 0.15, rootMargin: '0px 0px -5% 0px' }
+		);
+		items.forEach( function ( el ) {
+			io.observe( el );
+		} );
+	}
+
+	// Decorative floating shapes in the hero and on full-width coloured bands.
+	function addShapes( el ) {
+		if ( el.querySelector( ':scope > .ncah-shapes' ) ) {
+			return;
+		}
+		var wrap = document.createElement( 'div' );
+		wrap.className = 'ncah-shapes';
+		wrap.setAttribute( 'aria-hidden', 'true' );
+		for ( var i = 1; i <= 5; i++ ) {
+			var s = document.createElement( 'span' );
+			s.className = 'ncah-shape ncah-shape--' + i;
+			wrap.appendChild( s );
+		}
+		el.classList.add( 'ncah-has-shapes' );
+		el.insertBefore( wrap, el.firstChild );
+	}
+
+	// Logo rows become a slow sideways scroller (content duplicated once for a seamless loop).
+	function initMarquee( row ) {
+		if ( row.closest( '.ncah-marquee' ) || row.children.length < 4 ) {
+			return;
+		}
+		var outer = document.createElement( 'div' );
+		outer.className = 'ncah-marquee';
+		row.parentNode.insertBefore( outer, row );
+		outer.appendChild( row );
+		row.classList.add( 'ncah-marquee__track' );
+		Array.prototype.slice.call( row.children ).forEach( function ( child ) {
+			var copy = child.cloneNode( true );
+			copy.setAttribute( 'aria-hidden', 'true' );
+			copy.querySelectorAll( 'img' ).forEach( function ( img ) { img.alt = ''; } );
+			row.appendChild( copy );
+		} );
+		row.style.setProperty( '--ncah-marquee', ( row.children.length * 3 ) + 's' );
+	}
+
+	/* Mobile menu: add the logo at the top and Donate plus Instagram at the bottom of the overlay. */
+	function initMobileMenu() {
+		document.querySelectorAll( '.ncah-nav .wp-block-navigation__responsive-container-content' ).forEach( function ( box ) {
+			if ( box.querySelector( '.ncah-menu-extra' ) ) { return; }
+			var header = box.closest( 'header' ) || document;
+			var logo = header.querySelector( '.ncah-logo img' );
+			if ( logo ) {
+				var top = document.createElement( 'div' );
+				top.className = 'ncah-menu-extra ncah-menu-logo';
+				var a = document.createElement( 'a' );
+				a.href = '/';
+				a.setAttribute( 'aria-label', 'Home' );
+				var img = logo.cloneNode( false );
+				img.removeAttribute( 'srcset' );
+				img.removeAttribute( 'width' );
+				img.removeAttribute( 'height' );
+				a.appendChild( img );
+				top.appendChild( a );
+				box.insertBefore( top, box.firstChild );
+			}
+			var foot = document.createElement( 'div' );
+			foot.className = 'ncah-menu-extra ncah-menu-foot';
+			var donate = header.querySelector( '.ncah-donate a' );
+			if ( donate ) {
+				var d = donate.cloneNode( true );
+				d.className = 'ncah-menu-donate';
+				foot.appendChild( d );
+			}
+			var insta = header.querySelector( '.ncah-social a' );
+			if ( insta ) {
+				var i = insta.cloneNode( true );
+				i.className = 'ncah-menu-social';
+				i.insertAdjacentHTML( 'beforeend', '<span>Follow us on Instagram</span>' );
+				foot.appendChild( i );
+			}
+			box.appendChild( foot );
+		} );
+	}
+
+	/* Point the newsletter form's "Privacy Policy" link at the real page. */
+	function fixPrivacyLinks() {
+		document.querySelectorAll( '.mailpoet_form a' ).forEach( function ( a ) {
+			var h = a.getAttribute( 'href' );
+			if ( ( ! h || h === '#' ) && /privacy/i.test( a.textContent ) ) { a.setAttribute( 'href', '/privacy-policy/' ); }
+		} );
+	}
+
+	/* Floating back-to-top button, shown once the visitor has scrolled down. */
+	function initBackToTop() {
+		if ( document.querySelector( '.ncah-top' ) ) { return; }
+		var btn = document.createElement( 'button' );
+		btn.type = 'button';
+		btn.className = 'ncah-top';
+		btn.setAttribute( 'aria-label', 'Back to top' );
+		btn.innerHTML = '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true" focusable="false"><path d="M12 5l-7 7 1.4 1.4L11 8.8V20h2V8.8l4.6 4.6L19 12z" fill="currentColor"/></svg><span class="ncah-top__label">Top</span>';
+		document.body.appendChild( btn );
+		var ticking = false;
+		function update() {
+			btn.classList.toggle( 'is-shown', window.scrollY > 500 );
+			ticking = false;
+		}
+		window.addEventListener( 'scroll', function () {
+			if ( ! ticking ) { ticking = true; window.requestAnimationFrame( update ); }
+		}, { passive: true } );
+		btn.addEventListener( 'click', function () {
+			var reduce = window.matchMedia && window.matchMedia( '(prefers-reduced-motion: reduce)' ).matches;
+			window.scrollTo( { top: 0, behavior: reduce ? 'auto' : 'smooth' } );
+			var target = document.querySelector( '.wp-site-blocks a, .wp-site-blocks button' );
+			if ( target ) { target.focus( { preventScroll: true } ); }
+		} );
+		update();
+	}
+
+	function init() {
+		initMobileMenu();
+		initBackToTop();
+		fixPrivacyLinks();
+		document.querySelectorAll( '.ncah-hero' ).forEach( function ( hero ) {
+			initHero( hero );
+			addShapes( hero );
+		} );
+		document.querySelectorAll( '.wp-block-post-content > .alignfull.has-background:not(.ncah-hero)' ).forEach( function ( band ) {
+			band.classList.add( 'ncah-band' );
+			addShapes( band );
+		} );
+		document.querySelectorAll( '.ncah-logos' ).forEach( function ( row ) {
+			if ( ! row.closest( '.ncah-partners' ) ) {
+				initMarquee( row );
+			}
+		} );
+		initReveal();
+	}
+
+	if ( document.readyState === 'loading' ) {
+		document.addEventListener( 'DOMContentLoaded', init );
+	} else {
+		init();
+	}
+} )();

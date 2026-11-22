@@ -1,0 +1,92 @@
+/*
+Theme Name: NCAH
+Theme URI: https://ncahamilton.ca
+Author: Nigerian Canadian Association, Hamilton and Environs
+Description: Block theme for ncahamilton.ca. No page builder required. Built on native WordPress blocks.
+Version: 0.1.0
+Requires at least: 6.5
+Tested up to: 7.1
+Requires PHP: 7.4
+License: GPL-2.0-or-later
+Text Domain: ncah
+*/
+
+/* Motion tokens used by assets/css/motion.css and assets/js/motion.js. */
+:root {
+	--ncah-fade: 600ms;
+	--ncah-zoom: 10s;
+	--ncah-rise: 1s;
+	--ncah-rise-distance: 50px;
+	--ncah-button: 200ms;
+	--ncah-stagger-1: 140ms;
+	--ncah-stagger-2: 320ms;
+	--ncah-stagger-3: 450ms;
+	--ncah-green: #008000;
+	--ncah-green-dark: #005A00;
+	--ncah-red: #D40000;
+	--ncah-red-dark: #A60000;
+	--ncah-mist: #F4F5F6;
+	--ncah-shadow: 0 12px 32px rgba(0, 0, 0, .10);
+}
+
+/* Buttons: NCAH Green, turning NCAH Red on hover. Red buttons turn green. */
+.wp-block-button__link {
+	transition: background-color var(--ncah-button) ease, color var(--ncah-button) ease;
+}
+.wp-block-button__link:hover,
+.wp-block-button__link:focus-visible {
+	background-color: var(--ncah-red) !important;
+	color: #fff !important;
+}
+.wp-block-button__link.has-ncah-red-background-color:hover,
+.wp-block-button__link.has-ncah-red-background-color:focus-visible {
+	background-color: var(--ncah-green) !important;
+}
+
+/* Header: sticky, white, thin NCAH Green and Red rule. */
+.ncah-header { position: sticky; top: 0; z-index: 100; box-shadow: 0 6px 20px rgba(0, 0, 0, .08); border-top: 4px solid var(--ncah-green); }
+body.admin-bar .ncah-header { top: 32px; }
+@media (max-width: 782px) { body.admin-bar .ncah-header { top: 46px; } }
+.ncah-logo img { width: 170px; height: auto; }
+@media (max-width: 600px) { .ncah-logo img { width: 120px; } }
+.ncah-nav .wp-block-navigation-item__content { font-weight: 500; text-decoration: none; }
+.ncah-nav .wp-block-navigation-item__content:hover,
+.ncah-nav .current-menu-item > .wp-block-navigation-item__content { color: var(--ncah-green); }
+.ncah-nav .wp-block-navigation__submenu-container { border: 0 !important; border-radius: 8px; box-shadow: 0 10px 30px rgba(0, 0, 0, .12); padding: .5rem 0; min-width: 240px !important; }
+.ncah-nav .wp-block-navigation__submenu-container .wp-block-navigation-item__content { padding: .5rem 1.25rem; }
+.ncah-nav .is-menu-open .wp-block-navigation__submenu-container { box-shadow: none; padding: 0 0 0 1rem; min-width: 0 !important; }
+.ncah-nav .is-menu-open .wp-block-navigation-item__content { font-size: 1.15rem; }
+.ncah-donate .wp-block-button__link,
+.ncah-tickets .wp-block-button__link { white-space: nowrap; }
+@media (max-width: 1000px) {
+	.ncah-nav { font-size: .95rem; }
+	.ncah-donate .wp-block-button__link, .ncah-tickets .wp-block-button__link { padding: .55em 1.1em !important; font-size: 13px !important; }
+}
+@media (max-width: 600px) { .ncah-tickets { display: none; } }
+
+/* Footer. */
+.ncah-footer a { color: #fff; }
+.ncah-footer a:hover { color: #fff; text-decoration: underline; }
+.ncah-footer-logo { background: #fff; border-radius: 8px; padding: 10px 14px; display: inline-block; }
+.ncah-footer-nav .wp-block-navigation-item__content { text-decoration: none; }
+
+/* Alternate section background carried over from the old site (#F4F5F6). */
+.has-mist-background-color { background-color: var(--ncah-mist); }
+
+/* Cards and images. */
+.wp-block-post-featured-image { box-shadow: var(--ncah-shadow); }
+.wp-block-post-template .wp-block-post-date { color: var(--ncah-red); font-weight: 500; }
+.wp-block-post-template .wp-block-post-title a { color: var(--ncah-green-dark); text-decoration: none; }
+.wp-block-post-template .wp-block-post-title a:hover { color: var(--ncah-red); }
+
+/* Forms (Fluent Forms): rounded fields, green focus, green button turning red. */
+.fluentform .ff-el-form-control { border-radius: 6px; }
+.fluentform .ff-el-form-control:focus { border-color: var(--ncah-green); box-shadow: 0 0 0 3px rgba(0, 128, 0, .2); }
+.fluentform .ff-btn-submit { background-color: var(--ncah-green) !important; color: #fff !important; border: 0 !important; border-radius: 6px; padding: .75rem 1.6rem; font-weight: 500; transition: background-color var(--ncah-button) ease; }
+.fluentform .ff-btn-submit:hover, .fluentform .ff-btn-submit:focus-visible { background-color: var(--ncah-red) !important; }
+
+/* Programs by directorate (Programs page, query loop). Status badge. */
+.ncah-status { display: inline-block; font-size: .8rem; font-weight: 500; padding: .15rem .6rem; border-radius: 999px; background: var(--ncah-mist); color: var(--ncah-green-dark); }
+.ncah-status--proposed { color: var(--ncah-red-dark); }
+
+/* Reduced motion is handled in assets/css/motion.css. */
