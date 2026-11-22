@@ -107,3 +107,13 @@ body.admin-bar .ncah-header { top: 32px; }
 .ncah-top.is-shown { opacity: 1; visibility: visible; }
 .ncah-top:hover, .ncah-top:focus-visible { background: var(--ncah-red); }
 .ncah-top svg { fill: currentColor; }
+
+/* Decorative floating shapes from the HBHCLF theme are not part of the NCAH look. */
+.ncah-shapes, .ncah-shape { display: none !important; }
+
+/* Welcome page: benefit cards and partner logos. */
+.ncah-benefit { background: #fff; border-radius: 12px; padding: 1rem 1.25rem; box-shadow: var(--ncah-shadow); }
+.ncah-logos { gap: var(--wp--preset--spacing--30); }
+.ncah-logos .wp-block-image { margin: 0; }
+.ncah-logos img { height: 80px; width: auto; max-width: 200px; object-fit: contain; }
+.ncah-hero .wp-block-cover { min-height: 80vh; }
