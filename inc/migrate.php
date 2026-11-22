@@ -75,13 +75,27 @@ function ncah_migrate_page() {
             $t = esc_html(get_the_title($id)); $res = '';
             if ($undo) {
                 $old = get_post_meta($id, '_ncah_pre_migrate_content', true);
-                if ($old !== '') { wp_update_post(['ID' => $id, 'post_content' => wp_slash($old)]); delete_post_meta($id, '_ncah_pre_migrate_content'); $res = 'restored'; } else $res = 'nothing to undo';
+                if ($old !== '') {
+                    wp_update_post(['ID' => $id, 'post_content' => wp_slash($old)]);
+                    delete_post_meta($id, '_ncah_pre_migrate_content');
+                    $m = get_post_meta($id, '_ncah_pre_migrate_meta', true);
+                    if (is_array($m)) {
+                        if (isset($m['template']) && $m['template'] !== '') update_post_meta($id, '_wp_page_template', $m['template']); else delete_post_meta($id, '_wp_page_template');
+                        if (isset($m['mode']) && $m['mode'] !== '') update_post_meta($id, '_elementor_edit_mode', $m['mode']);
+                        delete_post_meta($id, '_ncah_pre_migrate_meta');
+                    }
+                    $res = 'restored';
+                } else $res = 'nothing to undo';
             } else {
                 $b = ncah_migrate_blocks($id);
                 if (!$b) $res = 'skipped (no Elementor data)';
                 elseif (!$apply) $res = 'would convert (' . substr_count($b, '<!-- wp:image') . ' images)';
                 else {
                     update_post_meta($id, '_ncah_pre_migrate_content', get_post_field('post_content', $id));
+                    // Stop Elementor rendering the post (its Full Width template and builder flag), keep _elementor_data for undo.
+                    update_post_meta($id, '_ncah_pre_migrate_meta', ['template' => get_post_meta($id, '_wp_page_template', true), 'mode' => get_post_meta($id, '_elementor_edit_mode', true)]);
+                    delete_post_meta($id, '_wp_page_template');
+                    delete_post_meta($id, '_elementor_edit_mode');
                     wp_update_post(['ID' => $id, 'post_content' => wp_slash($b)]);
                     $res = 'converted';
                 }
