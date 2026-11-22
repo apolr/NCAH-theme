@@ -90,3 +90,20 @@ body.admin-bar .ncah-header { top: 32px; }
 .ncah-status--proposed { color: var(--ncah-red-dark); }
 
 /* Reduced motion is handled in assets/css/motion.css. */
+
+/* Extras that motion.js adds inside the phone menu: hidden on desktop, shown when the menu is open. */
+.ncah-menu-extra { display: none; }
+.is-menu-open .ncah-menu-extra { display: block; }
+.ncah-menu-donate a, .ncah-menu-donate { color: var(--ncah-green); font-weight: 500; }
+
+/* Back to top button (added by motion.js). */
+.ncah-top {
+	position: fixed; right: 1rem; bottom: 1rem; z-index: 90;
+	width: 44px; height: 44px; padding: 0; border: 0; border-radius: 50%;
+	background: var(--ncah-green); color: #fff; cursor: pointer;
+	display: flex; align-items: center; justify-content: center;
+	opacity: 0; visibility: hidden; transition: opacity .2s ease, background-color .2s ease;
+}
+.ncah-top.is-shown { opacity: 1; visibility: visible; }
+.ncah-top:hover, .ncah-top:focus-visible { background: var(--ncah-red); }
+.ncah-top svg { fill: currentColor; }
