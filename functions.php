@@ -54,6 +54,8 @@ add_action( 'wp_enqueue_scripts', function () {
 
 // Search and sharing basics (meta description, link previews, structured data, llms.txt).
 require_once get_template_directory() . '/inc/seo.php';
+require_once get_template_directory() . '/inc/migrate.php';
+require_once get_template_directory() . '/inc/programs.php';
 
 /**
  * The MailPoet form prints its own <style> block. The Shortcode block runs
