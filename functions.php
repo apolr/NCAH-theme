@@ -41,7 +41,7 @@ add_action( 'wp_enqueue_scripts', function () {
 		array( 'in_footer' => true, 'strategy' => 'defer' )
 	);
 	// Photo lightbox for galleries and photos in news posts.
-	if ( is_singular( 'post' ) || is_page( 'event-gallery' ) ) {
+	if ( is_singular( 'post' ) ) {
 		wp_enqueue_script(
 			'ncah-lightbox',
 			$uri . '/assets/js/lightbox.js',

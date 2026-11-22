@@ -20,18 +20,19 @@
 	}
 
 	function groups() {
-		var sets = [];
-		var grid = [].slice.call( document.querySelectorAll( '.ncah-event-gallery .wp-block-post-featured-image img' ) );
-		if ( grid.length ) { grid.forEach( function ( i ) { i.setAttribute( 'data-ncah-card', '1' ); } ); sets.push( grid ); }
 		var root = document.querySelector( SCOPE );
-		if ( ! root ) { return sets; }
+		if ( ! root ) { return []; }
+		var sets = [];
+		// The first photo in an event post is its master (cover) image: it is not enlarged.
+		var master = root.querySelector( '.wp-block-image img' );
+		if ( master && master.closest( '.wp-block-gallery' ) ) { master = null; }
 		root.querySelectorAll( '.wp-block-gallery' ).forEach( function ( g ) {
 			if ( g.matches( EXCLUDE ) ) { return; }
 			var imgs = [].slice.call( g.querySelectorAll( 'img' ) ).filter( function ( i ) { return ! i.closest( 'a' ); } );
 			if ( imgs.length ) { sets.push( imgs ); }
 		} );
 		root.querySelectorAll( '.wp-block-image img' ).forEach( function ( i ) {
-			if ( i.closest( '.wp-block-gallery' ) || i.closest( 'a' ) || i.closest( EXCLUDE ) ) { return; }
+			if ( i === master || i.closest( '.wp-block-gallery' ) || i.closest( 'a' ) || i.closest( EXCLUDE ) ) { return; }
 			sets.push( [ i ] );
 		} );
 		return sets;
@@ -89,20 +90,8 @@
 		imgEl.onload = function () { imgEl.classList.add( 'is-loaded' ); };
 		imgEl.src = fullSrc( src );
 		imgEl.alt = src.alt || '';
-		var card = src.hasAttribute( 'data-ncah-card' ) ? src.closest( '.wp-block-post' ) : null;
-		var link = card && card.querySelector( '.wp-block-post-title a' );
-		capEl.textContent = '';
-		if ( link ) {
-			capEl.appendChild( document.createTextNode( link.textContent.trim() + ' \u2022 ' ) );
-			var more = document.createElement( 'a' );
-			more.href = link.href;
-			more.textContent = 'View event';
-			capEl.appendChild( more );
-			capEl.hidden = false;
-		} else {
-			capEl.textContent = src.alt || '';
-			capEl.hidden = ! src.alt;
-		}
+		capEl.textContent = src.alt || '';
+		capEl.hidden = ! src.alt;
 		var many = current.length > 1;
 		prevBtn.hidden = nextBtn.hidden = countEl.hidden = ! many;
 		countEl.textContent = ( index + 1 ) + ' / ' + current.length;
@@ -139,15 +128,6 @@
 	function init() {
 		groups().forEach( function ( set ) {
 			set.forEach( function ( img, i ) {
-				if ( img.hasAttribute( 'data-ncah-card' ) ) {
-					var a = img.closest( 'a' );
-					img.classList.add( 'ncah-lb-thumb' );
-					if ( a ) {
-						a.setAttribute( 'aria-label', 'Enlarge photo: ' + ( img.alt || 'event photo' ) );
-						a.addEventListener( 'click', function ( e ) { e.preventDefault(); open( set, i ); } );
-					}
-					return;
-				}
 				img.classList.add( 'ncah-lb-thumb' );
 				img.setAttribute( 'tabindex', '0' );
 				img.setAttribute( 'role', 'button' );
