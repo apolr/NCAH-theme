@@ -235,3 +235,10 @@ body.home .ncah-logo img { content: url('assets/brand/ncah-logo-dark.png'); filt
 	.ncah-logo img { height: 54px; }
 }
 @media (max-width: 600px) { .ncah-logo img { height: 52px; } }
+
+/* Event Gallery year navigation */
+.ncah-year-tabs { margin: 0 0 2rem; }
+.ncah-year-tabs ul { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem; margin: 0; padding: 0; }
+.ncah-year-tabs a { display: block; padding: .6rem 1.5rem; border: 2px solid var(--ncah-green); color: var(--ncah-green); font-weight: 700; letter-spacing: .08em; text-decoration: none; background: #fff; }
+.ncah-year-tabs a:hover { background: var(--ncah-mist, #eef5ee); }
+.ncah-year-tabs a.is-active, .ncah-year-tabs a[aria-current="page"] { background: var(--ncah-green); color: #fff; }

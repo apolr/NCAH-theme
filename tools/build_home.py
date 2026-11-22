@@ -87,7 +87,7 @@ q = ('<!-- wp:query {"query":{"perPage":6,"pages":0,"offset":0,"postType":"post"
      '<div class="wp-block-query ncah-events"><!-- wp:post-template {"layout":{"type":"grid","columnCount":3}} -->\n'
      '<!-- wp:post-featured-image {"isLink":true,"aspectRatio":"4/3"} /-->\n\n<!-- wp:post-date /-->\n\n'
      '<!-- wp:post-title {"level":3,"isLink":true,"fontSize":"large"} /-->\n<!-- /wp:post-template --></div>\n<!-- /wp:query -->')
-out.append(band(heading('NCAH news and events', 2, '', 'center', 'x-large') + '\n\n' + q + '\n\n' + buttons([button('View all events', '/events/', True)]), None, 'ncah-news'))
+out.append(band(heading('NCAH news and events', 2, '', 'center', 'x-large') + '\n\n' + q + '\n\n' + buttons([button('View the Event Gallery', '/event-gallery/', True)]), None, 'ncah-news'))
 
 # 7. Videos (first three; the rest can live on a Gallery page later)
 from build_home_vids import VIDS as vids

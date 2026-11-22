@@ -57,6 +57,7 @@ require_once get_template_directory() . '/inc/seo.php';
 require_once get_template_directory() . '/inc/migrate.php';
 require_once get_template_directory() . '/inc/programs.php';
 require_once get_template_directory() . '/inc/subdir.php';
+require_once get_template_directory() . '/inc/event-gallery.php';
 
 /**
  * The MailPoet form prints its own <style> block. The Shortcode block runs

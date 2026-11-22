@@ -62,13 +62,14 @@ m.append(band(section_title('Membership form', 'Apply online') + '\n\n' + form, 
 write('membership.html', m)
 
 # ---------- Events ----------
-q = ('<!-- wp:query {"query":{"perPage":9,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","inherit":false},"className":"ncah-events"} -->\n'
-     '<div class="wp-block-query ncah-events"><!-- wp:post-template {"layout":{"type":"grid","columnCount":3}} -->\n'
+q = ('<!-- wp:query {"query":{"perPage":12,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","inherit":false},"className":"ncah-events ncah-event-gallery"} -->\n'
+     '<div class="wp-block-query ncah-events ncah-event-gallery"><!-- wp:post-template {"layout":{"type":"grid","columnCount":3}} -->\n'
      '<!-- wp:post-featured-image {"isLink":true,"aspectRatio":"4/3"} /-->\n\n<!-- wp:post-date {"fontSize":"small"} /-->\n\n'
      '<!-- wp:post-title {"level":3,"isLink":true,"fontSize":"medium"} /-->\n\n<!-- wp:post-excerpt {"excerptLength":20} /-->\n<!-- /wp:post-template -->\n\n'
      '<!-- wp:query-pagination {"layout":{"type":"flex","justifyContent":"center"}} -->\n<!-- wp:query-pagination-previous /-->\n\n<!-- wp:query-pagination-numbers /-->\n\n<!-- wp:query-pagination-next /-->\n<!-- /wp:query-pagination -->'
      '</div>\n<!-- /wp:query -->')
-write('events.html', [page_head('Events', U + '2023/07/IMG-20230730-WA0012.webp'), band(q, None, 'ncah-events-band')])
+tabs = '<!-- wp:shortcode -->\n[ncah_year_tabs]\n<!-- /wp:shortcode -->'
+write('event-gallery.html', [page_head('Event Gallery', U + '2023/07/IMG-20230730-WA0012.webp'), band(tabs + '\n\n' + q, None, 'ncah-events-band')])
 
 # ---------- Contact Us ----------
 c = [page_head('Contact Us', U + '2024/01/contact-us.webp')]
