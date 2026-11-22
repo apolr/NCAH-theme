@@ -7,14 +7,14 @@ Nothing here touches the live site until you decide to run it. Aim: 30 to 45 min
 2. Upload this theme (zip of the repo) and activate it on staging. Do not activate on live yet.
 3. Pages to create or update from `content/*.html` (paste into the block editor code view, or use the seeding route): Welcome (front page), About us, Membership, Events, Contact Us, Programs, Donate, Privacy Policy.
 4. Tools > NCAH migrate: dry run, then "Convert posts", then "Create starter programs".
-5. Save the MailPoet signup form ID (none exists yet; create one first) in the same screen.
+5. MailPoet form "Stay in touch" (ID 1) was created on Nov 22, 2026 and is the footer signup by default.
 
 ## Findings from the live site (read only, Nov 22, 2026)
 - WPForms 810 (Contact Us) notifies `{admin_email}`, not `info@ncahamilton.ca`. Change to info@ before launch.
-- MailPoet has no forms yet; license shows "expires in 7 days".
+- MailPoet license shows "expires in 7 days". The "Stay in touch" form (ID 1) now exists.
 - SendWP is installed but disconnected. Test that contact and donation emails actually send.
-- Give has three forms (Soccer Donation, General Donations, Donation Form). Confirm id 2482 is the intended one.
-- Keep Give, WPForms Lite, MailPoet and SendWP active. Elementor, Elementor Pro and EMCP Lite stay until the quiet period ends.
+- Donations now use the Zeffy plugin: the Donate page shows `[zeffy-donate]`, which uses the campaign set in Settings > Zeffy (currently the Green Spirit Initiative campaign). Confirm that is the right campaign for the main Donate page. Give stays active until Zeffy is confirmed, then can be retired.
+- Keep Zeffy, Give (for now), WPForms Lite, MailPoet and SendWP active. Elementor, Elementor Pro and EMCP Lite stay until the quiet period ends.
 
 ## Switch-over day
 1. Appearance > Themes: activate NCAH (Astra stays installed as the undo path).

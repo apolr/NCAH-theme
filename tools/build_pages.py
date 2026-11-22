@@ -90,8 +90,8 @@ write('contact-us.html', c)
 # ---------- Donate ----------
 d = [page_head('Donate', U + '2024/01/contact-us.webp'),
      band(heading('Support NCAH', 2, '', None, 'x-large', 'ncah-green') + '\n\n' +
-          para('Your gift supports our community programs and the Youth and Sports Directorate. [Confirm donation page wording and receipting statement before publishing.]') + '\n\n' +
-          '<!-- wp:shortcode -->\n[give_form id="2482"]\n<!-- /wp:shortcode -->', None, 'ncah-donate', '800px')]
+          para('Your gift supports our community programs and the Youth and Sports Directorate. [Confirm donation page wording and receipting statement before publishing. The form shown is the campaign set in Settings > Zeffy.]') + '\n\n' +
+          '<!-- wp:shortcode -->\n[zeffy-donate fullwidth=true height=1100]\n<!-- /wp:shortcode -->', None, 'ncah-donate', '800px')]
 write('donate.html', d)
 
 # ---------- Programs (one section per directorate) ----------
