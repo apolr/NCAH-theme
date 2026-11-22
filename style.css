@@ -292,3 +292,21 @@ html.ncah-lb-open{overflow:hidden}
 .ncah-footer-notes h3.ncah-eyebrow.wp-block-heading { margin-top: 0; }
 .ncah-footer-rule { margin: 2rem 0 2.5rem; }
 @media (max-width: 781px) { .ncah-footer-notes { gap: 1.5rem; } .ncah-footer-notes .wp-block-column { flex-basis: 100% !important; } }
+
+/* Page rhythm: comfortable side gutters and section spacing on every page */
+:root { --ncah-gutter: clamp(1.25rem, 4vw, 3rem); --ncah-section-y: clamp(3rem, 7vw, 5.5rem); }
+.wp-block-post-content > .wp-block-group.alignfull,
+.entry-content > .wp-block-group.alignfull { padding-left: var(--ncah-gutter) !important; padding-right: var(--ncah-gutter) !important; }
+.wp-block-post-content > .wp-block-group.alignfull.ncah-reveal,
+.entry-content > .wp-block-group.alignfull.ncah-reveal { padding-top: var(--ncah-section-y) !important; padding-bottom: var(--ncah-section-y) !important; }
+.wp-block-post-content > .wp-block-cover.alignfull, .entry-content > .wp-block-cover.alignfull { padding-left: var(--ncah-gutter); padding-right: var(--ncah-gutter); }
+.ncah-page-head .wp-block-cover__inner-container { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+.ncah-footer { padding-left: var(--ncah-gutter) !important; padding-right: var(--ncah-gutter) !important; padding-top: clamp(3rem, 6vw, 4.5rem) !important; padding-bottom: 2.5rem !important; }
+.ncah-footer-bar { padding: 1.25rem var(--ncah-gutter); }
+.wp-block-post-content .wp-block-columns { gap: clamp(1.5rem, 3.5vw, 3rem); }
+.wp-block-post-content .wp-block-group.alignfull > .wp-block-heading + *, .wp-block-post-content .wp-block-group.alignfull > h2 + p { margin-top: 1rem; }
+.wp-block-post-content .wp-block-group.alignfull > * + .wp-block-columns, .wp-block-post-content .wp-block-group.alignfull > * + .wp-block-query, .wp-block-post-content .wp-block-group.alignfull > * + .wp-block-gallery { margin-top: clamp(1.75rem, 4vw, 2.75rem); }
+.wp-block-post-content .wp-block-buttons { margin-top: 1.5rem; }
+.wp-block-post-content .wp-block-post-template { gap: clamp(1.5rem, 3vw, 2.25rem); }
+.ncah-year-tabs { margin-bottom: clamp(1.75rem, 4vw, 2.5rem); }
+.wp-block-query-pagination { margin-top: 2.5rem; }
