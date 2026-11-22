@@ -242,3 +242,26 @@ body.home .ncah-logo img { content: url('assets/brand/ncah-logo-dark.png'); filt
 .ncah-year-tabs a { display: block; padding: .6rem 1.5rem; border: 2px solid var(--ncah-green); color: var(--ncah-green); font-weight: 700; letter-spacing: .08em; text-decoration: none; background: #fff; }
 .ncah-year-tabs a:hover { background: var(--ncah-mist, #eef5ee); }
 .ncah-year-tabs a.is-active, .ncah-year-tabs a[aria-current="page"] { background: var(--ncah-green); color: #fff; }
+
+/* Photo lightbox (single posts and the Event Gallery) */
+.ncah-lb-thumb{cursor:zoom-in}
+.ncah-event-gallery .wp-block-post-featured-image a{cursor:zoom-in;display:block;overflow:hidden}
+.ncah-event-gallery .wp-block-post-featured-image img{transition:transform .35s ease}
+.ncah-event-gallery .wp-block-post-featured-image a:hover img{transform:scale(1.04)}
+.ncah-lb{position:fixed;inset:0;z-index:100000;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,.92);padding:3.5rem 4rem}
+.ncah-lb.is-open{display:flex}
+html.ncah-lb-open{overflow:hidden}
+.ncah-lb__stage{margin:0;max-width:100%;max-height:100%;display:flex;flex-direction:column;align-items:center;gap:.75rem}
+.ncah-lb__img{max-width:100%;max-height:calc(100vh - 9rem);object-fit:contain;opacity:0;transition:opacity .25s ease;border-radius:4px;background:#111}
+.ncah-lb__img.is-loaded{opacity:1}
+.ncah-lb__cap{color:#fff;font-size:1rem;text-align:center;max-width:60ch}
+.ncah-lb__cap a{color:#fff;font-weight:700;text-decoration:underline;text-decoration-color:#008000;text-underline-offset:3px}
+.ncah-lb__count{position:absolute;bottom:1rem;left:50%;transform:translateX(-50%);color:#fff;font-size:.9rem}
+.ncah-lb button{background:rgba(255,255,255,.12);color:#fff;border:0;cursor:pointer;line-height:1;transition:background .2s}
+.ncah-lb button:hover,.ncah-lb button:focus-visible{background:#008000;outline:2px solid #fff;outline-offset:2px}
+.ncah-lb__close{position:absolute;top:1rem;right:1rem;width:2.75rem;height:2.75rem;border-radius:50%;font-size:2rem}
+.ncah-lb__nav{position:absolute;top:50%;transform:translateY(-50%);width:3rem;height:3rem;border-radius:50%;font-size:2.2rem}
+.ncah-lb__prev{left:.75rem}
+.ncah-lb__next{right:.75rem}
+@media (max-width:600px){.ncah-lb{padding:3.5rem .5rem}.ncah-lb__nav{top:auto;bottom:.75rem;transform:none}}
+@media (prefers-reduced-motion:reduce){.ncah-lb__img,.ncah-event-gallery .wp-block-post-featured-image img{transition:none}}
