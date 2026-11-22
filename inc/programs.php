@@ -41,7 +41,7 @@ add_filter('render_block_context', function ($context, $parsed_block, $parent_bl
 function ncah_seed_programs() {
     $set = [
         'youth-sports' => ['Youth and Sports Directorate', [
-            ['Golden Eagles of Hamilton', 'running', 'publish', 'Our community soccer team. Visit soccer.ncahamilton.ca for news, fixtures and the squad.'],
+            ['Golden Eagles of Hamilton', 'running', 'publish', 'Our community soccer team, part of our youth development work through culturally relevant physical activity and mentorship. Visit soccer.ncahamilton.ca for news, fixtures and the squad.'],
             ['Jakada Youth Ambassador Programme', 'proposed', 'draft', '[Confirm description and launch date.]'],
             ['Tennis Club', 'proposed', 'draft', 'Proposed for 2027. [Confirm description.]'],
             ['Family Walk and Run', 'proposed', 'draft', 'Proposed for 2027. [Confirm description.]'],
@@ -50,9 +50,9 @@ function ncah_seed_programs() {
             ['BLK XLence (Black Excellence)', 'proposed', 'draft', 'Draft until Board approval. [Confirm description.]'],
         ]],
         'social' => ['Social Directorate', [
-            ['Family Fun Festival', 'running', 'publish', '[Confirm description.]'],
-            ['Annual Gala', 'running', 'publish', 'Our annual gala. 2026 theme: 5v5. [Confirm description.]'],
-            ['Ethnic Food Bank', 'running', 'publish', '[Confirm description.]'],
+            ['Family Fun Festival', 'running', 'publish', 'A community celebration that promotes multicultural awareness and community integration.'],
+            ['Annual Gala', 'running', 'publish', 'Our annual gala brings the community together and raises funds for our charitable programs. 2026 theme: 5v5.'],
+            ['Ethnic Food Bank', 'running', 'publish', 'Food support and resource referrals for low-income individuals and families in Hamilton and surrounding areas.'],
         ]],
     ];
     $n = 0;

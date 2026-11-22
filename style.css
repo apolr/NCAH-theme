@@ -222,13 +222,14 @@ body.home .ncah-donate .wp-block-button__link:hover { background: #fff !importan
 .ncah-green-band .ncah-membership-row, .ncah-membership .wp-block-columns + .wp-block-columns { margin-top: 1.5rem; }
 
 /* Staging review fixes: wide text logo, button text colour, header fit on tablets */
-.ncah-logo img { width: auto !important; height: 56px; border-radius: 0 !important; background: #fff; }
+.ncah-logo img { width: auto !important; height: 72px; border-radius: 0 !important; background: #fff; padding: 4px 8px; }
 .ncah-footer-logo { border-radius: 4px; padding: 6px 10px; }
-.ncah-footer-logo img { border-radius: 0 !important; height: 52px; width: auto; }
+.ncah-footer-logo img { border-radius: 0 !important; height: 80px; width: auto; }
 .wp-block-button__link.wp-element-button:not(.has-text-color) { color: #fff; }
 @media (min-width: 601px) and (max-width: 1100px) {
 	.ncah-nav { font-size: .68rem; letter-spacing: .08em; gap: .75rem !important; }
 	.ncah-nav .wp-block-navigation__container { gap: .75rem !important; }
 	.ncah-tickets { display: none !important; }
-	.ncah-logo img { height: 44px; }
+	.ncah-logo img { height: 54px; }
 }
+@media (max-width: 600px) { .ncah-logo img { height: 52px; } }

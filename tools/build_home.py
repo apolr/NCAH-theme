@@ -31,7 +31,7 @@ def tile(img, title, text, url):
     return column(f'<a href="{url}" class="ncah-tile-link">' + cover(img, inner, 'ncah-tile', 35, 340, 'bottom left') + '</a>')
 tiles = columns([
     tile(U + '2023/12/About-the-Association.webp', 'About us', 'Who we are and how we serve our community.', '/about-us/'),
-    tile(U + '2023/12/settlement.webp', 'Membership', 'Join the Association and belong.', '/membership/'),
+    tile(U + '2023/12/settlement.webp', 'Membership', 'Register as a donor and belong.', '/membership/'),
     tile(U + '2026/10/DSC_7787.webp', 'Programs', 'Youth, sports and community programs.', '/programs/'),
     tile(U + '2023/12/The-Nigerian-Spirit-1.webp', 'Donate', 'Support our work with a gift.', '/donate/'),
 ], 'ncah-tiles')
@@ -43,7 +43,7 @@ out.append('<!-- wp:group {"align":"full","layout":{"type":"default"}} -->\n<div
 benefits = [('Networking Opportunities', 'Access to a network of professionals and community members for personal and professional growth.'),
             ('Engagement', 'Participate in events, discussions, and activities promoting Nigerian culture and heritage.'),
             ('Educational Resources', 'Access to workshops, virtual clinics, and resources aimed at personal and professional development.'),
-            ('Member Support', 'Receive support during challenging times, and contribute to the support of others within the community.'),
+            ('Community Support', 'Receive support during challenging times, and contribute to the support of others within the community.'),
             ('Information Sharing', 'Stay informed on community news, events, and other relevant updates through regular meetings and communications.'),
             ('Leadership Development', 'Opportunities to take on leadership roles within the community, contributing to its growth and direction.'),
             ('Discounts', 'Enjoy discounts on event tickets, hall rentals, and selected community businesses.'),
@@ -56,9 +56,9 @@ def mcard(img, t, d):
                   '<!-- wp:group {"className":"ncah-mbody","layout":{"type":"default"}} -->\n<div class="wp-block-group ncah-mbody">' + eyebrow(t) + '\n\n' + para(d) + '</div>\n<!-- /wp:group --></div>\n<!-- /wp:group -->')
 cards += [(U + '2023/12/settlement.webp',), (U + '2023/12/The-Nigerian-Spirit-1.webp',), (U + '2026/10/DSC_6472-scaled.webp',), (U + '2026/10/DSC_6368-scaled.webp',)]
 four = columns([mcard(cards[i][0], benefits[i][0], benefits[i][1]) for i in range(4)]) + '\n\n' + columns([mcard(cards[i][0], benefits[i][0], benefits[i][1]) for i in range(4, 8)])
-memtext = ('Membership is voluntary and open to all peoples of Nigeria by birth, naturalization, marriage or heritage, and to others committed to the principles of the Association.')
-mem = (columns([column(heading('NCAH Membership', 2, '', None, 'x-large', 'white') + '\n\n' + para(memtext, color='white'), '70%'),
-                column(buttons([button('Become a member', '/membership/', True)], center=False), '30%')]) + '\n\n' + four)
+memtext = ('Registration is voluntary and open to all peoples of Nigeria by birth, naturalization, marriage or heritage, and to others committed to the principles of the Association.')
+mem = (columns([column(heading('Become a Registered Donor', 2, '', None, 'x-large', 'white') + '\n\n' + para(memtext, color='white'), '70%'),
+                column(buttons([button('Register today', '/membership/', True)], center=False), '30%')]) + '\n\n' + four)
 out.append(band(mem, None, 'ncah-green-band ncah-membership'))
 
 # 4. Upcoming event: the Gala

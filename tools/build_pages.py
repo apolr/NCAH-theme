@@ -20,8 +20,8 @@ a.append(band(split(U + '2023/12/The-Nigerian-Spirit-1.webp', 'Why we exist', 'O
 goals = ['Enrich Canadian culture with Nigerian traditions.',
          'Be a welcoming hub for diverse social interaction.',
          'Connect children of Nigerian heritage, and others, to their cultural roots.',
-         'Provide essential support to members in need.',
-         'Enhance the social and economic well-being of members and the community.']
+         'Provide essential support to community members in need.',
+         'Enhance the social and economic well-being of the community.']
 lst = ('<!-- wp:list {"ordered":true} -->\n<ol class="wp-block-list">' +
        ''.join(f'<!-- wp:list-item -->\n<li>{e(g)}</li>\n<!-- /wp:list-item -->' for g in goals) + '</ol>\n<!-- /wp:list -->')
 a.append(band(section_title('What we work toward', 'Our Goals') + '\n\n' + lst, 'ncah-green', 'ncah-green-band ncah-about-goals', '900px'))
@@ -51,11 +51,11 @@ write('about-us.html', a)
 
 # ---------- Membership ----------
 m = [page_head('Membership', U + '2024/01/Google-Form-Header.webp')]
-elig = ('Membership is voluntary and open to all peoples of Nigeria by birth, naturalization, marriage or heritage, '
-        'and to others committed to the principles of the Association. We welcome members from Hamilton-Wentworth, Burlington, Oakville, '
+elig = ('Registration is voluntary and open to all peoples of Nigeria by birth, naturalization, marriage or heritage, '
+        'and to others committed to the principles of the Association. No membership fee is required, and Registered Donors are encouraged to make voluntary donations in support of our charitable work. Registration is valid for one year from the month you register. We welcome Registered Donors from Hamilton-Wentworth, Burlington, Oakville, '
         'Kitchener, Waterloo, Guelph, Grimsby and St. Catherine.')
-img = f'<!-- wp:image {{"sizeSlug":"large","className":"is-style-rounded"}} -->\n<figure class="wp-block-image size-large is-style-rounded"><img src="{U}2023/12/hi-res-be6cc83762096029bbf781b08a079cb8_crop_north-scaled.webp" alt="NCAH members"/></figure>\n<!-- /wp:image -->'
-m.append(band(split(U + '2023/12/hi-res-be6cc83762096029bbf781b08a079cb8_crop_north-scaled.webp', 'Join us', 'Become a Member of the NCAH', elig), None, 'ncah-member-intro'))
+img = f'<!-- wp:image {{"sizeSlug":"large","className":"is-style-rounded"}} -->\n<figure class="wp-block-image size-large is-style-rounded"><img src="{U}2023/12/hi-res-be6cc83762096029bbf781b08a079cb8_crop_north-scaled.webp" alt="NCAH Registered Donors"/></figure>\n<!-- /wp:image -->'
+m.append(band(split(U + '2023/12/hi-res-be6cc83762096029bbf781b08a079cb8_crop_north-scaled.webp', 'Join us', 'Become a Registered Donor of the NCAH', elig), None, 'ncah-member-intro'))
 form = ('<!-- wp:html -->\n<iframe class="ncah-member-form" src="https://docs.google.com/forms/d/e/1FAIpQLSeCcYE7jPMkRaztM0MxiUieotiyU1Oh0TlIDQP8QM7y4osOgw/viewform?embedded=true" '
         'width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0" title="NCAH membership form" loading="lazy">Loading…</iframe>\n<!-- /wp:html -->')
 m.append(band(section_title('Membership form', 'Apply online') + '\n\n' + form, 'mist', 'ncah-member-form-band', '800px'))
@@ -89,7 +89,7 @@ write('contact-us.html', c)
 # ---------- Donate ----------
 d = [page_head('Donate', U + '2024/01/contact-us.webp'),
      band(section_title('Give', 'Support NCAH') + '\n\n' +
-          para('Your gift supports our community programs and the Youth and Sports Directorate. [Confirm donation page wording and receipting statement before publishing. The form shown is the campaign set in Settings > Zeffy.]') + '\n\n' +
+          para('Your gift supports our community programs and the Youth and Sports Directorate. Donations are made securely through Zeffy. Official donation receipts are issued by NCAH for eligible gifts, in line with our bylaws and Canada Revenue Agency rules. Questions about receipts? Email info@ncahamilton.ca.') + '\n\n' +
           '<!-- wp:shortcode -->\n[zeffy-donate fullwidth=true height=1100]\n<!-- /wp:shortcode -->', None, 'ncah-donate', '800px')]
 write('donate.html', d)
 
@@ -103,8 +103,8 @@ def dsec(slug, title, blurb):
     return band(section_title('Directorate', title) + '\n\n' + para(blurb, align='center') + '\n\n' + q, None, 'ncah-directorate-' + slug)
 write('programs.html', [page_head('Programs', U + '2023/07/IMG-20230730-WA0012.webp'),
     band(para('Our programs are organised by directorate. Each program shows whether it is running now or proposed for a future year.', align='center'), 'mist', 'ncah-programs-intro', '800px'),
-    dsec('youth-sports', 'Youth and Sports Directorate', '[Confirm directorate description before publishing.]'),
-    dsec('social', 'Social Directorate', '[Confirm directorate description before publishing.]')])
+    dsec('youth-sports', 'Youth and Sports Directorate', 'Youth development programs that use culturally relevant physical activity and mentorship, including the Golden Eagles of Hamilton.'),
+    dsec('social', 'Social Directorate', 'Community celebrations and food support that build connection, multicultural awareness and integration in Hamilton and surrounding areas.')])
 
 # ---------- Gallery (all videos) ----------
 from build_home_vids import VIDS
