@@ -65,7 +65,8 @@ function ncah_migrate_page() {
     $apply = $run && ($_POST['ncah_run'] === 'apply');
     echo '<div class="wrap"><h1>NCAH migrate</h1><form method="post">';
     wp_nonce_field('ncah_migrate');
-    echo '<p><button class="button" name="ncah_run" value="dry">Dry run</button> <button class="button button-primary" name="ncah_run" value="apply">Convert posts</button> <button class="button" name="ncah_undo" value="1">Undo last conversion</button></p></form>';
+    echo '<p><button class="button" name="ncah_run" value="dry">Dry run</button> <button class="button button-primary" name="ncah_run" value="apply">Convert posts</button> <button class="button" name="ncah_undo" value="1">Undo last conversion</button> <button class="button" name="ncah_seed" value="1">Create starter programs</button></p></form>';
+    if (isset($_POST["ncah_seed"]) && check_admin_referer("ncah_migrate")) echo "<p><strong>Created " . (int) ncah_seed_programs() . " programs.</strong></p>";
     $ids = get_posts(['post_type' => 'post', 'post_status' => 'any', 'numberposts' => -1, 'fields' => 'ids']);
     if ($run || $undo) {
         echo '<table class="widefat"><tr><th>ID</th><th>Title</th><th>Result</th></tr>';

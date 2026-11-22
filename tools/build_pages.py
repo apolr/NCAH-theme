@@ -35,11 +35,12 @@ execs = [('Chuma Okereke', 'President', 'president'),
          ('Yvonne Ekama', 'Program Director, Treasury', 'treasurer'),
          ('Kingsley Maduike', 'Program Director, Protocol and Logistics', 'provost'),
          ('Diepriye Opuda', 'Program Director, Youth and Sports', 'ysd')]
+PHOTOS = {'president': '2026/05/Chukwuma-Okereke-819x1024.webp', 'vp': '2026/05/Dr-Ife-819x1024.webp', 'secretary': '2026/05/Emeka-Diru-819x1024.webp', 'socialsec': '2026/05/Augustine-Ubimago_-819x1024.webp', 'pro': '2026/05/Kayode-Ayobatele-819x1024.webp', 'finsec': '2026/10/Ms.-Ijeoma-Igboeli-819x1024.webp', 'treasurer': '2026/05/Yvonne-Ekama-819x1024.webp', 'provost': '2026/05/Kingsley-Maduike-819x1024.webp', 'ysd': '2023/12/Vice-President.webp'}
 def exec_card(n, r, m):
     mail = f'{m}@ncahamilton.ca'
     return ('<!-- wp:group {"className":"ncah-exec","style":{"spacing":{"padding":{"top":"1.5rem","bottom":"1.5rem","left":"1.5rem","right":"1.5rem"}},"border":{"radius":"12px"}},"backgroundColor":"white","layout":{"type":"default"}} -->\n'
             '<div class="wp-block-group ncah-exec has-white-background-color has-background" style="border-radius:12px;padding:1.5rem">'
-            '<!-- photo: [add headshot for ' + n + '] -->' + heading(n, 3, '', None, 'medium', 'ncah-green') + '\n\n' + para(r, size='small') + '\n\n' +
+            f'<!-- wp:image {{"sizeSlug":"large","className":"ncah-exec-photo"}} -->\n<figure class="wp-block-image size-large ncah-exec-photo"><img src="{U}{PHOTOS[m]}" alt="{n}, {r}"/></figure>\n<!-- /wp:image -->' + heading(n, 3, '', None, 'medium', 'ncah-green') + '\n\n' + para(r, size='small') + '\n\n' +
             para(f'<a href="mailto:{mail}">{mail}</a>', size='small', raw=True) + '</div>\n<!-- /wp:group -->')
 grid = '<!-- wp:group {"className":"ncah-exec-grid","layout":{"type":"grid","columnCount":3}} -->\n<div class="wp-block-group ncah-exec-grid">' + '\n\n'.join(exec_card(*x) for x in execs) + '</div>\n<!-- /wp:group -->'
 a.append(band('<!-- wp:group {"anchor":"executives"} --><div id="executives" class="wp-block-group">' + heading('Meet the Executives', 2, '', 'center', 'x-large', 'ncah-green') + '\n\n' + grid + '</div><!-- /wp:group -->', None, 'ncah-executives'))
@@ -86,3 +87,23 @@ formph = ('<!-- wp:html -->\n<!-- [Replace with the Fluent Forms shortcode once 
           '<p class="ncah-form-placeholder">The contact form will appear here. Until then, email <a href="mailto:info@ncahamilton.ca">info@ncahamilton.ca</a>.</p>\n<!-- /wp:html -->')
 c.append(band(heading('Send us a message', 2, '', None, 'x-large', 'ncah-green') + '\n\n' + formph, None, 'ncah-contact-form', '800px'))
 write('contact-us.html', c)
+
+# ---------- Donate ----------
+d = [page_head('Donate', U + '2024/01/contact-us.webp'),
+     band(heading('Support NCAH', 2, '', None, 'x-large', 'ncah-green') + '\n\n' +
+          para('Your gift supports our community programs and the Youth and Sports Directorate. [Confirm donation page wording and receipting statement before publishing.]') + '\n\n' +
+          '<!-- wp:shortcode -->\n[give_form id="2482"]\n<!-- /wp:shortcode -->', None, 'ncah-donate', '800px')]
+write('donate.html', d)
+
+# ---------- Programs (one section per directorate) ----------
+def dsec(slug, title, blurb):
+    q = ('<!-- wp:query {"query":{"perPage":12,"postType":"program","order":"asc","orderBy":"title","inherit":false},"className":"ncah-programs ncah-dir-' + slug + '"} -->\n'
+         '<div class="wp-block-query ncah-programs ncah-dir-' + slug + '"><!-- wp:post-template {"layout":{"type":"grid","columnCount":3}} -->\n'
+         '<!-- wp:shortcode -->\n[ncah_status]\n<!-- /wp:shortcode -->\n\n'
+         '<!-- wp:post-title {"level":3,"isLink":true,"fontSize":"medium"} /-->\n\n<!-- wp:post-excerpt {"excerptLength":24} /-->\n'
+         '<!-- /wp:post-template -->\n\n<!-- wp:query-no-results -->\n' + para('Programs for this directorate will be listed here soon.') + '\n<!-- /wp:query-no-results --></div>\n<!-- /wp:query -->')
+    return band(heading(title, 2, '', None, 'x-large', 'ncah-green') + '\n\n' + para(blurb) + '\n\n' + q, None, 'ncah-directorate-' + slug)
+write('programs.html', [page_head('Programs', U + '2023/07/IMG-20230730-WA0012.webp'),
+    band(para('Our programs are organised by directorate. Each program shows whether it is running now or proposed for a future year.'), 'mist', 'ncah-programs-intro'),
+    dsec('youth-sports', 'Youth and Sports Directorate', '[Confirm directorate description before publishing.]'),
+    dsec('social', 'Social Directorate', '[Confirm directorate description before publishing.]')])

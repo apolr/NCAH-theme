@@ -117,3 +117,8 @@ body.admin-bar .ncah-header { top: 32px; }
 .ncah-logos .wp-block-image { margin: 0; }
 .ncah-logos img { height: 80px; width: auto; max-width: 200px; object-fit: contain; }
 .ncah-hero .wp-block-cover { min-height: 80vh; }
+
+/* Executive cards and Programs */
+.ncah-exec-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:10px}
+.ncah-exec{box-shadow:var(--ncah-shadow)}
+.ncah-programs .wp-block-post-template>li{background:#fff;border-radius:12px;padding:1.25rem;box-shadow:var(--ncah-shadow)}
