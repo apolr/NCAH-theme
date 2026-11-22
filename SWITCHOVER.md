@@ -30,3 +30,6 @@ Reactivate Astra (and keep Elementor active). Posts: Tools > NCAH migrate > Undo
 
 ## After
 Wait two to four quiet weeks, then deactivate and delete Elementor, Elementor Pro and EMCP Lite.
+
+## Gallery page
+A new Gallery page (content/gallery.html, slug gallery) holds all seven videos. The Welcome page links to it from the Watch section. At switch-over: create the page, paste the content, and add Gallery to the menu if wanted.

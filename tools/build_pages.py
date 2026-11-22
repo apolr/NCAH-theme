@@ -105,3 +105,8 @@ write('programs.html', [page_head('Programs', U + '2023/07/IMG-20230730-WA0012.w
     band(para('Our programs are organised by directorate. Each program shows whether it is running now or proposed for a future year.', align='center'), 'mist', 'ncah-programs-intro', '800px'),
     dsec('youth-sports', 'Youth and Sports Directorate', '[Confirm directorate description before publishing.]'),
     dsec('social', 'Social Directorate', '[Confirm directorate description before publishing.]')])
+
+# ---------- Gallery (all videos) ----------
+from build_home_vids import VIDS
+gg = ('<!-- wp:group {"layout":{"type":"grid","columnCount":3}} -->\n<div class="wp-block-group">' + '\n\n'.join(youtube(u, t) for t, u in VIDS) + '</div>\n<!-- /wp:group -->')
+write('gallery.html', [page_head('Gallery', U + '2023/07/IMG-20230730-WA0012.webp'), band(section_title('Watch', 'NCAH videos') + '\n\n' + gg, None, 'ncah-gallery')])

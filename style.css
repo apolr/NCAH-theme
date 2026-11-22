@@ -218,3 +218,5 @@ body.home .ncah-donate .wp-block-button__link:hover { background: #fff !importan
 @media (max-width: 560px) { .ncah-exec-grid.wp-block-group { grid-template-columns: minmax(0, 1fr) !important; } .ncah-exec-photo img { aspect-ratio: 1/1; } }
 .ncah-footer h3.ncah-eyebrow.wp-block-heading { margin-top: 1.75rem; }
 .ncah-footer .wp-block-column:first-child h3.ncah-eyebrow.wp-block-heading, .ncah-footer .wp-block-column > h3.ncah-eyebrow.wp-block-heading:first-child { margin-top: 0; }
+.ncah-green-band .ncah-mcard .ncah-eyebrow, .ncah-green-band .ncah-mcard h3 { color: var(--ncah-green) !important; opacity: 1; }
+.ncah-green-band .ncah-membership-row, .ncah-membership .wp-block-columns + .wp-block-columns { margin-top: 1.5rem; }

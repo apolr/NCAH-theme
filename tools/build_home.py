@@ -54,7 +54,8 @@ def mcard(img, t, d):
     return column('<!-- wp:group {"className":"ncah-mcard","layout":{"type":"default"}} -->\n<div class="wp-block-group ncah-mcard">'
                   f'<!-- wp:image {{"sizeSlug":"large","linkDestination":"none"}} -->\n<figure class="wp-block-image size-large"><img src="{img}" alt=""/></figure>\n<!-- /wp:image -->\n\n'
                   '<!-- wp:group {"className":"ncah-mbody","layout":{"type":"default"}} -->\n<div class="wp-block-group ncah-mbody">' + eyebrow(t) + '\n\n' + para(d) + '</div>\n<!-- /wp:group --></div>\n<!-- /wp:group -->')
-four = columns([mcard(cards[i][0], benefits[i][0], benefits[i][1]) for i in range(4)])
+cards += [(U + '2023/12/settlement.webp',), (U + '2023/12/The-Nigerian-Spirit-1.webp',), (U + '2026/10/DSC_6472-scaled.webp',), (U + '2026/10/DSC_6368-scaled.webp',)]
+four = columns([mcard(cards[i][0], benefits[i][0], benefits[i][1]) for i in range(4)]) + '\n\n' + columns([mcard(cards[i][0], benefits[i][0], benefits[i][1]) for i in range(4, 8)])
 memtext = ('Membership is voluntary and open to all peoples of Nigeria by birth, naturalization, marriage or heritage, and to others committed to the principles of the Association.')
 mem = (columns([column(heading('NCAH Membership', 2, '', None, 'x-large', 'white') + '\n\n' + para(memtext, color='white'), '70%'),
                 column(buttons([button('Become a member', '/membership/', True)], center=False), '30%')]) + '\n\n' + four)
@@ -74,6 +75,13 @@ gsi = (eyebrow('Green Spirit Initiative') + '\n\n' + heading('The charitable arm
        para('The Green Spirit Initiative (GSI) is the charitable arm of the NCAH, dedicated to empowering visible minorities and newcomers through community-focused support. Inspired by the Nigerian flag, the initiative focuses on improving social determinants of health to build a more inclusive and prosperous society.'))
 out.append(band(columns([column(gsi, '55%'), column(youtube('https://youtu.be/sX1wZYc0SRE', '25th Annual Community BBQ'), '45%')]), 'mist', 'ncah-gsi'))
 
+# 5b. Golden Eagles
+ge = (eyebrow('Youth and Sports Directorate', 'ncah-red') + '\n\n' + heading('Golden Eagles, Winners 2026 Hamilton AFCON', 2, '', None, 'x-large') + '\n\n' +
+      para('Our community soccer team plays under the Youth and Sports Directorate. Visit the Golden Eagles site for news, fixtures and the squad.') + '\n\n' +
+      buttons([button('Discover Golden Eagles', 'https://soccer.ncahamilton.ca/', True)], center=False))
+geimg = f'<!-- wp:image {{"sizeSlug":"large","className":"ncah-split-img"}} -->\n<figure class="wp-block-image size-large ncah-split-img"><img src="{U}2026/10/DSC_7787.webp" alt="Golden Eagles of Hamilton"/></figure>\n<!-- /wp:image -->'
+out.append(band(columns([column(geimg, '50%'), column(ge, '50%')], 'ncah-split'), None, 'ncah-golden'))
+
 # 6. News: latest posts
 q = ('<!-- wp:query {"query":{"perPage":6,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","inherit":false},"className":"ncah-events"} -->\n'
      '<div class="wp-block-query ncah-events"><!-- wp:post-template {"layout":{"type":"grid","columnCount":3}} -->\n'
@@ -82,17 +90,11 @@ q = ('<!-- wp:query {"query":{"perPage":6,"pages":0,"offset":0,"postType":"post"
 out.append(band(heading('NCAH news and events', 2, '', 'center', 'x-large') + '\n\n' + q + '\n\n' + buttons([button('View all events', '/events/', True)]), None, 'ncah-news'))
 
 # 7. Videos (first three; the rest can live on a Gallery page later)
-vids = [('25th Annual Community BBQ', 'https://youtu.be/sX1wZYc0SRE'),
-        ('Recap of the 2024 End of Year Multicultural Gala', 'https://youtu.be/2C_wG8mLvjU'),
-        ('Recap of the 2023 End of Year Gala', 'https://youtu.be/re8Eo57vFz4'),
-        ('Games at the 2023 NCAH End of the Year Gala Nite', 'https://youtu.be/kRSui43Jt0Y'),
-        ("2023 End of the Year Party, President's Speech", 'https://youtu.be/MoHHh-VlVIk'),
-        ('Inauguration of the 2023 to 2025 Executive Members', 'https://youtu.be/wIr1ipqrP1g'),
-        ('NCAHamilton 2023 Summer Picnic', 'https://youtu.be/OnTW_Swx1r0')]
+from build_home_vids import VIDS as vids
 
 grid = ('<!-- wp:group {"layout":{"type":"grid","columnCount":3}} -->\n<div class="wp-block-group">'
         + '\n\n'.join(youtube(u, t) for t, u in vids[:3]) + '</div>\n<!-- /wp:group -->')
-out.append(band(heading('Watch', 2, '', 'center', 'x-large') + '\n\n' + grid, 'mist', 'ncah-videos'))
+out.append(band(heading('Watch', 2, '', 'center', 'x-large') + '\n\n' + grid + '\n\n' + buttons([button('More videos', '/gallery/', True)]), 'mist', 'ncah-videos'))
 
 # 8. Partners
 partners = [('2025/12/ACCA.webp', 'ACCA'), ('2025/12/Davisol.webp', 'Davisol'), ('2025/12/Hamilton-Urban-Core.webp', 'Hamilton Urban Core'),
