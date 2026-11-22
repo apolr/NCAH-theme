@@ -263,7 +263,7 @@ html.ncah-lb-open{overflow:hidden}
 @media (prefers-reduced-motion:reduce){.ncah-lb__img{transition:none}}
 
 /* Green footer (NCAH Green #008000) with white, legible text */
-.ncah-footer { background: var(--ncah-green, #008000); color: #fff; }
+.ncah-footer { background: #005a00; color: #fff; }
 .ncah-footer p, .ncah-footer li, .ncah-footer strong, .ncah-footer h3, .ncah-footer .ncah-eyebrow { color: #fff; opacity: 1; }
 .ncah-footer a, .ncah-footer .wp-block-navigation-item__content { color: #fff; text-decoration: underline; text-decoration-color: rgba(255, 255, 255, .55); text-underline-offset: 3px; }
 .ncah-footer a:hover, .ncah-footer a:focus-visible, .ncah-footer .wp-block-navigation-item__content:hover { color: #fff; text-decoration-color: #fff; text-decoration-thickness: 2px; }
@@ -278,7 +278,11 @@ html.ncah-lb-open{overflow:hidden}
 .ncah-footer input[type="submit"], .ncah-footer button[type="submit"], .ncah-footer .mailpoet_submit { background: #fff; color: var(--ncah-green, #008000); border: 2px solid #fff; border-radius: 4px; font-weight: 800; padding: .6rem 1.2rem; cursor: pointer; }
 .ncah-footer input[type="submit"]:hover, .ncah-footer .mailpoet_submit:hover { background: #d40000; border-color: #fff; color: #fff; }
 .ncah-footer .mailpoet_paragraph, .ncah-footer .mailpoet_message, .ncah-footer label { color: #fff; }
-.ncah-footer-bar { background: #005a00; color: #fff; }
+.ncah-footer-bar { background: #004400; color: #fff; }
 .ncah-footer-bar p, .ncah-footer-bar a { color: #fff; }
 .ncah-footer .mailpoet_submit, .ncah-footer .mailpoet_form input[type="submit"] { background: #d40000 !important; color: #fff !important; border: 2px solid #d40000 !important; font-weight: 800; }
 .ncah-footer .mailpoet_submit:hover, .ncah-footer .mailpoet_form input[type="submit"]:hover { background: #a80000 !important; border-color: #a80000 !important; }
+
+/* Four footer columns: stack on tablets and phones */
+@media (max-width: 1000px) { .ncah-footer .wp-block-columns { flex-wrap: wrap !important; } .ncah-footer .wp-block-column { flex-basis: calc(50% - 1rem) !important; } }
+@media (max-width: 600px) { .ncah-footer .wp-block-column { flex-basis: 100% !important; } }
