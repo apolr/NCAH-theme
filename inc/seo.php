@@ -101,7 +101,7 @@ add_action( 'wp_head', function () {
 		'email'       => 'info@ncahamilton.ca',
 		'telephone'   => '+1-289-244-2568',
 		'foundingDate' => '1999',
-		// [Confirm before launch: registered mailing address. Left out until verified.]
+		'address'     => array( '@type' => 'PostalAddress', 'streetAddress' => 'Suite 124 4-168 Barton Street', 'addressLocality' => 'Stoney Creek', 'addressRegion' => 'ON', 'postalCode' => 'L8E 4V6', 'addressCountry' => 'CA' ),
 		'areaServed'  => 'Hamilton, Ontario',
 		'sameAs'      => array( 'https://www.facebook.com/NCAHamilton', 'https://www.instagram.com/ncahamilton/', 'https://www.youtube.com/@NCAHamilton' ),
 	);

@@ -56,7 +56,66 @@
 			"fontFamilies": [
 				{
 					"slug": "heading",
-					"name": "Heading",
+					"name": "Heading (Arsenal)",
+					"fontFamily": "Arsenal, \"Helvetica Neue\", Arial, sans-serif",
+					"fontFace": [
+						{
+							"fontFamily": "Arsenal",
+							"fontStyle": "normal",
+							"fontWeight": "400",
+							"fontDisplay": "swap",
+							"src": [
+								"file:./assets/fonts/arsenal-latin-400-normal.woff2"
+							]
+						},
+						{
+							"fontFamily": "Arsenal",
+							"fontStyle": "normal",
+							"fontWeight": "700",
+							"fontDisplay": "swap",
+							"src": [
+								"file:./assets/fonts/arsenal-latin-700-normal.woff2"
+							]
+						}
+					]
+				},
+				{
+					"slug": "body",
+					"name": "Body (Fira Sans)",
+					"fontFamily": "\"Fira Sans\", \"Helvetica Neue\", Arial, sans-serif",
+					"fontFace": [
+						{
+							"fontFamily": "Fira Sans",
+							"fontStyle": "normal",
+							"fontWeight": "400",
+							"fontDisplay": "swap",
+							"src": [
+								"file:./assets/fonts/fira-sans-latin-400-normal.woff2"
+							]
+						},
+						{
+							"fontFamily": "Fira Sans",
+							"fontStyle": "normal",
+							"fontWeight": "500",
+							"fontDisplay": "swap",
+							"src": [
+								"file:./assets/fonts/fira-sans-latin-500-normal.woff2"
+							]
+						},
+						{
+							"fontFamily": "Fira Sans",
+							"fontStyle": "normal",
+							"fontWeight": "700",
+							"fontDisplay": "swap",
+							"src": [
+								"file:./assets/fonts/fira-sans-latin-700-normal.woff2"
+							]
+						}
+					]
+				},
+				{
+					"slug": "button",
+					"name": "Button (Roboto)",
 					"fontFamily": "Roboto, \"Helvetica Neue\", Arial, sans-serif",
 					"fontFace": [
 						{
@@ -87,11 +146,6 @@
 							]
 						}
 					]
-				},
-				{
-					"slug": "body",
-					"name": "Body",
-					"fontFamily": "Roboto, \"Helvetica Neue\", Arial, sans-serif"
 				}
 			],
 			"fontSizes": [
@@ -113,7 +167,7 @@
 				{
 					"slug": "x-large",
 					"name": "Extra large",
-					"size": "clamp(2rem, 1.4rem + 2.2vw, 3.25rem)"
+					"size": "clamp(2rem, 1.4rem + 2vw, 3rem)"
 				},
 				{
 					"slug": "hero",
@@ -173,7 +227,7 @@
 			"heading": {
 				"typography": {
 					"fontFamily": "var(--wp--preset--font-family--heading)",
-					"lineHeight": "1.1",
+					"lineHeight": "1.15",
 					"fontWeight": "700"
 				}
 			},
@@ -196,7 +250,9 @@
 					"radius": "6px"
 				},
 				"typography": {
-					"fontWeight": "600"
+					"fontWeight": "700",
+					"fontFamily": "var(--wp--preset--font-family--button)",
+					"fontSize": "0.875rem"
 				},
 				"spacing": {
 					"padding": {

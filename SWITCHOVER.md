@@ -10,6 +10,7 @@ Nothing here touches the live site until you decide to run it. Aim: 30 to 45 min
 5. MailPoet form "Stay in touch" (ID 1) was created on Nov 22, 2026 and is the footer signup by default.
 
 ## Findings from the live site (read only, Nov 22, 2026)
+- Fonts on the live site are Fira Sans (body, nav), Arsenal (section headings) and Roboto (buttons), so the theme now uses those. The GSI intro card heading on the live Welcome page uses Architects Daughter (one-off); not carried over unless you want it.
 - WPForms 810 (Contact Us) notifies `{admin_email}`, not `info@ncahamilton.ca`. Change to info@ before launch.
 - MailPoet license shows "expires in 7 days". The "Stay in touch" form (ID 1) now exists.
 - SendWP is installed but disconnected. Test that contact and donation emails actually send.

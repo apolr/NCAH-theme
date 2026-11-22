@@ -122,3 +122,9 @@ body.admin-bar .ncah-header { top: 32px; }
 .ncah-exec-photo img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:10px}
 .ncah-exec{box-shadow:var(--ncah-shadow)}
 .ncah-programs .wp-block-post-template>li{background:#fff;border-radius:12px;padding:1.25rem;box-shadow:var(--ncah-shadow)}
+
+/* Footer bands (match live site) */
+.ncah-footer-land h2,.ncah-footer-pledge h2,.ncah-footer-contact h2{font-size:clamp(1.75rem,1.4rem+1.2vw,2.25rem)}
+.ncah-footer-land,.ncah-footer-pledge,.ncah-footer-contact{padding-top:3rem;padding-bottom:3rem}
+.ncah-footer-contact a{color:#fff;text-decoration:underline}
+.ncah-footer-bar a{color:#fff}
