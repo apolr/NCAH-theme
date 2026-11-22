@@ -158,7 +158,8 @@
 				var top = document.createElement( 'div' );
 				top.className = 'ncah-menu-extra ncah-menu-logo';
 				var a = document.createElement( 'a' );
-				a.href = '/';
+				var homeLink = header.querySelector( '.ncah-logo a' );
+				a.href = homeLink ? homeLink.getAttribute( 'href' ) : '/';
 				a.setAttribute( 'aria-label', 'Home' );
 				var img = logo.cloneNode( false );
 				img.removeAttribute( 'srcset' );
