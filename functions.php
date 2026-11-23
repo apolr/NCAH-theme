@@ -127,3 +127,12 @@ add_filter( 'render_block', function ( $html, $block ) {
 	}
 	return $html;
 }, 12, 2 );
+
+/** One H1 per page: the newsletter form's heading becomes an H2. */
+add_filter( 'do_shortcode_tag', function ( $output, $tag ) {
+	if ( 'mailpoet_form' === $tag || 'ncah_newsletter' === $tag ) {
+		$output = preg_replace( '/<h1(\b[^>]*)>/i', '<h2$1>', $output );
+		$output = str_replace( '</h1>', '</h2>', $output );
+	}
+	return $output;
+}, 20, 2 );

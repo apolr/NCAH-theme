@@ -39,6 +39,21 @@
 		} );
 		hero.appendChild( dots );
 
+		var paused = false;
+		var pauseBtn = document.createElement( 'button' );
+		pauseBtn.type = 'button';
+		pauseBtn.className = 'ncah-hero__pause';
+		pauseBtn.setAttribute( 'aria-label', 'Pause slideshow' );
+		pauseBtn.setAttribute( 'aria-pressed', 'false' );
+		pauseBtn.innerHTML = '<svg class="i-pause" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6 5h4v14H6zM14 5h4v14h-4z"/></svg><svg class="i-play" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M8 5v14l11-7z"/></svg>';
+		pauseBtn.addEventListener( 'click', function () {
+			paused = ! paused;
+			pauseBtn.setAttribute( 'aria-pressed', paused ? 'true' : 'false' );
+			pauseBtn.setAttribute( 'aria-label', paused ? 'Play slideshow' : 'Pause slideshow' );
+			if ( paused ) { stop(); } else { start(); }
+		} );
+		hero.appendChild( pauseBtn );
+
 		function show( index ) {
 			slides[ current ].classList.remove( 'is-active' );
 			current = ( index + slides.length ) % slides.length;
@@ -53,7 +68,7 @@
 		}
 
 		function start() {
-			if ( reduce || timer ) {
+			if ( reduce || timer || paused ) {
 				return;
 			}
 			timer = window.setInterval( function () {
@@ -222,7 +237,30 @@
 		update();
 	}
 
+	/* Header tightens after scrolling; thin progress bar shows how far down the page you are. */
+	function initScrollUI() {
+		var header = document.querySelector( '.wp-site-blocks > header' );
+		var bar = document.createElement( 'div' );
+		bar.className = 'ncah-progress';
+		bar.setAttribute( 'aria-hidden', 'true' );
+		document.body.appendChild( bar );
+		var ticking = false;
+		function update() {
+			var max = document.documentElement.scrollHeight - window.innerHeight;
+			var y = window.scrollY;
+			bar.style.setProperty( '--ncah-p', max > 0 ? Math.min( 1, y / max ).toFixed( 4 ) : 0 );
+			if ( header ) { header.classList.toggle( 'is-scrolled', y > 60 ); }
+			ticking = false;
+		}
+		window.addEventListener( 'scroll', function () {
+			if ( ! ticking ) { ticking = true; window.requestAnimationFrame( update ); }
+		}, { passive: true } );
+		window.addEventListener( 'resize', update );
+		update();
+	}
+
 	function init() {
+		initScrollUI();
 		initMobileMenu();
 		initBackToTop();
 		fixPrivacyLinks();
