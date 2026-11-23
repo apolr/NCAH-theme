@@ -44,9 +44,9 @@ def exec_card(n, r, m):
             para(f'<a href="mailto:{mail}">{mail}</a>', size='small', raw=True) + '</div>\n<!-- /wp:group -->')
 grid = '<!-- wp:group {"className":"ncah-exec-grid","layout":{"type":"grid","columnCount":3}} -->\n<div class="wp-block-group ncah-exec-grid">' + '\n\n'.join(exec_card(*x) for x in execs) + '</div>\n<!-- /wp:group -->'
 a.append(band('<!-- wp:group {"anchor":"executives"} --><div id="executives" class="wp-block-group">' + section_title('Leadership', 'Meet the Executives') + '\n\n' + grid + '</div><!-- /wp:group -->', None, 'ncah-executives'))
-a.append(band(split(U + '2026/02/NCAH-Contsitution-and-Bye-law.webp', 'Governance', 'Constitution and By-Laws',
-    'Our governing documents set out how the Association is run. Download the signed Constitution and By-Laws.', False,
-    buttons([button('Download', U + '2026/02/NCA-Hamilton-Bylaws-Signed.pdf', True)], center=False)), 'mist', 'ncah-foundations'))
+a.append(band(split(U + '2024/05/NCAH-Contsitution-and-Bye-law.webp', 'Our Foundations', 'Constitution and By-Laws',
+    'Explore the guiding principles and regulations that shape the Nigerian Canadian Association, Hamilton. Our Constitution and By-Laws provide the framework for our operations, governance, and community engagement, ensuring transparency, accountability, and fairness in all we do. This section offers insight into how we uphold our values and manage our association for the benefit of all members.', False,
+    buttons([button('Download', U + '2026/02/NCA-Hamilton-Bylaws-Signed.pdf', True).replace('href=', 'target="_blank" rel="noopener" href=')], center=False)), 'mist', 'ncah-foundations'))
 write('about-us.html', a)
 
 # ---------- Membership ----------

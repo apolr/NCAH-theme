@@ -365,3 +365,16 @@ html.ncah-lb-open{overflow:hidden}
 .ncah-top:active { transform: translateY(0) scale(.97); }
 @media (max-width: 600px) { .ncah-top { right: 16px; bottom: 92px; min-width: 96px; height: 48px; } }
 @media (prefers-reduced-motion: reduce) { .ncah-top, .ncah-top.is-shown, .ncah-top:hover { transform: none; transition: opacity .01s; } }
+
+/* About us: Our Foundations (mirrors live site: green panel left, image right) */
+.ncah-foundations .ncah-split { gap: 0 !important; flex-direction: row-reverse; border-radius: 14px; overflow: hidden; box-shadow: 0 10px 34px rgba(0,0,0,.14); align-items: stretch !important; }
+.ncah-foundations .ncah-split > .wp-block-column { margin: 0; }
+.ncah-foundations .ncah-split > .wp-block-column:last-child { background: #008000; color: #fff; padding: clamp(1.75rem, 4vw, 3.5rem); display: flex; flex-direction: column; justify-content: center; }
+.ncah-foundations .ncah-split > .wp-block-column:last-child * { color: #fff !important; }
+.ncah-foundations .ncah-split > .wp-block-column:last-child .wp-block-button__link { background: #D40000 !important; color: #fff !important; border-radius: 999px; padding: .8rem 1.75rem; font-weight: 700; }
+.ncah-foundations .ncah-split > .wp-block-column:last-child .wp-block-button__link::before { content: "\2193"; margin-right: .5rem; font-weight: 800; }
+.ncah-foundations .ncah-split > .wp-block-column:last-child .wp-block-button__link:hover { background: #fff !important; color: #D40000 !important; }
+.ncah-foundations .ncah-split-img, .ncah-foundations .ncah-split-img img { height: 100%; }
+.ncah-foundations .ncah-split-img img { box-shadow: none; aspect-ratio: auto; min-height: 320px; }
+.ncah-foundations .ncah-split > .wp-block-column:first-child { flex-basis: 50% !important; }
+@media (max-width: 781px) { .ncah-foundations .ncah-split { flex-direction: column-reverse; } .ncah-foundations .ncah-split-img img { min-height: 0; aspect-ratio: 4/3; } }
