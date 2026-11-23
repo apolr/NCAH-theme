@@ -464,3 +464,14 @@ p, li { text-wrap: pretty; }
 .ncah-hero__dots button { position: relative; }
 .ncah-hero__dots button::after { content: ""; position: absolute; inset: -16px -6px; }
 .ncah-nav .wp-block-navigation__submenu-icon { min-width: 32px; min-height: 32px; display: inline-flex; align-items: center; justify-content: center; }
+
+/* Foundations: image column fills the card at every width */
+.ncah-foundations .ncah-split > .wp-block-column { align-self: stretch !important; }
+.ncah-foundations .ncah-split > .wp-block-column:first-child { min-height: 340px; }
+
+/* Tablet and small laptops: use the hamburger menu below 1024px so the nav never wraps */
+@media (max-width: 1023px) {
+	.ncah-nav .wp-block-navigation__responsive-container:not(.is-menu-open) { display: none !important; }
+	.ncah-nav .wp-block-navigation__responsive-container-open:not(.always-shown) { display: inline-flex !important; }
+	.ncah-header .wp-block-group { flex-wrap: nowrap; }
+}
