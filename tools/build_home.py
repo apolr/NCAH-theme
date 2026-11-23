@@ -20,8 +20,7 @@ def eyebrow(t, color=None):
 out = []
 
 # 1. Hero: one full bleed photo, big serif title, short line, two buttons
-hero_inner = (heading('Nigerian Canadian Association, Hamilton and Environs', 1, '', 'center', 'hero', 'white') + '\n\n' +
-              para('Celebrating Heritage. Fostering Interactions. Providing Support.', align='center', color='white') + '\n\n' +
+hero_inner = (heading('Celebrating Heritage. Fostering Interactions. Providing Support.', 1, '', 'center', 'hero', 'white') + '\n\n' +
               buttons([button('Learn more', '/about-us/', True)]))
 out.append(cover(U + '2026/10/DSC_6472-scaled.webp', hero_inner, 'ncah-hero1 alignfull', 20, 720, 'bottom center').replace('wp-block-cover is-dark', 'wp-block-cover alignfull is-dark', 1))
 
@@ -35,8 +34,6 @@ tiles = columns([
     tile(U + '2026/10/DSC_7787.webp', 'Programs', 'Youth, sports and community programs.', '/programs/'),
     tile(U + '2023/12/The-Nigerian-Spirit-1.webp', 'Donate', 'Support our work with a gift.', '/donate/'),
 ], 'ncah-tiles')
-out.append(band(heading('Start your journey', 2, '', 'center', 'x-large') + '\n\n' +
-                para('The Nigerian Canadian Association, Hamilton (NCAH) was established in February 1999 as a non-profit, non-political association with the aim of fostering a supportive environment for Nigerians in Hamilton.', align='center'), None, 'ncah-journey', '820px'))
 out.append('<!-- wp:group {"align":"full","layout":{"type":"default"}} -->\n<div class="wp-block-group alignfull">' + tiles + '</div>\n<!-- /wp:group -->')
 
 # 3. Membership: green band, text left, button right, four cards
