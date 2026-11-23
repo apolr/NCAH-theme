@@ -311,10 +311,14 @@ html.ncah-lb-open{overflow:hidden}
 .ncah-year-tabs { margin-bottom: clamp(1.75rem, 4vw, 2.5rem); }
 .wp-block-query-pagination { margin-top: 2.5rem; }
 
-/* Home hero: text and buttons sit at the bottom so faces in the photo stay clear */
-.ncah-hero1.wp-block-cover { align-items: flex-end; padding-top: 2rem; padding-bottom: clamp(2.5rem, 6vw, 4.5rem); min-height: max(720px, 92vh); }
-.ncah-hero1.wp-block-cover::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 60%; z-index: 1; pointer-events: none; background: linear-gradient(to top, rgba(0, 0, 0, .78) 0%, rgba(0, 0, 0, .55) 45%, rgba(0, 0, 0, 0) 100%); }
-.ncah-hero1 .wp-block-cover__inner-container { position: relative; z-index: 2; }
-.ncah-hero1 h1 { font-size: clamp(2.2rem, 5.2vw, 4.2rem); margin-bottom: .6rem; }
-.ncah-hero1 .wp-block-buttons { margin-top: 1.5rem; }
-@media (max-width: 781px) { .ncah-hero1.wp-block-cover { min-height: max(560px, 85vh); } }
+/* Home hero: the photo fills the top and the title, tagline and button sit in a green band along its bottom edge, so no faces are covered */
+.ncah-hero1.wp-block-cover { --ncah-band: clamp(12rem, 24vw, 15rem); background-color: #005a00; align-items: flex-end; justify-content: center; padding: 0 var(--ncah-gutter) 2rem; min-height: max(700px, 92vh); }
+.ncah-hero1 .wp-block-cover__image-background { top: 0; bottom: auto; height: calc(100% - var(--ncah-band)); object-fit: cover; object-position: center 35%; }
+.ncah-hero1 .wp-block-cover__background { display: none; }
+.ncah-hero1.wp-block-cover::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 9rem; z-index: 1; pointer-events: none; background: linear-gradient(to bottom, rgba(0, 0, 0, .55), rgba(0, 0, 0, 0)); }
+.ncah-hero1.wp-block-cover::after { content: ""; position: absolute; left: 0; right: 0; bottom: var(--ncah-band); height: 5px; z-index: 1; background: #d40000; }
+.ncah-hero1 .wp-block-cover__inner-container { position: relative; z-index: 2; min-height: calc(var(--ncah-band) - 2rem); display: flex; flex-direction: column; justify-content: center; }
+.ncah-hero1 h1 { font-size: clamp(1.8rem, 4.2vw, 3.2rem); margin: 0 0 .5rem; }
+.ncah-hero1 p { margin-top: 0; margin-bottom: 0; }
+.ncah-hero1 .wp-block-buttons { margin-top: 1.1rem; }
+@media (max-width: 781px) { .ncah-hero1.wp-block-cover { min-height: max(600px, 88vh); } }
