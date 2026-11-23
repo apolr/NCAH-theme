@@ -117,3 +117,13 @@ add_shortcode('ncah_newsletter', function () {
     if ($id && shortcode_exists('mailpoet_form')) return do_shortcode('[mailpoet_form id="' . $id . '"]');
     return '<p class="has-small-font-size">Newsletter signup coming soon. Email <a href="mailto:info@ncahamilton.ca?subject=Newsletter">info@ncahamilton.ca</a> to be added.</p>';
 });
+
+/** Annual Gala hero slide: shown until the end of December 5, 2026 (site time), then removed so the photo hero takes over. */
+add_filter( 'render_block', function ( $html, $block ) {
+	if ( 'core/group' === ( $block['blockName'] ?? '' ) && preg_match( '/^\s*<div class="[^"]*\bncah-gala-slide\b/', $html ) ) {
+		if ( current_time( 'Y-m-d' ) > '2026-12-05' ) {
+			return '';
+		}
+	}
+	return $html;
+}, 12, 2 );
