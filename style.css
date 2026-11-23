@@ -456,3 +456,8 @@ p, li { text-wrap: pretty; }
 	.ncah-progress, .ncah-header, .ncah-logo img, .wp-block-button__link { transition: none !important; }
 	.wp-block-button__link:hover { transform: none; }
 }
+@media (max-width: 600px) {
+	.ncah-hero.ncah-home-hero { min-height: var(--ncah-hero-h) !important; }
+	.ncah-hero__pause { right: auto; left: .75rem; }
+	.ncah-hero__dots { bottom: 1.25rem; }
+}
