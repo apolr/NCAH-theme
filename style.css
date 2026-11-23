@@ -461,3 +461,6 @@ p, li { text-wrap: pretty; }
 	.ncah-hero__pause { right: auto; left: .75rem; }
 	.ncah-hero__dots { bottom: 1.25rem; }
 }
+.ncah-hero__dots button { position: relative; }
+.ncah-hero__dots button::after { content: ""; position: absolute; inset: -16px -6px; }
+.ncah-nav .wp-block-navigation__submenu-icon { min-width: 32px; min-height: 32px; display: inline-flex; align-items: center; justify-content: center; }
