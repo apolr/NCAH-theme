@@ -475,3 +475,4 @@ p, li { text-wrap: pretty; }
 	.ncah-nav .wp-block-navigation__responsive-container-open:not(.always-shown) { display: inline-flex !important; }
 	.ncah-header .wp-block-group { flex-wrap: nowrap; }
 }
+@media (min-width: 1024px) { .ncah-nav .wp-block-navigation__responsive-container-open { display: none !important; } .ncah-nav .wp-block-navigation__responsive-container:not(.is-menu-open) { display: block !important; } }
