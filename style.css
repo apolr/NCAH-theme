@@ -315,9 +315,9 @@ html.ncah-lb-open{overflow:hidden}
 .ncah-hero1.wp-block-cover { --ncah-band: clamp(11rem, 20vw, 13rem); background-color: #005a00; align-items: flex-end; justify-content: center; padding: 0 var(--ncah-gutter) 2rem; min-height: max(760px, 92vh); }
 .ncah-hero1 .wp-block-cover__image-background { top: 0; bottom: 0; height: 100%; object-fit: cover; object-position: center bottom; }
 .ncah-hero1 .wp-block-cover__background { display: none; }
-.ncah-hero1.wp-block-cover::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(to bottom, rgba(0, 0, 0, .55) 0, rgba(0, 0, 0, 0) 9rem, rgba(0, 0, 0, 0) calc(100% - var(--ncah-band) - 3rem), rgba(0, 0, 0, .62) 100%); }
+.ncah-hero1.wp-block-cover::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(to bottom, rgba(0, 0, 0, .55) 0, rgba(0, 0, 0, 0) 9rem, rgba(0, 0, 0, 0) calc(100% - var(--ncah-band) - 5rem), rgba(0, 0, 0, .78) 100%); }
 .ncah-hero1.wp-block-cover::after { content: none; }
 .ncah-hero1 .wp-block-cover__inner-container { position: relative; z-index: 2; }
-.ncah-hero1 h1 { font-size: clamp(1.7rem, 3.8vw, 3rem); margin: 0; text-shadow: 0 2px 18px rgba(0, 0, 0, .7); }
+.ncah-hero1 h1 { font-size: clamp(1.7rem, 3.8vw, 3rem); margin: 0; text-shadow: 0 2px 4px rgba(0, 0, 0, .6), 0 2px 22px rgba(0, 0, 0, .8); }
 .ncah-hero1 .wp-block-buttons { margin-top: 1.25rem; }
 @media (max-width: 781px) { .ncah-hero1.wp-block-cover { min-height: max(600px, 88vh); } }
