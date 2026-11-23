@@ -482,3 +482,6 @@ p, li { text-wrap: pretty; }
 .is-scrolled .ncah-topbar { max-height: 0; padding-top: 0; padding-bottom: 0; opacity: 0; pointer-events: none; }
 @media (prefers-reduced-motion: reduce) { .ncah-topbar { transition: none; } }
 .ncah-page-head.wp-block-cover { background-color: #0b3d1f; }
+
+/* Top bar: one solid dark green on every page (no see-through, so the hero never shows through as a second shade) */
+.ncah-topbar, body.home .ncah-topbar { background: #004400 !important; }
