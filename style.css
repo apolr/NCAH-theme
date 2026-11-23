@@ -316,6 +316,6 @@ html.ncah-lb-open{overflow:hidden}
 .ncah-hero1.wp-block-cover::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(to bottom, rgba(0, 0, 0, .55) 0, rgba(0, 0, 0, 0) 9rem, rgba(0, 0, 0, 0) calc(100% - var(--ncah-band) - 5rem), rgba(0, 0, 0, .78) 100%); }
 .ncah-hero1.wp-block-cover::after { content: none; }
 .ncah-hero1 .wp-block-cover__inner-container { position: relative; z-index: 2; }
-.ncah-hero1 h1 { font-size: clamp(.8rem, 3.1vw, 2.6rem); white-space: nowrap; text-align: center; margin: 0 auto; text-shadow: 0 2px 4px rgba(0, 0, 0, .6), 0 2px 22px rgba(0, 0, 0, .8); }
+.ncah-hero1 h1 { font-size: clamp(.75rem, 3.3vw, 2.75rem) !important; white-space: nowrap; text-align: center; margin: 0 auto; text-shadow: 0 2px 4px rgba(0, 0, 0, .6), 0 2px 22px rgba(0, 0, 0, .8); }
 .ncah-hero1 .wp-block-buttons { margin-top: 1.25rem; }
 @media (max-width: 781px) { .ncah-hero1.wp-block-cover { min-height: max(600px, 88vh); } }
