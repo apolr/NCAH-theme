@@ -22,8 +22,8 @@ out = []
 # 1. Hero: one full bleed photo, big serif title, short line, two buttons
 hero_inner = (heading('Nigerian Canadian Association, Hamilton and Environs', 1, '', 'center', 'hero', 'white') + '\n\n' +
               para('Celebrating Heritage. Fostering Interactions. Providing Support.', align='center', color='white') + '\n\n' +
-              buttons([button('Learn more', '/about-us/', True), button('Get your gala tickets', 'https://www.zeffy.com/en-CA/ticketing/annual-gala-8173')]))
-out.append(cover(U + '2026/10/DSC_6472-scaled.webp', hero_inner, 'ncah-hero1 alignfull', 50, 720, 'center center').replace('wp-block-cover is-dark', 'wp-block-cover alignfull is-dark', 1))
+              buttons([button('Learn more', '/about-us/', True)]))
+out.append(cover(U + '2026/10/DSC_6472-scaled.webp', hero_inner, 'ncah-hero1 alignfull', 20, 720, 'bottom center').replace('wp-block-cover is-dark', 'wp-block-cover alignfull is-dark', 1))
 
 # 2. Get involved: four photo tiles
 def tile(img, title, text, url):
