@@ -85,12 +85,15 @@ def logo(src, alt):
     return f'<!-- wp:image {{"sizeSlug":"medium","linkDestination":"none"}} -->\n<figure class="wp-block-image size-medium"><img src="{src}" alt="{html.escape(alt)}"/></figure>\n<!-- /wp:image -->'
 
 
-def page_head(title, img, eyebrow='Nigerian Canadian Association, Hamilton and Environs'):
+def page_head(title, img, eyebrow='Nigerian Canadian Association, Hamilton and Environs', focus_y=None):
     """ncabc-style page title: full-width photo, dark overlay, centred serif H1 with a short red rule."""
-    a = {'url': img, 'dimRatio': 55, 'align': 'full', 'minHeight': 380, 'contentPosition': 'center center', 'className': 'ncah-page-head'}
-    return (f'<!-- wp:cover {j(a)} -->\n<div class="wp-block-cover alignfull ncah-page-head" style="min-height:380px">'
+    cls = 'ncah-page-head' + (' ncah-head-faces' if focus_y is not None else '')
+    a = {'url': img, 'dimRatio': 55, 'align': 'full', 'minHeight': 380, 'contentPosition': 'center center', 'className': cls}
+    if focus_y is not None: a['focalPoint'] = {'x': 0.5, 'y': focus_y}
+    pos = f' style="object-position:50% {round(focus_y*100)}%"' if focus_y is not None else ''
+    return (f'<!-- wp:cover {j(a)} -->\n<div class="wp-block-cover alignfull {cls}" style="min-height:380px">'
             f'<span aria-hidden="true" class="wp-block-cover__background has-background-dim-60 has-background-dim"></span>'
-            f'<img class="wp-block-cover__image-background" alt="" src="{img}" data-object-fit="cover"/>'
+            f'<img class="wp-block-cover__image-background" alt="" src="{img}" data-object-fit="cover"{pos}/>'
             f'<div class="wp-block-cover__inner-container">' + para(eyebrow, 'ncah-eyebrow', 'center', None, 'white') + '\n\n' + heading(title, 1, '', 'center', 'hero', 'white') + '</div></div>\n<!-- /wp:cover -->')
 
 def split(img, eyebrow, title, text, reverse=False, extra=''):
