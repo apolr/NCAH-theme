@@ -110,9 +110,9 @@ body.admin-bar .wp-site-blocks > header { top: 32px; }
 .ncah-nav .is-menu-open .wp-block-navigation__submenu-container { box-shadow: none; padding: 0 0 0 1rem; min-width: 0 !important; }
 .ncah-donate .wp-block-button__link { background: transparent !important; color: var(--ncah-red) !important; border: 2px solid var(--ncah-red); padding: calc(.85em - 2px) 1.4em; }
 .ncah-donate .wp-block-button__link:hover { background: var(--ncah-red) !important; color: #fff !important; }
-.ncah-donate .wp-block-button__link, .ncah-tickets .wp-block-button__link { white-space: nowrap; }
-@media (max-width: 1000px) { .ncah-donate .wp-block-button__link, .ncah-tickets .wp-block-button__link { padding: .6em 1em !important; font-size: .7rem !important; } }
-@media (max-width: 600px) { .ncah-tickets { display: none; } .ncah-topbar { justify-content: center; } }
+.ncah-donate .wp-block-button__link { white-space: nowrap; }
+@media (max-width: 1000px) { .ncah-donate .wp-block-button__link { padding: .6em 1em !important; font-size: .7rem !important; } }
+@media (max-width: 600px) { .ncah-topbar { justify-content: center; } }
 
 /* Home: header floats over the hero */
 body.home .wp-site-blocks > header { position: absolute; left: 0; right: 0; top: 0; }
@@ -168,7 +168,6 @@ body.home .ncah-donate .wp-block-button__link:hover { background: #fff !importan
 .ncah-tile-link, .ncah-tile-link * { text-decoration: none !important; }
 .ncah-tiles .wp-block-column { margin: 0; }
 @media (max-width: 781px) { .ncah-tile.wp-block-cover { min-height: 220px; } .ncah-hero1.wp-block-cover { padding-top: 7rem; min-height: 80vh; } }
-@media (max-width: 600px) { .wp-block-buttons.ncah-tickets { display: none !important; } }
 
 /* ===== Redesign v1.1: inner pages (ncabc style, NCAH Green and Red) ===== */
 .ncah-page-head.wp-block-cover { text-align: center; }
@@ -231,7 +230,6 @@ body.home .ncah-logo img { content: url('assets/brand/ncah-logo-dark.png'); filt
 @media (min-width: 601px) and (max-width: 1100px) {
 	.ncah-nav { font-size: .68rem; letter-spacing: .08em; gap: .75rem !important; }
 	.ncah-nav .wp-block-navigation__container { gap: .75rem !important; }
-	.ncah-tickets { display: none !important; }
 	.ncah-logo img { height: 54px; }
 }
 @media (max-width: 600px) { .ncah-logo img { height: 52px; } }
@@ -318,6 +316,6 @@ html.ncah-lb-open{overflow:hidden}
 .ncah-hero1.wp-block-cover::before { content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none; background: linear-gradient(to bottom, rgba(0, 0, 0, .55) 0, rgba(0, 0, 0, 0) 9rem, rgba(0, 0, 0, 0) calc(100% - var(--ncah-band) - 5rem), rgba(0, 0, 0, .78) 100%); }
 .ncah-hero1.wp-block-cover::after { content: none; }
 .ncah-hero1 .wp-block-cover__inner-container { position: relative; z-index: 2; }
-.ncah-hero1 h1 { font-size: clamp(1.7rem, 3.8vw, 3rem); margin: 0; text-shadow: 0 2px 4px rgba(0, 0, 0, .6), 0 2px 22px rgba(0, 0, 0, .8); }
+.ncah-hero1 h1 { font-size: clamp(.8rem, 3.1vw, 2.6rem); white-space: nowrap; text-align: center; margin: 0 auto; text-shadow: 0 2px 4px rgba(0, 0, 0, .6), 0 2px 22px rgba(0, 0, 0, .8); }
 .ncah-hero1 .wp-block-buttons { margin-top: 1.25rem; }
 @media (max-width: 781px) { .ncah-hero1.wp-block-cover { min-height: max(600px, 88vh); } }
