@@ -26,7 +26,7 @@ hero_cover = cover(U + '2026/10/DSC_6472-scaled.webp', hero_inner, 'ncah-hero1 a
 
 # 1a. Annual Gala flyer slide: first slide, image only plus one ticket button. Removed automatically after Dec 5, 2026 (see functions.php).
 FLYER = U + '2026/10/IMG_3257-2048x1026.webp'
-FLYER_TALL = U + '2026/11/gala-flyer-portrait.webp'
+FLYER_TALL = '/wp-content/themes/ncah/assets/img/gala-flyer-portrait.webp'
 gala_alt = '5V5, Honouring Our Root, Annual Gala. December 5, 2026, red carpet 4 PM, party 5 PM, The Grand Olympia, Stoney Creek.'
 gala_slide = ('<!-- wp:group {"className":"ncah-hero__slide ncah-gala-slide","layout":{"type":"flex","orientation":"vertical","justifyContent":"center"}} -->\n'
               '<div class="wp-block-group ncah-hero__slide ncah-gala-slide">'

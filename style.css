@@ -788,6 +788,10 @@ p, li { text-wrap: pretty; }
 .ncah-gala-flyer--tall{display:none}
 @media (max-width:781px){
 	.ncah-gala-slide .ncah-gala-flyer--wide{display:none}
-	.ncah-gala-slide .ncah-gala-flyer--tall{display:block;flex:0 0 auto !important;width:auto;max-width:min(100%,480px);margin-inline:auto}
+	.ncah-gala-slide .ncah-gala-flyer--tall{display:block;flex:0 0 auto !important;width:auto;max-width:min(100%,420px);margin-inline:auto}
 	.ncah-gala-slide .ncah-gala-flyer--tall img{width:100%;height:auto !important;aspect-ratio:4/5;object-fit:contain}
+}
+@media (max-width:600px){
+	.ncah-home-hero{--ncah-hero-h:660px}
+	.ncah-gala-slide .ncah-gala-flyer--tall{max-width:min(100%,82vw)}
 }
