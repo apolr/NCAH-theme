@@ -4,7 +4,9 @@ WordPress block theme for ncahamilton.ca, replacing Elementor and the Astra them
 
 Status: work in progress, Release 1 like-for-like build. Based on the hbhclf-theme structure (motion layer, SEO helpers, block builders), re-skinned for NCAH.
 
-Brand: NCAH Green #008000, NCAH Red #D40000, alternate section background #F4F5F6, Roboto.
+Brand: NCAH Green #008000, NCAH Red #d42402, alternate section background #f3f7f3, Fira Sans (NCAH design system).
+
+Designed and built by Evryware (https://evryware.ca) for the Nigerian Canadian Association, Hamilton and Environs. Licence: GPL-2.0-or-later. Fira Sans is licensed under the SIL Open Font License (see assets/fonts/FIRA-SANS-LICENSE.txt).
 
 ## Placeholders to confirm before switch-over
 - Header "Get Your Tickets" and "Donate" button links (currently `#`)
