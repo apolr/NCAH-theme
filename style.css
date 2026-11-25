@@ -1130,3 +1130,7 @@ h3, h4 { font-weight: 600; line-height: 1.25; }
 /* Mailbox address card is information only, not a link */
 .ncah-action--static { cursor: default; }
 @media (hover: hover) { .ncah-action--static:hover { transform: none; box-shadow: 0 14px 30px -22px rgba(0, 60, 0, .55); border-color: #dfe8df; } }
+
+.ncah-contact-social__links a { gap: .5rem; }
+.ncah-contact-social__links a svg { width: 20px; height: 20px; flex: none; }
+.ncah-contact-social__links a:hover svg { color: var(--ncah-green); }
