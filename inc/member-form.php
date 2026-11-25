@@ -132,8 +132,8 @@ add_shortcode( 'ncah_member_form', function () {
 			<small>An administrator verifies every address before the invitation is sent.</small>
 		</fieldset>
 
-		<p><label for="ncah-ref">Referral name <span aria-hidden="true">*</span></label>
-			<input id="ncah-ref" name="referral" type="text" required>
+		<p><label for="ncah-ref">Referral name <span class="ncah-opt">(optional)</span></label>
+			<input id="ncah-ref" name="referral" type="text">
 			<small>The name of the member or person who referred you.</small></p>
 
 		<p class="ncah-check"><label><input type="checkbox" name="donor" value="yes" id="ncah-donor"> I would also like to be a donor to the cause of the Association.</label></p>
@@ -182,7 +182,7 @@ function ncah_member_handle() {
 	}
 	$g = function ( $k ) { return sanitize_text_field( wp_unslash( $_POST[ $k ] ?? '' ) ); };
 	$name = $g( 'full_name' ); $street = $g( 'street' ); $city = $g( 'city' ); $prov = $g( 'province' ); $postal = strtoupper( $g( 'postal' ) ); $ref = $g( 'referral' );
-	if ( '' === $name || '' === $street || '' === $city || '' === $ref || empty( $_POST['consent'] ) || ! isset( ncah_member_provinces()[ $prov ] ) ) {
+	if ( '' === $name || '' === $street || '' === $city || empty( $_POST['consent'] ) || ! isset( ncah_member_provinces()[ $prov ] ) ) {
 		ncah_member_redirect( 'missing' );
 	}
 	$phone = ncah_member_normalise_phone( $g( 'whatsapp' ) );
@@ -210,7 +210,7 @@ function ncah_member_handle() {
 	foreach ( array( 'whatsapp' => $phone, 'address' => $address, 'referral' => $ref, 'donor' => $donor, 'frequency' => $freq, 'verified' => 'no', 'consent' => 'yes ' . gmdate( 'Y-m-d H:i' ) . ' UTC' ) as $k => $v ) {
 		update_post_meta( $id, $k, $v );
 	}
-	$to   = get_option( 'ncah_member_notify', get_option( 'admin_email' ) );
+	$to   = get_option( 'ncah_member_notify', 'info@ncahamilton.ca' );
 	$body = "New membership request\n\nName: $name\nWhatsApp: $phone\nAddress (to verify): $address\nReferral: $ref\nDonor: $donor" . ( $freq ? " ($freq)" : '' ) . "\n\nReview: " . admin_url( 'edit.php?post_type=ncah_member' );
 	wp_mail( $to, 'New NCAH membership request: ' . $name, $body );
 	ncah_member_redirect( 'ok' );
