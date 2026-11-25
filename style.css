@@ -1152,3 +1152,11 @@ h3, h4 { font-weight: 600; line-height: 1.25; }
 .ncah-footer .ncah-note--land::before { background: linear-gradient(90deg, #fffaf5 0 62%, rgba(255, 250, 245, .86) 100%); }
 .ncah-footer .ncah-note--pledge::before { background: linear-gradient(135deg, rgba(0, 30, 12, .96), rgba(0, 44, 18, .93)); }
 @media (max-width: 781px) { .ncah-footer .ncah-note p.has-small-font-size { font-size: 1.05rem !important; } .ncah-footer .ncah-note--pledge p.has-small-font-size { font-size: 1.2rem !important; } }
+
+/* Page header over a wide group photo: text sits in the sky, the people stay clear below */
+.ncah-head-people.wp-block-cover { min-height: clamp(460px, 52vw, 560px) !important; align-items: flex-start; }
+.ncah-head-people .wp-block-cover__image-background { object-position: 50% 80%; }
+.ncah-head-people .wp-block-cover__background { background: linear-gradient(to bottom, rgba(0, 0, 0, .78) 0%, rgba(0, 0, 0, .55) 38%, rgba(0, 0, 0, .05) 68%) !important; opacity: 1 !important; }
+.ncah-head-people .wp-block-cover__inner-container { padding-top: clamp(1.5rem, 3vw, 2.5rem); }
+.ncah-head-people h1, .ncah-head-people .ncah-eyebrow { text-shadow: 0 2px 6px rgba(0, 0, 0, .75), 0 2px 22px rgba(0, 0, 0, .8); }
+@media (max-width: 781px) { .ncah-head-people.wp-block-cover { min-height: 500px !important; } .ncah-head-people .wp-block-cover__image-background { object-position: 55% 85%; } }
