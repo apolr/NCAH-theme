@@ -513,3 +513,39 @@ p, li { text-wrap: pretty; }
 
 /* Province is fixed to Ontario */
 .ncah-form input[readonly]{background:#f1f5f1;color:#1f2a1f;cursor:not-allowed}
+
+/* Membership form: card styling and responsive layout */
+.ncah-member-form-band { background: linear-gradient(180deg, #f3f8f3 0%, #fff 100%); }
+.ncah-form { background: #fff; border: 1px solid #dfe6df; border-top: 6px solid var(--ncah-green); border-radius: 16px; box-shadow: 0 18px 40px -22px rgba(0, 60, 0, .35); padding: clamp(1.25rem, 4vw, 2.5rem); box-sizing: border-box; width: 100%; }
+.ncah-form p { margin: 0 0 1.25rem; }
+.ncah-form label span[aria-hidden="true"] { color: var(--ncah-red); margin-left: .15rem; }
+.ncah-form .ncah-opt { color: #5b665b; font-weight: 400; font-size: .85em; margin-left: .25rem; }
+.ncah-form input[type=text], .ncah-form input[type=tel], .ncah-form select { font-size: 1rem; transition: border-color .15s ease, box-shadow .15s ease, background-color .15s ease; box-sizing: border-box; }
+.ncah-form input[type=text]:hover:not([readonly]), .ncah-form input[type=tel]:hover { border-color: #7a947a; }
+.ncah-form input::placeholder { color: #8a948a; }
+.ncah-form input[aria-invalid="true"], .ncah-form input:user-invalid { border-color: var(--ncah-red); }
+.ncah-form fieldset:not(.ncah-freq) { border-top: 1px solid #e6ece6; padding-top: 1.25rem; margin-top: .5rem; }
+.ncah-form fieldset:not(.ncah-freq) legend { font-size: 1.05rem; padding-right: .75rem; color: #0b3d1f; }
+.ncah-form .ncah-form-row p { margin-bottom: 1rem; min-width: 0; }
+.ncah-form .ncah-check { background: #f7faf7; border-radius: 10px; padding: .5rem .85rem; }
+.ncah-form .ncah-check a { color: var(--ncah-green); text-decoration: underline; text-underline-offset: 2px; }
+.ncah-form .ncah-freq { border: 1px solid #cfe0cf; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: .5rem .75rem; margin: -.25rem 0 1.25rem; }
+.ncah-form .ncah-freq legend { grid-column: 1 / -1; float: left; width: 100%; }
+.ncah-form .ncah-freq small { grid-column: 1 / -1; }
+.ncah-form .ncah-radio { background: #fff; border: 1px solid #cfd8cf; border-radius: 10px; padding: .55rem .8rem; align-items: center; min-height: 48px; box-sizing: border-box; transition: border-color .15s ease, background-color .15s ease; }
+.ncah-form .ncah-radio:has(input:checked) { border-color: var(--ncah-green); background: #eaf5ea; font-weight: 600; }
+.ncah-form .ncah-radio:focus-within { box-shadow: 0 0 0 3px rgba(0, 128, 0, .22); }
+.ncah-form button[type=submit] { width: auto; border-radius: 999px; transition: transform .15s ease, box-shadow .15s ease, filter .15s ease; }
+.ncah-form button[type=submit]:hover { filter: brightness(1.08); box-shadow: 0 8px 18px -8px rgba(212, 0, 0, .6); transform: translateY(-1px); }
+.ncah-form button[type=submit]:active { transform: translateY(0); }
+.ncah-form button[type=submit]:focus-visible { outline: 3px solid var(--ncah-green); outline-offset: 3px; }
+@media (max-width: 900px) { .ncah-form .ncah-form-row { grid-template-columns: 1fr 1fr; } .ncah-form .ncah-form-row p:last-child { grid-column: 1 / -1; } }
+@media (max-width: 600px) {
+  .ncah-form { border-radius: 12px; padding: 1.25rem 1rem 1.5rem; }
+  .ncah-form .ncah-form-row { grid-template-columns: 1fr; }
+  .ncah-form .ncah-form-row p:last-child { grid-column: auto; }
+  .ncah-form .ncah-freq { grid-template-columns: 1fr 1fr; padding: .85rem; }
+  .ncah-form button[type=submit] { width: 100%; }
+}
+@media (max-width: 360px) { .ncah-form .ncah-freq { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { .ncah-form *, .ncah-form button { transition: none !important; transform: none !important; } }
