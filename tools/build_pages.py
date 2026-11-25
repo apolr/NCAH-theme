@@ -110,7 +110,7 @@ card = ('<div class="ncah-contact-card"><p class="ncah-eyebrow">Reach us</p><h3 
         + action('ncah-action--tel', 'tel:+12892442568', ICON_TEL, 'Give us a call', '+1 (289) 244-2568')
         + action('ncah-action--mail', 'mailto:info@ncahamilton.ca', ICON_MAIL, 'Send us an Email', 'info@ncahamilton.ca')
         + f'<div class="ncah-action ncah-action--pin ncah-action--static"><span class="ncah-action__icon">{ICON_PIN}</span>'
-        f'<span class="ncah-action__text"><strong>Mailbox</strong><small>{ADDR}</small></span></div>'
+        f'<span class="ncah-action__text"><strong>Address</strong><small>{ADDR}</small></span></div>'
         '</div>'
         '<div class="ncah-contact-social"><p class="ncah-contact-social__label">Follow us</p><div class="ncah-contact-social__links">'
         '<a href="https://www.facebook.com/NCAHamilton" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M24 12.073C24 5.446 18.627.073 12 .073S0 5.446 0 12.073c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg><span>Facebook</span></a>'
@@ -118,7 +118,7 @@ card = ('<div class="ncah-contact-card"><p class="ncah-eyebrow">Reach us</p><h3 
         '<a href="https://www.youtube.com/@NCAHamilton" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg><span>YouTube</span></a></div></div></div>')
 mapb = (f'<div class="ncah-contact-map"><iframe title="Map showing the location of the NCAH mailbox at {ADDR}" src="https://maps.google.com/maps?q={ADDR_Q}&amp;z=16&amp;output=embed" '
         'loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>'
-        f'<div class="ncah-contact-map__bar"><span class="ncah-contact-map__addr">{ICON_PIN}<span>Mailbox: {ADDR}</span></span></div></div>')
+        f'<div class="ncah-contact-map__bar"><span class="ncah-contact-map__addr">{ICON_PIN}<span>Address: {ADDR}</span></span></div></div>')
 c.append(band('<!-- wp:html -->\n<div class="ncah-contact-grid">' + card + mapb + '</div>\n<!-- /wp:html -->', 'mist', 'ncah-contact-info', '1200px'))
 write('contact-us.html', c)
 
