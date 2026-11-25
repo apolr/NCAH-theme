@@ -11,8 +11,9 @@ def sec(inner, bg=None, cls='', anchor=None):
 
 # ---------- About us ----------
 a = [page_head('About us', U + '2026/10/DSC_6531-scaled.webp', focus_y=0.3, extra_cls='ncah-head-group')]
-a.append(band(split(U + '2023/12/About-the-Association.webp', 'Who we are', 'The Association',
-    'The Nigerian Canadian Association, Hamilton and Environs (NCAH) is a non-profit organization founded in 1999. We support youth to embrace their heritage, pursue academic success and develop their creativity.'),
+a.append(band(assoc_section(U + '2025/07/118A9755-scaled.webp', 'Families and community members gathered under tents at an NCAH community event', 'Who we are', 'The Association',
+    'The Nigerian Canadian Association, Hamilton and Environs (NCAH) is a non-profit organization founded in 1999. We support youth to embrace their heritage, pursue academic success and develop their creativity.',
+    ['Heritage', 'Academic success', 'Creativity']),
     None, 'ncah-about-association'))
 a.append(band(split(U + '2023/12/The-Nigerian-Spirit-1.webp', 'Why we exist', 'Our Mission',
     'Our mission is to promote unity and provide a conducive environment for individuals with Nigerian heritage to thrive in the community.', True),

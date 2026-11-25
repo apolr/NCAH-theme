@@ -115,3 +115,17 @@ def write(name, blocks):
     p = pathlib.Path(__file__).resolve().parent.parent / 'content' / name
     p.write_text('\n\n'.join(blocks) + '\n')
     print('wrote', p.name, len('\n\n'.join(blocks)), 'bytes')
+
+
+def assoc_section(img, alt, eyebrow, title, text, chips, badge_top='Since', badge_big='1999'):
+    """Creative split: rounded photo with an offset tint panel and a red badge, text with topic chips."""
+    im = (f'<!-- wp:image {{"sizeSlug":"large","className":"ncah-assoc__img"}} -->\n<figure class="wp-block-image size-large ncah-assoc__img"><img src="{img}" alt="{html.escape(alt)}"/></figure>\n<!-- /wp:image -->')
+    badge = para(f'{e(badge_top)}<strong>{e(badge_big)}</strong>', 'ncah-assoc__badge', None, None, None, raw=True)
+    media = ('<!-- wp:group {"className":"ncah-assoc__media","layout":{"type":"default"}} -->\n<div class="wp-block-group ncah-assoc__media">' + im + '\n\n' + badge + '</div>\n<!-- /wp:group -->')
+    chip_html = '\n\n'.join(para(c, 'ncah-assoc__chip') for c in chips)
+    chips_g = ('<!-- wp:group {"className":"ncah-assoc__chips","layout":{"type":"default"}} -->\n<div class="wp-block-group ncah-assoc__chips">' + chip_html + '</div>\n<!-- /wp:group -->')
+    tx = (para(eyebrow, 'ncah-eyebrow', None, None, 'ncah-red') + '\n\n' + heading(title, 2, '', None, 'x-large') + '\n\n' + para(text) + '\n\n' + chips_g)
+    cols = [column(media, '50%'), column(tx, '50%')]
+    return ('<!-- wp:columns {"verticalAlignment":"center","className":"ncah-assoc"} -->\n<div class="wp-block-columns are-vertically-aligned-center ncah-assoc">'
+            + '\n\n'.join(cols).replace('<!-- wp:column {"width":"50%"} -->', '<!-- wp:column {"verticalAlignment":"center","width":"50%"} -->').replace('<div class="wp-block-column" style', '<div class="wp-block-column is-vertically-aligned-center" style')
+            + '</div>\n<!-- /wp:columns -->')
