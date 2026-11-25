@@ -1159,4 +1159,4 @@ h3, h4 { font-weight: 600; line-height: 1.25; }
 .ncah-head-people .wp-block-cover__background { background: linear-gradient(to bottom, rgba(0, 0, 0, .78) 0%, rgba(0, 0, 0, .55) 38%, rgba(0, 0, 0, .05) 68%) !important; opacity: 1 !important; }
 .ncah-head-people .wp-block-cover__inner-container { padding-top: clamp(1.5rem, 3vw, 2.5rem); }
 .ncah-head-people h1, .ncah-head-people .ncah-eyebrow { text-shadow: 0 2px 6px rgba(0, 0, 0, .75), 0 2px 22px rgba(0, 0, 0, .8); }
-@media (max-width: 781px) { .ncah-head-people.wp-block-cover { min-height: 500px !important; } .ncah-head-people .wp-block-cover__image-background { object-position: 55% 85%; } }
+@media (max-width: 781px) { .ncah-head-people.wp-block-cover { min-height: 580px !important; } .ncah-head-people .wp-block-cover__image-background { object-position: 55% 85%; } }
