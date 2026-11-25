@@ -1120,11 +1120,13 @@ h3, h4 { font-weight: 600; line-height: 1.25; }
 .ncah-top svg { width: 26px; height: 26px; }
 @media (max-width: 600px) { .ncah-top { min-width: 0; width: 48px; height: 48px; } }
 
-/* Section blend: the colour of the band above melts into the top of this one (set by motion.js) */
-.ncah-blend { position: relative; isolation: isolate; }
-.ncah-blend::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: clamp(48px, 10vw, 120px); z-index: -1; pointer-events: none;
-  background: radial-gradient(140% 150% at 50% -20%, var(--ncah-prev) 0 38%, var(--ncah-prev0) 100%), linear-gradient(to bottom, var(--ncah-prev), var(--ncah-prev0)); }
-@media print { .ncah-blend::before { display: none; } }
+/* Section edge: each band rises into the one above on a soft wave in its own colour (class and colour set by motion.js) */
+.ncah-edge { position: relative; --ncah-wave-h: clamp(26px, 4.2vw, 58px); }
+.ncah-edge::before { content: ""; position: absolute; left: 0; right: 0; top: calc(1px - var(--ncah-wave-h)); height: var(--ncah-wave-h); z-index: 2; pointer-events: none; background: var(--ncah-self);
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60' preserveAspectRatio='none'%3E%3Cpath d='M0 32C150 6 300 6 450 30S750 54 900 30 1100 8 1200 32V60H0Z'/%3E%3C/svg%3E") 0 0 / 100% 100% repeat-x;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 60' preserveAspectRatio='none'%3E%3Cpath d='M0 32C150 6 300 6 450 30S750 54 900 30 1100 8 1200 32V60H0Z'/%3E%3C/svg%3E") 0 0 / 100% 100% repeat-x; }
+@media (max-width: 781px) { .ncah-edge::before { -webkit-mask-size: 50% 100%; mask-size: 50% 100%; } }
+@media print { .ncah-edge::before { display: none; } }
 /* Bands sit flush so the blend can flow from one section into the next (no white seams) */
 .wp-block-post-content > .alignfull, .wp-site-blocks > main, .wp-site-blocks > footer { margin-block-start: 0 !important; margin-block-end: 0 !important; }
 .wp-block-post-content > .alignfull + .alignfull { margin-block-start: 0 !important; }

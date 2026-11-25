@@ -298,9 +298,8 @@
 			if ( ! prev || skip( prev ) ) { return; }
 			var a = toRgb( prev ), b = toRgb( el );
 			if ( a[0] === b[0] && a[1] === b[1] && a[2] === b[2] ) { return; }
-			el.style.setProperty( '--ncah-prev', 'rgb(' + a.join( ',' ) + ')' );
-			el.style.setProperty( '--ncah-prev0', 'rgba(' + a.join( ',' ) + ',0)' );
-			el.classList.add( 'ncah-blend' );
+			el.style.setProperty( '--ncah-self', 'rgb(' + b.join( ',' ) + ')' );
+			el.classList.add( 'ncah-edge' );
 		}
 		var kids = Array.prototype.slice.call( content.children ).filter( function ( k ) { return k.classList.contains( 'alignfull' ); } );
 		kids.forEach( function ( el, i ) {
