@@ -58,8 +58,7 @@ def flow_step(n, t, d):
             + para(n, 'ncah-flow__n') + '\n\n' + heading(t, 3, 'ncah-flow__t') + '\n\n' + para(d, 'ncah-flow__d') + '</div>\n<!-- /wp:group -->')
 steps = [('01', 'Apply', 'Complete the form below: full name, Canadian WhatsApp number, address and who referred you.'),
          ('02', 'Verified', 'An administrator verifies your address.'),
-         ('03', 'Invited', 'You receive an invitation to the NCAH WhatsApp Community.'),
-         ('04', 'Valid for a year', 'Your registration runs one year from the month you register.')]
+         ('03', 'Invited', 'You receive an invitation to the NCAH WhatsApp Community.')]
 flow = ('<!-- wp:group {"className":"ncah-flow","layout":{"type":"default"}} -->\n<div class="wp-block-group ncah-flow">' + '\n\n'.join(flow_step(*x) for x in steps) + '</div>\n<!-- /wp:group -->')
 intro = (para('Membership', 'ncah-eyebrow', 'center', None, 'ncah-red') + '\n\n' + heading('Join the NCAH community', 2, '', 'center', 'x-large') + '\n\n' +
          para('Open to all peoples of Nigeria by birth, naturalization, marriage or heritage, and to others who share our principles. Members join the NCAH WhatsApp Community for announcements, events and programs.', 'ncah-flow__lead', 'center') + '\n\n' +
