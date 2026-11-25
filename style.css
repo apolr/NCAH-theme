@@ -826,3 +826,23 @@ h3, h4 { font-weight: 600; line-height: 1.25; }
 /* Tints */
 .ncah-action__icon { background: #e8f3e8; }
 @media (max-width: 1100px) { .ncah-nav, .ncah-nav .wp-block-navigation-item__content { font-size: .875rem; } }
+
+/* ===== Gala hero: poster fills the full width, button sits in its own band below ===== */
+.ncah-home-hero {
+	--ncah-hdr: 6.5rem;      /* transparent header that overlays the top of the hero */
+	--ncah-band: 8.5rem;     /* button row plus slide dots, below the poster */
+	--ncah-poster-ratio: 1.996; /* landscape poster 2048 x 1026 */
+	--ncah-hero-h: calc(var(--ncah-hdr) + 100vw / var(--ncah-poster-ratio) + var(--ncah-band));
+	min-height: var(--ncah-hero-h);
+}
+.ncah-gala-slide { padding: var(--ncah-hdr) 0 0 !important; gap: 0; justify-content: flex-start !important; align-items: stretch; }
+.ncah-gala-slide .ncah-gala-flyer, .ncah-gala-slide .ncah-gala-flyer--tall { flex: 0 0 auto !important; width: 100% !important; max-width: none !important; margin: 0 !important; }
+.ncah-gala-slide .ncah-gala-flyer img, .ncah-gala-slide .ncah-gala-flyer--tall img { width: 100% !important; height: auto !important; border-radius: 0 !important; aspect-ratio: auto !important; object-fit: fill; }
+.ncah-gala-slide .ncah-gala-cta { flex: 0 0 auto; margin: 0; padding: 1.25rem 1rem 0; justify-content: center; }
+@media (max-width: 781px) {
+	.ncah-home-hero { --ncah-hdr: 5.25rem; --ncah-poster-ratio: .8; --ncah-band: 8rem; --ncah-hero-h: calc(var(--ncah-hdr) + 100vw / var(--ncah-poster-ratio) + var(--ncah-band)); }
+}
+@media (max-width: 600px) {
+	.ncah-home-hero { --ncah-hero-h: calc(var(--ncah-hdr) + 100vw / var(--ncah-poster-ratio) + var(--ncah-band)) !important; }
+	.ncah-gala-slide { padding: var(--ncah-hdr) 0 0 !important; }
+}
