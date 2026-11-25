@@ -118,7 +118,7 @@ partners = [('2025/12/ACCA.webp', 'ACCA'), ('2025/12/Davisol.webp', 'Davisol'), 
 logos = ('<!-- wp:group {"className":"ncah-logos","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"center","verticalAlignment":"center"}} -->\n<div class="wp-block-group ncah-logos">'
          + '\n\n'.join(logo(U + p, a) for p, a in partners) + '</div>\n<!-- /wp:group -->')
 out.append(band(heading('Our partners', 2, '', 'center', 'x-large') + '\n\n' +
-                para('We would like to extend our heartfelt gratitude to the following organizations and individuals for their generous support. Your contributions have made a significant impact on our community and enabled us to continue promoting Nigerian culture and heritage in Canada.', align='center') + '\n\n' + logos, 'mist', 'ncah-partners'))
+                para('Thank you to the organizations and individuals whose generous support makes our work possible.', align='center') + '\n\n' + logos, 'mist', 'ncah-partners'))
 
 
 write('home.html', out)
