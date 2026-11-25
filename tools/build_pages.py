@@ -53,19 +53,22 @@ write('about-us.html', a)
 
 # ---------- Membership ----------
 m = [page_head('Membership', U + '2024/01/Google-Form-Header.webp')]
-what = ('Membership of the Nigerian Canadian Association, Hamilton and Environs (NCAH) is how you join our community. '
-        'Members are invited into the NCAH WhatsApp Community, where announcements, events and programs are shared. '
-        'Registration is voluntary and open to all peoples of Nigeria by birth, naturalization, marriage or heritage, and to others committed to the principles of the Association.')
-m.append(band(split(U + '2023/12/hi-res-be6cc83762096029bbf781b08a079cb8_crop_north-scaled.webp', 'What membership means', 'Join the NCAH community', what, extra=para('Membership is open to people from other regions and backgrounds who are committed to abiding by the principles and the established goals of the Association. The primary geographic regions that are encompassed in the activities of the Association are the Hamilton-Wentworth region and the surroundings, which include Burlington, Oakville, Kitchener, Waterloo, Guelph, Grimsby and St. Catharines.')), None, 'ncah-member-intro'))
-def li(t): return f'<!-- wp:list-item -->\n<li>{e(t)}</li>\n<!-- /wp:list-item -->'
-steps = ['Complete the form below with your full name, a Canadian WhatsApp number, your address and the name of the person who referred you.',
-         'An administrator verifies your address.',
-         'Once verified, you receive an invitation to the NCAH WhatsApp Community.',
-         'Your registration is valid for one year from the month you register.']
-ol = '<!-- wp:list {"ordered":true,"className":"ncah-steps"} -->\n<ol class="wp-block-list ncah-steps">' + '\n'.join(li(t) for t in steps) + '</ol>\n<!-- /wp:list -->'
-donor = ('There is no membership fee. If you wish, you can also tick the donor box on the form and tell us how often you would like to give: monthly, quarterly, bi-annually or annually. '
-         'Donations are voluntary and support our charitable work. They are not required to become a member.')
-m.append(band(section_title('How it works', 'Four simple steps') + '\n\n' + ol + '\n\n' + heading('Giving is optional', 3) + '\n\n' + para(donor), 'mist', 'ncah-member-how', '900px'))
+def flow_step(n, t, d):
+    return ('<!-- wp:group {"className":"ncah-flow__step","layout":{"type":"default"}} -->\n<div class="wp-block-group ncah-flow__step">'
+            + para(n, 'ncah-flow__n') + '\n\n' + heading(t, 3, 'ncah-flow__t') + '\n\n' + para(d, 'ncah-flow__d') + '</div>\n<!-- /wp:group -->')
+steps = [('01', 'Apply', 'Complete the form below: full name, Canadian WhatsApp number, address and who referred you.'),
+         ('02', 'Verified', 'An administrator verifies your address.'),
+         ('03', 'Invited', 'You receive an invitation to the NCAH WhatsApp Community.'),
+         ('04', 'Valid for a year', 'Your registration runs one year from the month you register.')]
+flow = ('<!-- wp:group {"className":"ncah-flow","layout":{"type":"default"}} -->\n<div class="wp-block-group ncah-flow">' + '\n\n'.join(flow_step(*x) for x in steps) + '</div>\n<!-- /wp:group -->')
+intro = (para('Membership', 'ncah-eyebrow', 'center', None, 'ncah-red') + '\n\n' + heading('Join the NCAH community', 2, '', 'center', 'x-large') + '\n\n' +
+         para('Open to all peoples of Nigeria by birth, naturalization, marriage or heritage, and to others who share our principles. Members join the NCAH WhatsApp Community for announcements, events and programs.', 'ncah-flow__lead', 'center') + '\n\n' +
+         para('Serving Hamilton-Wentworth, Burlington, Oakville, Kitchener, Waterloo, Guelph, Grimsby and St. Catharines.', 'ncah-flow__where', 'center'))
+cta = ('<!-- wp:group {"className":"ncah-flow__cta","layout":{"type":"default"}} -->\n<div class="wp-block-group ncah-flow__cta">'
+       '<!-- wp:group {"layout":{"type":"default"}} -->\n<div class="wp-block-group">' + para('No membership fee.', 'ncah-flow__free') + '\n\n' +
+       para('Giving is optional: tick the donor box on the form to give monthly, quarterly, bi-annually or annually. Donations support our charitable work and are never required.', 'ncah-flow__giving') + '</div>\n<!-- /wp:group -->\n\n' +
+       buttons([button('Request to join', '#join', True)], center=False) + '</div>\n<!-- /wp:group -->')
+m.append(band(intro + '\n\n' + flow + '\n\n' + cta, 'mist', 'ncah-member-flow', '1100px'))
 m.append(band('<!-- wp:html -->\n<div id="join"></div>\n<!-- /wp:html -->\n\n' + section_title('Membership form', 'Request to join') + '\n\n<!-- wp:shortcode -->\n[ncah_member_form]\n<!-- /wp:shortcode -->', None, 'ncah-member-form-band', '760px'))
 write('membership.html', m)
 

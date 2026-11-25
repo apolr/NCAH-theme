@@ -937,3 +937,28 @@ h3, h4 { font-weight: 600; line-height: 1.25; }
 /* Gala poster: sticker sits above the top right corner so it never covers the MC or the date */
 .ncah-upcoming { padding-top: 5rem !important; }
 .ncah-upcoming .ncah-assoc__badge { left: auto; right: -1.75rem; top: -4.1rem; }
+
+/* Membership: one minimalist section (intro, four-step timeline, no-fee strip) */
+.ncah-member-flow .ncah-flow__lead { max-width: 46rem; margin: 1rem auto 0; font-size: 1.1rem; }
+.ncah-member-flow .ncah-flow__where { margin: .75rem auto 0; font-size: .9rem; color: #4a524a; }
+.ncah-flow { position: relative; display: grid; grid-template-columns: minmax(0, 1fr); gap: 0; margin: 2.5rem 0 2rem; }
+.ncah-flow__step { position: relative; padding: 0 0 1.75rem 3.5rem; margin: 0; }
+.ncah-flow__step::before { content: ""; position: absolute; left: 1.05rem; top: 2.5rem; bottom: .25rem; width: 2px; background: #c5d4c5; }
+.ncah-flow__step:last-child { padding-bottom: 0; }
+.ncah-flow__step:last-child::before { display: none; }
+.ncah-flow__n { position: absolute; left: 0; top: 0; margin: 0; width: 2.2rem; height: 2.2rem; border-radius: 50%; background: #fff; border: 2px solid #008000; color: #005f00; display: flex; align-items: center; justify-content: center; font-size: .8rem; font-weight: 700; letter-spacing: .02em; }
+.ncah-flow__t { margin: .15rem 0 .25rem; font-size: 1.2rem; font-weight: 600; line-height: 1.3; }
+.ncah-flow__d { margin: 0; color: #4a524a; font-size: .98rem; line-height: 1.55; }
+@media (min-width: 900px) {
+  .ncah-flow { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem; }
+  .ncah-flow__step { padding: 0; }
+  .ncah-flow__step::before { left: 3rem; right: -1.5rem; top: 1.05rem; bottom: auto; width: auto; height: 2px; }
+  .ncah-flow__n { position: static; margin-bottom: 1rem; }
+  .ncah-flow__t { margin-top: 0; }
+}
+.ncah-flow__cta { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1.25rem 2rem; padding: 1.5rem clamp(1.25rem, 3vw, 2.25rem); background: #fff; border-radius: 16px; box-shadow: 0 10px 30px -18px rgba(16, 21, 16, .35); }
+.ncah-flow__cta > .wp-block-group { flex: 1 1 22rem; }
+.ncah-flow__free { margin: 0 0 .25rem; font-weight: 700; font-size: 1.15rem; color: #005f00; }
+.ncah-flow__giving { margin: 0; color: #4a524a; font-size: .95rem; line-height: 1.55; }
+.ncah-flow__cta .wp-block-buttons { margin: 0; }
+@media (max-width: 599px) { .ncah-flow__cta .wp-block-buttons, .ncah-flow__cta .wp-block-button, .ncah-flow__cta .wp-block-button__link { width: 100%; text-align: center; } }
