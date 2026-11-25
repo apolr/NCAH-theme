@@ -192,12 +192,20 @@
 				d.className = 'ncah-menu-donate';
 				foot.appendChild( d );
 			}
-			var insta = header.querySelector( '.ncah-social a' );
-			if ( insta ) {
-				var i = insta.cloneNode( true );
-				i.className = 'ncah-menu-social';
-				i.insertAdjacentHTML( 'beforeend', '<span>Follow us on Instagram</span>' );
-				foot.appendChild( i );
+			var socials = header.querySelectorAll( '.ncah-topsocial a' );
+			if ( socials.length ) {
+				var row = document.createElement( 'div' );
+				row.className = 'ncah-menu-socials';
+				socials.forEach( function ( src ) {
+					var l = src.cloneNode( true );
+					l.className = 'ncah-menu-social';
+					l.setAttribute( 'target', '_blank' );
+					l.setAttribute( 'rel', 'noopener' );
+					var t = ( l.textContent || '' ).trim();
+					l.setAttribute( 'aria-label', t || ( /facebook/.test( l.href ) ? 'Facebook' : /instagram/.test( l.href ) ? 'Instagram' : 'YouTube' ) );
+					row.appendChild( l );
+				} );
+				foot.appendChild( row );
 			}
 			var mail = document.createElement( 'a' );
 			mail.className = 'ncah-menu-mail';
@@ -205,6 +213,12 @@
 			mail.textContent = 'info@ncahamilton.ca';
 			foot.appendChild( mail );
 			box.appendChild( foot );
+			var here = location.pathname.replace( /\/+$/, '' ) || '/';
+			box.querySelectorAll( '.wp-block-navigation__container > .wp-block-navigation-item > a.wp-block-navigation-item__content' ).forEach( function ( a ) {
+				var p;
+				try { p = new URL( a.href, location.href ).pathname.replace( /\/+$/, '' ) || '/'; } catch ( e ) { return; }
+				if ( p === here ) { a.setAttribute( 'aria-current', 'page' ); }
+			} );
 		} );
 	}
 
