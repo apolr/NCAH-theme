@@ -85,7 +85,7 @@ def logo(src, alt):
     return f'<!-- wp:image {{"sizeSlug":"medium","linkDestination":"none"}} -->\n<figure class="wp-block-image size-medium"><img src="{src}" alt="{html.escape(alt)}"/></figure>\n<!-- /wp:image -->'
 
 
-def page_head(title, img, eyebrow=None, focus_y=None, extra_cls=''):
+def page_head(title, img, eyebrow=None, focus_y=None, extra_cls='', sub=None):
     """ncabc-style page title: full-width photo, dark overlay, centred serif H1 with a short red rule."""
     cls = 'ncah-page-head' + (' ncah-head-faces' if focus_y is not None else '') + ((' ' + extra_cls) if extra_cls else '')
     a = {'url': img, 'dimRatio': 55, 'align': 'full', 'minHeight': 380, 'contentPosition': 'center center', 'className': cls}
@@ -94,7 +94,7 @@ def page_head(title, img, eyebrow=None, focus_y=None, extra_cls=''):
     return (f'<!-- wp:cover {j(a)} -->\n<div class="wp-block-cover alignfull {cls}" style="min-height:380px">'
             f'<span aria-hidden="true" class="wp-block-cover__background has-background-dim-60 has-background-dim"></span>'
             f'<img class="wp-block-cover__image-background" alt="" src="{img}" data-object-fit="cover"{pos}/>'
-            f'<div class="wp-block-cover__inner-container">' + ((para(eyebrow, 'ncah-eyebrow', 'center', None, 'white') + '\n\n') if eyebrow else '') + heading(title, 1, '', 'center', 'hero', 'white') + '</div></div>\n<!-- /wp:cover -->')
+            f'<div class="wp-block-cover__inner-container">' + ((para(eyebrow, 'ncah-eyebrow', 'center', None, 'white') + '\n\n') if eyebrow else '') + heading(title, 1, '', 'center', 'hero', 'white') + (('\n\n' + para(sub, 'ncah-head-sub', 'center', None, 'white')) if sub else '') + '</div></div>\n<!-- /wp:cover -->')
 
 def split(img, eyebrow, title, text, reverse=False, extra=''):
     """Square image beside text, as in the ncabc.org content blocks."""

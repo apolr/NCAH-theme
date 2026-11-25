@@ -165,8 +165,8 @@ PJS = ("<script>(function(){var r=document.currentScript.parentNode;"
        "r.querySelectorAll('dialog.ncah-pmodal').forEach(function(d){d.addEventListener('click',function(ev){if(ev.target===d||ev.target.classList.contains('ncah-pmodal__x')){d.close();}});"
        "d.addEventListener('close',function(){var b=r.querySelector('[data-modal=\"'+d.id+'\"]');if(b){b.focus();}});});})();</script>")
 pg = '<div class="ncah-programs-page"><div class="ncah-pgrid">' + ''.join(pcard(d) for d in PROGS) + '</div>' + ''.join(pmodal(d) for d in PROGS) + PJS + '</div>'
-write('programs.html', [page_head('Programs', U + '2023/07/IMG-20230730-WA0012.webp'),
-    band(section_title('What we do', 'Our programs') + '\n\n' + para('Explore what NCAH runs for the community. Select a program to learn more.', align='center') + '\n\n<!-- wp:html -->\n' + pg + '\n<!-- /wp:html -->', None, 'ncah-programs-band', '1200px')])
+write('programs.html', [page_head('Our programs', U + '2023/07/IMG-20230730-WA0012.webp', eyebrow='What we do', sub='Explore what NCAH runs for the community. Select a program to learn more.'),
+    band('<!-- wp:html -->\n' + pg + '\n<!-- /wp:html -->', None, 'ncah-programs-band', '1200px')])
 
 # ---------- Gallery (all videos) ----------
 from build_home_vids import VIDS
