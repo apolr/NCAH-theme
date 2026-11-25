@@ -51,14 +51,20 @@ write('about-us.html', a)
 
 # ---------- Membership ----------
 m = [page_head('Membership', U + '2024/01/Google-Form-Header.webp')]
-elig = ('Registration is voluntary and open to all peoples of Nigeria by birth, naturalization, marriage or heritage, '
-        'and to others committed to the principles of the Association. No membership fee is required, and Registered Donors are encouraged to make voluntary donations in support of our charitable work. Registration is valid for one year from the month you register. We welcome Registered Donors from Hamilton-Wentworth, Burlington, Oakville, '
-        'Kitchener, Waterloo, Guelph, Grimsby and St. Catherine.')
-img = f'<!-- wp:image {{"sizeSlug":"large","className":"is-style-rounded"}} -->\n<figure class="wp-block-image size-large is-style-rounded"><img src="{U}2023/12/hi-res-be6cc83762096029bbf781b08a079cb8_crop_north-scaled.webp" alt="NCAH Registered Donors"/></figure>\n<!-- /wp:image -->'
-m.append(band(split(U + '2023/12/hi-res-be6cc83762096029bbf781b08a079cb8_crop_north-scaled.webp', 'Join us', 'Become a Registered Donor of the NCAH', elig), None, 'ncah-member-intro'))
-form = ('<!-- wp:html -->\n<iframe class="ncah-member-form" src="https://docs.google.com/forms/d/e/1FAIpQLSeCcYE7jPMkRaztM0MxiUieotiyU1Oh0TlIDQP8QM7y4osOgw/viewform?embedded=true" '
-        'width="100%" height="800" frameborder="0" marginheight="0" marginwidth="0" title="NCAH membership form" loading="lazy">Loading…</iframe>\n<!-- /wp:html -->')
-m.append(band(section_title('Membership form', 'Apply online') + '\n\n' + form, 'mist', 'ncah-member-form-band', '800px'))
+what = ('Membership of the Nigerian Canadian Association, Hamilton and Environs (NCAH) is how you join our community. '
+        'Members are invited into the NCAH WhatsApp Community, where announcements, events and programs are shared. '
+        'Registration is voluntary and open to all peoples of Nigeria by birth, naturalization, marriage or heritage, and to others committed to the principles of the Association.')
+m.append(band(split(U + '2023/12/hi-res-be6cc83762096029bbf781b08a079cb8_crop_north-scaled.webp', 'What membership means', 'Join the NCAH community', what), None, 'ncah-member-intro'))
+def li(t): return f'<!-- wp:list-item -->\n<li>{e(t)}</li>\n<!-- /wp:list-item -->'
+steps = ['Complete the form below with your full name, a Canadian WhatsApp number, your address and the name of the person who referred you.',
+         'An administrator verifies your address.',
+         'Once verified, you receive an invitation to the NCAH WhatsApp Community.',
+         'Your registration is valid for one year from the month you register.']
+ol = '<!-- wp:list {"ordered":true,"className":"ncah-steps"} -->\n<ol class="wp-block-list ncah-steps">' + '\n'.join(li(t) for t in steps) + '</ol>\n<!-- /wp:list -->'
+donor = ('There is no membership fee. If you wish, you can also tick the donor box on the form and tell us how often you would like to give: monthly, quarterly, bi-annually or annually. '
+         'Donations are voluntary and support our charitable work. They are not required to become a member.')
+m.append(band(section_title('How it works', 'Four simple steps') + '\n\n' + ol + '\n\n' + heading('Giving is optional', 3) + '\n\n' + para(donor), 'mist', 'ncah-member-how', '900px'))
+m.append(band('<!-- wp:html -->\n<div id="join"></div>\n<!-- /wp:html -->\n\n' + section_title('Membership form', 'Request to join') + '\n\n<!-- wp:shortcode -->\n[ncah_member_form]\n<!-- /wp:shortcode -->', None, 'ncah-member-form-band', '760px'))
 write('membership.html', m)
 
 # ---------- Events ----------

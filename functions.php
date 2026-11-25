@@ -136,3 +136,5 @@ add_filter( 'do_shortcode_tag', function ( $output, $tag ) {
 	}
 	return $output;
 }, 20, 2 );
+
+require_once get_template_directory() . '/inc/member-form.php';
