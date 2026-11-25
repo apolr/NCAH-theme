@@ -750,3 +750,16 @@ p, li { text-wrap: pretty; }
 @media (max-width: 900px) { .ncah-contact-grid { grid-template-columns: minmax(0, 1fr); } .ncah-contact-map { min-height: 380px; } .ncah-contact-map iframe { min-height: 300px; } }
 @media (max-width: 560px) { .ncah-contact-card { border-radius: 18px; } .ncah-contact-map { border-radius: 18px; } .ncah-contact-map__btn { width: 100%; } .ncah-contact-social__links a { flex: 1 1 auto; } }
 @media (prefers-reduced-motion: reduce) { .ncah-contact-map__btn { transition: none; transform: none !important; } }
+
+/* Foundations: keep text inside the green panel at every width */
+.ncah-foundations .ncah-split > .wp-block-column { box-sizing: border-box; min-width: 0; max-width: 100%; }
+.ncah-foundations .ncah-split > .wp-block-column:last-child { overflow-wrap: anywhere; word-break: normal; }
+.ncah-foundations .ncah-split > .wp-block-column:last-child :is(p, h2, .ncah-eyebrow) { max-width: 100%; box-sizing: border-box; overflow-wrap: break-word; }
+@media (max-width: 781px) {
+  .ncah-foundations .ncah-split { flex-direction: column-reverse; }
+  .ncah-foundations .ncah-split > .wp-block-column { flex-basis: 100% !important; width: 100%; }
+  .ncah-foundations .ncah-split > .wp-block-column:last-child { padding: 1.75rem 1.4rem 2rem; align-items: flex-start; text-align: left; }
+  .ncah-foundations .ncah-split > .wp-block-column:first-child { min-height: 240px; }
+  .ncah-foundations .wp-block-buttons { justify-content: flex-start; }
+  .ncah-foundations .wp-block-button__link { min-height: 50px; }
+}
