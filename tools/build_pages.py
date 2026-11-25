@@ -134,3 +134,16 @@ write('programs.html', [page_head('Programs', U + '2023/07/IMG-20230730-WA0012.w
 from build_home_vids import VIDS
 gg = ('<!-- wp:group {"layout":{"type":"grid","columnCount":3}} -->\n<div class="wp-block-group">' + '\n\n'.join(youtube(u, t) for t, u in VIDS) + '</div>\n<!-- /wp:group -->')
 write('gallery.html', [page_head('Gallery', U + '2023/07/IMG-20230730-WA0012.webp'), band(section_title('Watch', 'NCAH videos') + '\n\n' + gg, None, 'ncah-gallery')])
+
+# ---------- Business directory ----------
+bd = [page_head('Business directory', U + '2023/12/settlement.webp'),
+      band(section_title('Support local', 'Businesses in our community') + '\n\n' +
+           para('Members of the Nigerian Canadian Association run businesses across Hamilton and Environs. Browse the directory to find services and products from members, and support them.', align='center') + '\n\n' +
+           '<!-- wp:shortcode -->\n[ncah_business_directory]\n<!-- /wp:shortcode -->', None, 'ncah-directory-band', '1200px'),
+      '<!-- wp:group {"align":"full","layout":{"type":"constrained","contentSize":"760px"},"className":"ncah-member-form-band ncah-biz-form-band","style":{"spacing":{"padding":{"top":"3rem","bottom":"3rem"}}}} -->\n'
+      '<div class="wp-block-group alignfull ncah-member-form-band ncah-biz-form-band" style="padding-top:3rem;padding-bottom:3rem"><!-- wp:html -->\n<div id="request"></div>\n<!-- /wp:html -->\n\n' +
+      para('Business directory request', 'ncah-eyebrow', 'center', None, 'ncah-red') + '\n\n' +
+      heading('Request a listing', 2, '', 'center', 'x-large') + '\n\n' +
+      para('Only registered NCAH members can list a business. Not a member yet? Choose "No, not yet" in the form to register first. Every request is verified and approved by an administrator.', align='center') + '\n\n' +
+      '<!-- wp:shortcode -->\n[ncah_business_form]\n<!-- /wp:shortcode --></div>\n<!-- /wp:group -->']
+write('business-directory.html', bd)

@@ -857,3 +857,30 @@ h3, h4 { font-weight: 600; line-height: 1.25; }
 }
 /* Tile headings: keep "Membership" on one line in the wider Fira Sans */
 .ncah-tile h3 { font-size: clamp(1.5rem, 1.15rem + .9vw, 1.875rem); overflow-wrap: normal; word-break: normal; hyphens: none; }
+
+/* ===== Business directory ===== */
+.ncah-dir__tools { display: grid; grid-template-columns: 2fr 1fr; gap: 1rem; margin: 2rem 0 1.5rem; }
+.ncah-dir__tools input, .ncah-dir__tools select { width: 100%; min-height: 48px; padding: .6rem .8rem; border: 1px solid #6a746a; border-radius: 8px; font: inherit; background: #fff; box-sizing: border-box; }
+.ncah-dir__grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.5rem; }
+.ncah-biz { background: #fff; border: 1px solid #d5ded5; border-radius: 16px; padding: 1.5rem; box-shadow: 0 1px 2px rgba(16, 21, 16, .08), 0 4px 12px rgba(16, 21, 16, .06); display: flex; flex-direction: column; gap: .5rem; }
+.ncah-biz[hidden], .ncah-dir__none[hidden] { display: none; }
+.ncah-biz h3 { margin: 0; font-size: 1.25rem; }
+.ncah-biz__cat { align-self: flex-start; background: #e8f3e8; color: #005f00; border-radius: 4px; padding: .15rem .6rem; font-size: .75rem; font-weight: 500; letter-spacing: .02em; }
+.ncah-biz__desc { margin: 0; color: #4a524a; }
+.ncah-biz__meta { list-style: none; margin: .25rem 0 0; padding: 0; display: grid; gap: .35rem; font-size: .9375rem; }
+.ncah-biz__meta span { display: block; font-size: .75rem; font-weight: 600; color: #4a524a; }
+.ncah-biz__meta a { overflow-wrap: anywhere; }
+.ncah-biz__links { margin: auto 0 0; padding-top: .75rem; display: flex; flex-wrap: wrap; gap: .6rem; }
+.ncah-biz__btn { display: inline-block; padding: .55rem 1.1rem; border-radius: 8px; background: #008000; color: #fff; font-weight: 600; text-decoration: none; }
+.ncah-biz__btn:hover { background: #005f00; color: #fff; }
+.ncah-biz__btn--ghost { background: #fff; color: #005f00; border: 1px solid #005f00; }
+.ncah-biz__btn--ghost:hover { background: #e8f3e8; color: #005f00; }
+.ncah-dir-empty, .ncah-dir__none { text-align: center; background: #f3f7f3; border-radius: 16px; padding: 2rem 1rem; margin-top: 1.5rem; }
+.ncah-bizform textarea, .ncah-bizform input[type=email], .ncah-bizform input[type=url] { width: 100%; min-height: 48px; padding: .6rem .8rem; border: 1px solid #6a746a; border-radius: 8px; font: inherit; background: #fff; box-sizing: border-box; }
+.ncah-bizform textarea { min-height: 120px; resize: vertical; }
+.ncah-bizform select { min-height: 48px; }
+.ncah-bizform .ncah-form-row--2 { grid-template-columns: 1fr 1fr; }
+.ncah-bizform .ncah-biz-join { background: #fdeeea; border-left: 5px solid #d42402; border-radius: 10px; padding: 1rem 1.25rem; margin-top: .75rem; }
+.ncah-bizform .ncah-biz-join[hidden], .ncah-bizform .ncah-biz-fields[hidden] { display: none; }
+.ncah-bizform .ncah-biz-member { border: 0; padding: 0; margin: 0 0 1.25rem; }
+@media (max-width: 600px) { .ncah-dir__tools { grid-template-columns: 1fr; } .ncah-bizform .ncah-form-row--2 { grid-template-columns: 1fr; gap: 0; } }
