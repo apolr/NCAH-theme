@@ -61,7 +61,7 @@ a.append(band(split(U + '2024/05/NCAH-Contsitution-and-Bye-law.webp', 'Our Found
 write('about-us.html', a)
 
 # ---------- Membership ----------
-m = [page_head('Membership', U + '2025/07/118A9755-scaled.webp', focus_y=0.5, extra_cls='ncah-head-crowd')]
+m = [page_head('Join the NCAH community', U + '2025/07/118A9755-scaled.webp', eyebrow='Membership', focus_y=0.5, extra_cls='ncah-head-crowd', sub='Open to all peoples of Nigeria by birth, naturalization, marriage or heritage, and to others who share our principles. Members join the NCAH WhatsApp Community for announcements, events and programs.')]
 def flow_step(n, t, d):
     return ('<!-- wp:group {"className":"ncah-flow__step","layout":{"type":"default"}} -->\n<div class="wp-block-group ncah-flow__step">'
             + para(n, 'ncah-flow__n') + '\n\n' + heading(t, 3, 'ncah-flow__t') + '\n\n' + para(d, 'ncah-flow__d') + '</div>\n<!-- /wp:group -->')
@@ -69,9 +69,7 @@ steps = [('01', 'Apply', 'Complete the form below: full name, Canadian WhatsApp 
          ('02', 'Verified', 'An administrator verifies your address.'),
          ('03', 'Invited', 'You receive an invitation to the NCAH WhatsApp Community.')]
 flow = ('<!-- wp:group {"className":"ncah-flow","layout":{"type":"default"}} -->\n<div class="wp-block-group ncah-flow">' + '\n\n'.join(flow_step(*x) for x in steps) + '</div>\n<!-- /wp:group -->')
-intro = (para('Membership', 'ncah-eyebrow', 'center', None, 'ncah-red') + '\n\n' + heading('Join the NCAH community', 2, '', 'center', 'x-large') + '\n\n' +
-         para('Open to all peoples of Nigeria by birth, naturalization, marriage or heritage, and to others who share our principles. Members join the NCAH WhatsApp Community for announcements, events and programs.', 'ncah-flow__lead', 'center') + '\n\n' +
-         para('Serving Hamilton-Wentworth, Burlington, Oakville, Kitchener, Waterloo, Guelph, Grimsby and St. Catharines.', 'ncah-flow__where', 'center'))
+intro = para('Serving Hamilton-Wentworth, Burlington, Oakville, Kitchener, Waterloo, Guelph, Grimsby and St. Catharines.', 'ncah-flow__where', 'center')
 cta = ('<!-- wp:group {"className":"ncah-flow__cta","layout":{"type":"default"}} -->\n<div class="wp-block-group ncah-flow__cta">'
        '<!-- wp:group {"layout":{"type":"default"}} -->\n<div class="wp-block-group">' + para('No membership fee.', 'ncah-flow__free') + '\n\n' +
        para('Giving is optional: tick the donor box on the form to give monthly, quarterly, bi-annually or annually. Donations support our charitable work and are never required.', 'ncah-flow__giving') + '</div>\n<!-- /wp:group -->\n\n' +
