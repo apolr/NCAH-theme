@@ -1143,3 +1143,12 @@ h3, h4 { font-weight: 600; line-height: 1.25; }
 .ncah-partners .ncah-logos > .wp-block-image:last-child img { padding: 1.5rem 1.25rem; box-sizing: border-box; }
 @media (max-width: 900px) { .ncah-partners .ncah-logos > .wp-block-image { flex-basis: calc((100% - 2rem) / 3); } }
 @media (max-width: 600px) { .ncah-partners .ncah-logos { gap: .75rem; } .ncah-partners .ncah-logos > .wp-block-image { flex-basis: calc((100% - .75rem) / 2); border-radius: 14px; } .ncah-partners .ncah-logos > .wp-block-image:last-child img { padding: 1rem .75rem; } }
+
+/* Footer notes: larger, easier to read title and body */
+.ncah-footer .ncah-note h3.ncah-eyebrow.wp-block-heading { font-size: clamp(1.35rem, 1.1rem + .8vw, 1.65rem); line-height: 1.25; margin-bottom: 1rem !important; }
+.ncah-footer .ncah-note--land h3::before { width: 1.9rem; height: 1.9rem; }
+.ncah-footer .ncah-note p { font-size: clamp(1.05rem, 1rem + .25vw, 1.2rem); line-height: 1.7; }
+.ncah-footer .ncah-note--pledge p { font-size: clamp(1.2rem, 1.1rem + .5vw, 1.45rem); line-height: 1.6; }
+.ncah-footer .ncah-note--land::before { background: linear-gradient(90deg, #fffaf5 0 62%, rgba(255, 250, 245, .86) 100%); }
+.ncah-footer .ncah-note--pledge::before { background: linear-gradient(135deg, rgba(0, 30, 12, .96), rgba(0, 44, 18, .93)); }
+@media (max-width: 781px) { .ncah-footer .ncah-note p { font-size: 1.05rem; } .ncah-footer .ncah-note--pledge p { font-size: 1.2rem; } }
