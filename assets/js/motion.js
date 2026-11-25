@@ -199,6 +199,11 @@
 				i.insertAdjacentHTML( 'beforeend', '<span>Follow us on Instagram</span>' );
 				foot.appendChild( i );
 			}
+			var mail = document.createElement( 'a' );
+			mail.className = 'ncah-menu-mail';
+			mail.href = 'mailto:info@ncahamilton.ca';
+			mail.textContent = 'info@ncahamilton.ca';
+			foot.appendChild( mail );
 			box.appendChild( foot );
 		} );
 	}
