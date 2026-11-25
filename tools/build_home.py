@@ -103,7 +103,7 @@ out.append(band(heading('NCAH news and events', 2, '', 'center', 'x-large') + '\
 # 7. Videos (first three; the rest can live on a Gallery page later)
 from build_home_vids import VIDS as vids
 
-grid = ('<!-- wp:group {"layout":{"type":"grid","columnCount":3}} -->\n<div class="wp-block-group">'
+grid = ('<!-- wp:group {"className":"ncah-watch","layout":{"type":"grid","columnCount":3}} -->\n<div class="wp-block-group ncah-watch">'
         + '\n\n'.join(youtube(u, t) for t, u in vids[:3]) + '</div>\n<!-- /wp:group -->')
 out.append(band(heading('Watch', 2, '', 'center', 'x-large') + '\n\n' + grid + '\n\n' + buttons([button('More videos', '/gallery/', True)]), 'mist', 'ncah-videos'))
 
