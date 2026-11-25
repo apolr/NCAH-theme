@@ -24,9 +24,18 @@ goals = ['Enrich Canadian culture with subtle infusions of Nigerian traditions.'
          'Connect children of Nigerian heritage (and others) to their cultural roots.',
          'Provide essential support to members in need.',
          'Enhance social and economic well-being for members and the community.']
-lst = ('<!-- wp:list {"ordered":true} -->\n<ol class="wp-block-list">' +
-       ''.join(f'<!-- wp:list-item -->\n<li>{e(g)}</li>\n<!-- /wp:list-item -->' for g in goals) + '</ol>\n<!-- /wp:list -->')
-a.append(band(section_title('What we work toward', 'Our Goals') + '\n\n' + lst, 'ncah-green', 'ncah-green-band ncah-about-goals', '900px'))
+GI = ['<path d="m12 2 3.1 6.3 6.9 1-5 4.9 1.2 6.8-6.2-3.3-6.2 3.3L8 14.2 3 9.3l6.9-1z"/>',
+      '<path d="m3 10 9-7 9 7v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/>',
+      '<path d="M7 20h10"/><path d="M10 20c5.5-2.5.8-6.4 3-10"/><path d="M9.5 9.4c1.1.8 1.8 2.2 2.3 3.7-2 .4-3.5.4-4.8-.3-1.2-.6-2.3-1.9-3-4.2 2.8-.5 4.4 0 5.5.8z"/><path d="M14.1 6a7 7 0 0 0-1.1 4c1.9-.1 3.3-.6 4.3-1.4 1-1 1.6-2.3 1.7-4.6-2.7.1-4 1-4.9 2z"/>',
+      '<circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><path d="m4.93 4.93 4.24 4.24M14.83 9.17l4.24-4.24M14.83 14.83l4.24 4.24M9.17 14.83l-4.24 4.24"/>',
+      '<path d="m22 7-8.5 8.5-5-5L2 17"/><path d="M16 7h6v6"/>']
+def goal(i, g):
+    ico = ('<!-- wp:html -->\n<span class="ncah-goal__ico" aria-hidden="true"><svg viewBox="0 0 24 24" width="26" height="26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">' + GI[i] + '</svg></span>'
+           f'<span class="ncah-goal__num" aria-hidden="true">{i + 1:02d}</span>\n<!-- /wp:html -->')
+    return ('<!-- wp:group {"className":"ncah-goal","layout":{"type":"default"}} -->\n<div class="wp-block-group ncah-goal">' + ico + '\n\n' + para(g, 'ncah-goal__t') + '</div>\n<!-- /wp:group -->')
+lst = ('<!-- wp:group {"className":"ncah-goals","layout":{"type":"default"}} -->\n<div class="wp-block-group ncah-goals">' + '\n\n'.join(goal(i, g) for i, g in enumerate(goals)) + '</div>\n<!-- /wp:group -->')
+a_ = band(section_title('What we work toward', 'Our Goals') + '\n\n' + lst, 'ncah-green', 'ncah-green-band ncah-about-goals', '1200px')
+a.append(a_)
 
 execs = [('Chuma Okereke', 'President', 'president'),
          ('Ifeoluwa Akande', 'Vice President', 'vp'),

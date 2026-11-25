@@ -1054,3 +1054,18 @@ h3, h4 { font-weight: 600; line-height: 1.25; }
 @media (max-width: 1000px) { .ncah-footer-main { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 600px) { .ncah-footer-main { grid-template-columns: 1fr; gap: 2rem; } .ncah-footer-nav .wp-block-navigation__container { display: grid !important; grid-template-columns: 1fr 1fr; column-gap: 1rem; } }
 .ncah-footer-bar p { font-size: .85rem; line-height: 1.7; }
+
+/* About: Our Goals as five numbered cards */
+.ncah-about-goals { background: #005f00 radial-gradient(circle at 12% 0%, rgba(255, 255, 255, .12), transparent 45%), radial-gradient(circle at 95% 100%, rgba(212, 36, 2, .22), transparent 40%) !important; }
+.ncah-goals { display: grid !important; grid-template-columns: repeat(6, 1fr); gap: 1.15rem; margin-top: 2rem; }
+.ncah-goal { position: relative; overflow: hidden; grid-column: span 2; background: rgba(255, 255, 255, .1); border: 1px solid rgba(255, 255, 255, .28); border-top: 4px solid #d42402; border-radius: 18px; padding: 1.5rem 1.4rem 1.6rem; display: flex; flex-direction: column; gap: 1rem; min-height: 11rem; backdrop-filter: blur(2px); transition: transform .25s, background .25s; }
+.ncah-goal:nth-child(n+4) { grid-column: span 3; }
+.ncah-goal:hover { transform: translateY(-4px); background: rgba(255, 255, 255, .16); }
+.ncah-goal .ncah-goal__ico { width: 3.1rem; height: 3.1rem; border-radius: 50%; background: #fff; color: #008000; display: grid; place-items: center; box-shadow: 0 0 0 5px rgba(255, 255, 255, .18); }
+.ncah-goal .ncah-goal__ico svg { width: 1.6rem; height: 1.6rem; display: block; }
+.ncah-goal .ncah-goal__num { position: absolute; right: 1rem; top: .4rem; font-size: 4.2rem; font-weight: 800; line-height: 1; color: transparent; -webkit-text-stroke: 2px rgba(255, 255, 255, .35); }
+.ncah-goal .ncah-goal__t { margin: 0; color: #fff !important; font-size: 1.15rem; line-height: 1.5; font-weight: 500; max-width: 26ch; }
+.ncah-goal:nth-child(n+4) .ncah-goal__t { max-width: 40ch; }
+@media (max-width: 900px) { .ncah-goals { grid-template-columns: repeat(2, 1fr); } .ncah-goal, .ncah-goal:nth-child(n+4) { grid-column: span 1; } .ncah-goal:last-child { grid-column: span 2; } .ncah-goal .ncah-goal__t { max-width: none !important; } }
+@media (max-width: 560px) { .ncah-goals { grid-template-columns: 1fr; gap: .85rem; } .ncah-goal, .ncah-goal:last-child { grid-column: span 1; } .ncah-goal { flex-direction: row; align-items: center; min-height: 0; padding: 1.1rem 1.1rem 1.2rem; gap: 1rem; } .ncah-goal .ncah-goal__ico { flex: none; } .ncah-goal .ncah-goal__num { font-size: 3rem; top: .2rem; right: .7rem; } .ncah-goal .ncah-goal__t { font-size: 1.05rem; padding-right: 2.5rem; } }
+@media (prefers-reduced-motion: reduce) { .ncah-goal { transition: none; } .ncah-goal:hover { transform: none; } }
