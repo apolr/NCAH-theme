@@ -1126,3 +1126,7 @@ h3, h4 { font-weight: 600; line-height: 1.25; }
 
 /* Section rhythm: every full-width band gets the same generous vertical padding, so neighbours are clearly separated */
 .wp-block-post-content > .wp-block-group.alignfull:not(.ncah-hero):not(.ncah-home-hero) { padding-block: clamp(5rem, 3.25rem + 5.5vw, 8.5rem) !important; }
+
+/* Mailbox address card is information only, not a link */
+.ncah-action--static { cursor: default; }
+@media (hover: hover) { .ncah-action--static:hover { transform: none; box-shadow: 0 14px 30px -22px rgba(0, 60, 0, .55); border-color: #dfe8df; } }
