@@ -1077,3 +1077,10 @@ h3, h4 { font-weight: 600; line-height: 1.25; }
 .ncah-goal .ncah-goal__ico { color: #d42402; box-shadow: 0 0 0 5px rgba(255, 255, 255, .22); }
 .ncah-goal .ncah-goal__num { -webkit-text-stroke-color: rgba(255, 255, 255, .45); }
 .ncah-green-band.ncah-about-goals.has-background.has-ncah-green-background-color { background-color: #d42402 !important; background-image: radial-gradient(circle at 10% 0%, rgba(255, 255, 255, .16), transparent 45%), radial-gradient(circle at 100% 100%, rgba(90, 10, 0, .35), transparent 45%) !important; }
+
+/* Our Goals: dark green (replaces the red trial) */
+.ncah-green-band.ncah-about-goals.has-background.has-ncah-green-background-color { background-color: #004d00 !important; background-image: radial-gradient(circle at 8% 0%, rgba(255, 255, 255, .08), transparent 40%) !important; }
+.ncah-goal { background: rgba(255, 255, 255, .07); border-color: rgba(255, 255, 255, .22); border-top-color: #d42402; }
+.ncah-goal:hover { background: rgba(255, 255, 255, .13); }
+.ncah-goal .ncah-goal__ico { color: #006b00; box-shadow: 0 0 0 5px rgba(255, 255, 255, .14); }
+.ncah-goal .ncah-goal__num { -webkit-text-stroke-color: rgba(255, 255, 255, .3); }
