@@ -45,7 +45,7 @@ def tile(img, title, text, url):
 tiles = columns([
     tile(U + '2023/12/About-the-Association.webp', 'About us', 'Learn more about the Community.', '/about-us/'),
     tile(U + '2023/12/settlement.webp', 'Membership', 'Join a thriving community and participate.', '/membership/'),
-    tile(U + '2026/10/DSC_7787.webp', 'Programs', 'Our programs are poised to support the community.', '/programs/'),
+    tile(U + '2026/11/ethnic-food-bank-programs.webp', 'Programs', 'Our programs are poised to support the community.', '/programs/'),
     tile(U + '2023/12/The-Nigerian-Spirit-1.webp', 'Donate', 'Your support keeps the spirit alive.', '/donate/'),
 ], 'ncah-tiles')
 out.append('<!-- wp:group {"align":"full","layout":{"type":"default"}} -->\n<div class="wp-block-group alignfull">' + tiles + '</div>\n<!-- /wp:group -->')
