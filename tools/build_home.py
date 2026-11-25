@@ -39,11 +39,11 @@ gala_slide = ('<!-- wp:group {"className":"ncah-hero__slide ncah-gala-slide","la
 out.append('<!-- wp:group {"align":"full","className":"ncah-hero ncah-home-hero","layout":{"type":"default"}} -->\n<div class="wp-block-group alignfull ncah-hero ncah-home-hero">\n' + gala_slide + '\n\n' + hero_cover + '</div>\n<!-- /wp:group -->')
 
 # 2. Get involved: four photo tiles
-def tile(img, title, text, url):
+def tile(img, title, text, url, extra=''):
     inner = heading(title, 3, '', None, None, 'white') + '\n\n' + para(text, size='small', color='white')
-    return column(f'<a href="{url}" class="ncah-tile-link">' + cover(img, inner, 'ncah-tile', 35, 340, 'bottom left') + '</a>')
+    return column(f'<a href="{url}" class="ncah-tile-link">' + cover(img, inner, 'ncah-tile' + extra, 35, 340, 'bottom left') + '</a>')
 tiles = columns([
-    tile(U + '2023/12/About-the-Association.webp', 'About us', 'Learn more about the Community.', '/about-us/'),
+    tile(U + '2026/11/child-with-nigerian-flag.webp', 'About us', 'Learn more about the Community.', '/about-us/', ' ncah-tile--portrait'),
     tile(U + '2023/12/settlement.webp', 'Membership', 'Join a thriving community and participate.', '/membership/'),
     tile(U + '2026/11/ethnic-food-bank-programs.webp', 'Programs', 'Our programs are poised to support the community.', '/programs/'),
     tile(U + '2023/12/The-Nigerian-Spirit-1.webp', 'Donate', 'Your support keeps the spirit alive.', '/donate/'),
