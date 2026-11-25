@@ -884,3 +884,6 @@ h3, h4 { font-weight: 600; line-height: 1.25; }
 .ncah-bizform .ncah-biz-join[hidden], .ncah-bizform .ncah-biz-fields[hidden] { display: none; }
 .ncah-bizform .ncah-biz-member { border: 0; padding: 0; margin: 0 0 1.25rem; }
 @media (max-width: 600px) { .ncah-dir__tools { grid-template-columns: 1fr; } .ncah-bizform .ncah-form-row--2 { grid-template-columns: 1fr; gap: 0; } }
+.ncah-biz a.ncah-biz__btn { color: #fff !important; text-decoration: none !important; }
+.ncah-biz a.ncah-biz__btn--ghost { color: #005f00 !important; }
+.ncah-biz .ncah-biz__desc { font-size: 1rem; line-height: 1.5; }
