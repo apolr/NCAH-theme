@@ -43,10 +43,10 @@ def tile(img, title, text, url):
     inner = heading(title, 3, '', None, None, 'white') + '\n\n' + para(text, size='small', color='white')
     return column(f'<a href="{url}" class="ncah-tile-link">' + cover(img, inner, 'ncah-tile', 35, 340, 'bottom left') + '</a>')
 tiles = columns([
-    tile(U + '2023/12/About-the-Association.webp', 'About us', 'Who we are and how we serve our community.', '/about-us/'),
-    tile(U + '2023/12/settlement.webp', 'Membership', 'Register as a donor and belong.', '/membership/'),
-    tile(U + '2026/10/DSC_7787.webp', 'Programs', 'Youth, sports and community programs.', '/programs/'),
-    tile(U + '2023/12/The-Nigerian-Spirit-1.webp', 'Donate', 'Support our work with a gift.', '/donate/'),
+    tile(U + '2023/12/About-the-Association.webp', 'About us', 'Learn more about the Community.', '/about-us/'),
+    tile(U + '2023/12/settlement.webp', 'Membership', 'Join a thriving community and participate.', '/membership/'),
+    tile(U + '2026/10/DSC_7787.webp', 'Programs', 'Our programs are poised to support the community.', '/programs/'),
+    tile(U + '2023/12/The-Nigerian-Spirit-1.webp', 'Donate', 'Your support keeps the spirit alive.', '/donate/'),
 ], 'ncah-tiles')
 out.append('<!-- wp:group {"align":"full","layout":{"type":"default"}} -->\n<div class="wp-block-group alignfull">' + tiles + '</div>\n<!-- /wp:group -->')
 

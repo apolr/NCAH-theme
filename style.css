@@ -855,3 +855,5 @@ h3, h4 { font-weight: 600; line-height: 1.25; }
 	.ncah-gala-slide .ncah-gala-flyer--tall { display: none !important; }
 	.ncah-home-hero { --ncah-poster-ratio: 1.996; --ncah-band: 8.5rem; --ncah-hdr: 6rem; }
 }
+/* Tile headings: keep "Membership" on one line in the wider Fira Sans */
+.ncah-tile h3 { font-size: clamp(1.5rem, 1.15rem + .9vw, 1.875rem); overflow-wrap: normal; word-break: normal; hyphens: none; }
