@@ -69,12 +69,12 @@ steps = [('01', 'Apply', 'Complete the form below: full name, Canadian WhatsApp 
          ('02', 'Verified', 'An administrator verifies your address.'),
          ('03', 'Invited', 'You receive an invitation to the NCAH WhatsApp Community.')]
 flow = ('<!-- wp:group {"className":"ncah-flow","layout":{"type":"default"}} -->\n<div class="wp-block-group ncah-flow">' + '\n\n'.join(flow_step(*x) for x in steps) + '</div>\n<!-- /wp:group -->')
-intro = para('Serving Hamilton-Wentworth, Burlington, Oakville, Kitchener, Waterloo, Guelph, Grimsby and St. Catharines.', 'ncah-flow__where', 'center')
+intro = ''
 cta = ('<!-- wp:group {"className":"ncah-flow__cta","layout":{"type":"default"}} -->\n<div class="wp-block-group ncah-flow__cta">'
        '<!-- wp:group {"layout":{"type":"default"}} -->\n<div class="wp-block-group">' + para('No membership fee.', 'ncah-flow__free') + '\n\n' +
        para('Giving is optional: tick the donor box on the form to give monthly, quarterly, bi-annually or annually. Donations support our charitable work and are never required.', 'ncah-flow__giving') + '</div>\n<!-- /wp:group -->\n\n' +
        buttons([button('Request to join', '#join', True)], center=False) + '</div>\n<!-- /wp:group -->')
-m.append(band(intro + '\n\n' + flow + '\n\n' + cta, 'mist', 'ncah-member-flow', '1100px'))
+m.append(band(flow + '\n\n' + cta, 'mist', 'ncah-member-flow', '1100px'))
 m.append(band('<!-- wp:html -->\n<div id="join"></div>\n<!-- /wp:html -->\n\n' + section_title('Membership form', 'Request to join') + '\n\n<!-- wp:shortcode -->\n[ncah_member_form]\n<!-- /wp:shortcode -->', None, 'ncah-member-form-band', '760px'))
 write('membership.html', m)
 
