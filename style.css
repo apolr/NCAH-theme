@@ -890,3 +890,13 @@ h3, h4 { font-weight: 600; line-height: 1.25; }
 .ncah-biz a.ncah-biz__btn { color: #fff !important; text-decoration: none !important; }
 .ncah-biz a.ncah-biz__btn--ghost { color: #005f00 !important; }
 .ncah-biz .ncah-biz__desc { font-size: 1rem; line-height: 1.5; }
+
+/* About us header: group photo (7 people, 3:2). Desktop crops to heads and torsos with the title in the lower band; phones show the whole photo with the title below it. */
+.ncah-head-group.wp-block-cover { min-height: clamp(380px, 38vw, 760px) !important; }
+.ncah-head-group .wp-block-cover__image-background { object-position: 50% 30%; }
+.ncah-head-group .wp-block-cover__background { background: linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0) 48%, rgba(0,0,0,.78) 100%) !important; }
+@media (max-width: 781px) {
+  .ncah-head-group.wp-block-cover { min-height: calc(100vw / 1.5 + 8.5rem) !important; background-color: #0b3d1f; }
+  .ncah-head-group .wp-block-cover__image-background { height: auto !important; bottom: auto; aspect-ratio: 3 / 2; object-position: 50% 0; }
+  .ncah-head-group .wp-block-cover__background { background: linear-gradient(to bottom, rgba(0,0,0,0) 0, rgba(0,0,0,0) calc(100vw / 1.5 - 2.5rem), #0b3d1f calc(100vw / 1.5)) !important; }
+}

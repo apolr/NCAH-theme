@@ -85,9 +85,9 @@ def logo(src, alt):
     return f'<!-- wp:image {{"sizeSlug":"medium","linkDestination":"none"}} -->\n<figure class="wp-block-image size-medium"><img src="{src}" alt="{html.escape(alt)}"/></figure>\n<!-- /wp:image -->'
 
 
-def page_head(title, img, eyebrow='Nigerian Canadian Association, Hamilton and Environs', focus_y=None):
+def page_head(title, img, eyebrow='Nigerian Canadian Association, Hamilton and Environs', focus_y=None, extra_cls=''):
     """ncabc-style page title: full-width photo, dark overlay, centred serif H1 with a short red rule."""
-    cls = 'ncah-page-head' + (' ncah-head-faces' if focus_y is not None else '')
+    cls = 'ncah-page-head' + (' ncah-head-faces' if focus_y is not None else '') + ((' ' + extra_cls) if extra_cls else '')
     a = {'url': img, 'dimRatio': 55, 'align': 'full', 'minHeight': 380, 'contentPosition': 'center center', 'className': cls}
     if focus_y is not None: a['focalPoint'] = {'x': 0.5, 'y': focus_y}
     pos = f' style="object-position:50% {round(focus_y*100)}%"' if focus_y is not None else ''

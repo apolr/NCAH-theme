@@ -10,7 +10,7 @@ def sec(inner, bg=None, cls='', anchor=None):
     return band(inner, bg, cls)
 
 # ---------- About us ----------
-a = [page_head('About us', U + '2026/05/About-us-scaled.webp', focus_y=0.22)]
+a = [page_head('About us', U + '2026/10/DSC_6531-scaled.webp', focus_y=0.3, extra_cls='ncah-head-group')]
 a.append(band(split(U + '2023/12/About-the-Association.webp', 'Who we are', 'The Association',
     'The Nigerian Canadian Association, Hamilton and Environs (NCAH) is a non-profit organization founded in 1999. We support youth to embrace their heritage, pursue academic success and develop their creativity.'),
     None, 'ncah-about-association'))
