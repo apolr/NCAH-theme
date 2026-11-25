@@ -935,5 +935,5 @@ h3, h4 { font-weight: 600; line-height: 1.25; }
 .ncah-assoc .wp-block-buttons { margin-top: 1.5rem; }
 
 /* Gala poster: sticker sits above the top right corner so it never covers the MC or the date */
-.ncah-upcoming { padding-top: 4.5rem !important; }
-.ncah-upcoming .ncah-assoc__badge { left: auto; right: -1.5rem; top: -3.5rem; }
+.ncah-upcoming { padding-top: 5rem !important; }
+.ncah-upcoming .ncah-assoc__badge { left: auto; right: -1.75rem; top: -4.1rem; }
