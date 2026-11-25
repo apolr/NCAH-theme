@@ -299,6 +299,7 @@
 			var a = toRgb( prev ), b = toRgb( el );
 			if ( a[0] === b[0] && a[1] === b[1] && a[2] === b[2] ) { return; }
 			el.style.setProperty( '--ncah-self', 'rgb(' + b.join( ',' ) + ')' );
+			el.style.setProperty( '--ncah-line', ( 0.299 * b[0] + 0.587 * b[1] + 0.114 * b[2] ) < 110 ? '#d42402' : '#008000' );
 			el.classList.add( 'ncah-edge' );
 		}
 		var kids = Array.prototype.slice.call( content.children ).filter( function ( k ) { return k.classList.contains( 'alignfull' ); } );
