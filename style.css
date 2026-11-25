@@ -611,3 +611,13 @@ p, li { text-wrap: pretty; }
   .ncah-nav .is-menu-open .wp-block-navigation-item__content[aria-current="page"] { color: var(--ncah-green); background: #f4f9f4; }
   .ncah-nav .is-menu-open .wp-block-navigation-item__content[aria-current="page"]::before { transform: scaleY(1); }
 }
+@media (max-width: 1023px) {
+  .ncah-nav .is-menu-open .wp-block-navigation-item__content { min-height: 52px; padding-left: 1.3rem; }
+  .ncah-nav .is-menu-open .wp-block-navigation-item__content:hover, .ncah-nav .is-menu-open .wp-block-navigation-item__content:focus-visible { padding-left: 1.5rem; }
+  .ncah-menu-logo img { height: 52px !important; }
+  .ncah-menu-foot { padding-top: .75rem; gap: .6rem; }
+  .ncah-menu-foot .ncah-menu-donate { min-height: 52px; }
+  .ncah-menu-socials .ncah-menu-social { width: 48px; height: 48px; min-height: 48px; }
+  .ncah-menu-foot .ncah-menu-mail { min-height: 46px; }
+}
+@media (max-height: 700px) { .ncah-nav .is-menu-open .wp-block-navigation-item__content { min-height: 46px; } .ncah-menu-logo { padding-bottom: .5rem; } }
