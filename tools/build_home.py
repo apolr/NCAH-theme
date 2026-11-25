@@ -97,7 +97,7 @@ ge = assoc_section(U + '2026/10/DSC_7787.webp', 'Golden Eagles of Hamilton', 'Yo
 out.append(band(ge, None, 'ncah-golden'))
 
 # 6. News: latest posts
-q = ('<!-- wp:query {"query":{"perPage":6,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","inherit":false},"className":"ncah-events"} -->\n'
+q = ('<!-- wp:query {"query":{"perPage":3,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","inherit":false},"className":"ncah-events"} -->\n'
      '<div class="wp-block-query ncah-events"><!-- wp:post-template {"layout":{"type":"grid","columnCount":3}} -->\n'
      '<!-- wp:post-featured-image {"isLink":true,"aspectRatio":"4/3"} /-->\n\n<!-- wp:post-date /-->\n\n'
      '<!-- wp:post-title {"level":3,"isLink":true,"fontSize":"large"} /-->\n<!-- /wp:post-template --></div>\n<!-- /wp:query -->')
