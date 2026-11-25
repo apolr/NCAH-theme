@@ -57,10 +57,17 @@ perks = [('Connect', 'Meet professionals and neighbours, and stay informed on co
          ('Support', 'Help in hard times, and a chance to help others.'),
          ('Lead', 'Take on leadership roles and help shape our direction.'),
          ('Have a voice', 'Have a say in decisions that shape the association.')]
+ICONS = ['<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+         '<rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/>',
+         '<path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>',
+         '<path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.7l-1-1.1a5.5 5.5 0 0 0-7.8 7.8l1 1.1L12 21.3l7.8-7.8 1-1.1a5.5 5.5 0 0 0 0-7.8z"/>',
+         '<path d="M4 22V4"/><path d="M4 4h13l-2 4 2 4H4"/>',
+         '<path d="M21 11.5a8.4 8.4 0 0 1-9 8.4 8.5 8.5 0 0 1-3.8-.9L3 21l1.9-5.2A8.4 8.4 0 1 1 21 11.5z"/>']
 def perk(n, t, d):
+    ico = ('<!-- wp:html -->\n<span class="ncah-perk__n" aria-hidden="true"><svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">'
+           + ICONS[n - 1] + '</svg></span>\n<!-- /wp:html -->')
     return ('<!-- wp:group {"className":"ncah-perk","layout":{"type":"default"}} -->\n<div class="wp-block-group ncah-perk">'
-            f'<!-- wp:paragraph {{"className":"ncah-perk__n"}} -->\n<p class="ncah-perk__n">{n:02d}</p>\n<!-- /wp:paragraph -->\n\n'
-            + heading(t, 3, 'ncah-perk__t') + '\n\n' + para(d, 'ncah-perk__d') + '</div>\n<!-- /wp:group -->')
+            + ico + '\n\n' + heading(t, 3, 'ncah-perk__t') + '\n\n' + para(d, 'ncah-perk__d') + '</div>\n<!-- /wp:group -->')
 four = ('<!-- wp:group {"className":"ncah-perks","layout":{"type":"default"}} -->\n<div class="wp-block-group ncah-perks">'
         + '\n\n'.join(perk(i + 1, t, d) for i, (t, d) in enumerate(perks)) + '</div>\n<!-- /wp:group -->')
 memtext = 'Voluntary and open to all peoples of Nigeria by birth, naturalization, marriage or heritage, and to others who share our principles.'

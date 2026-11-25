@@ -1000,3 +1000,11 @@ h3, h4 { font-weight: 600; line-height: 1.25; }
 .ncah-perk .ncah-perk__t { margin: .1rem 0 .25rem; font-size: 1.15rem; color: #008000 !important; }
 .ncah-perk .ncah-perk__d { margin: 0; font-size: .95rem; line-height: 1.45; color: #4a524a; }
 @media (min-width: 900px) { .ncah-perk { padding: 4.4rem 1.4rem 1.4rem; } .ncah-perk .ncah-perk__n { top: 1.2rem; left: 1.4rem; } }
+
+/* Perk icons: solid green badge with a white line icon */
+.ncah-perk .ncah-perk__n { width: 2.8rem; height: 2.8rem; background: #008000; color: #fff; box-shadow: 0 0 0 5px #e8f3e8; transition: transform .25s; }
+.ncah-perk .ncah-perk__n svg { width: 1.4rem; height: 1.4rem; display: block; }
+.ncah-perk:hover .ncah-perk__n { transform: rotate(-8deg) scale(1.08); }
+.ncah-perk { padding-left: 4.9rem; }
+@media (min-width: 900px) { .ncah-perk { padding: 5rem 1.4rem 1.4rem; } .ncah-perk .ncah-perk__n { top: 1.3rem; left: 1.5rem; } }
+@media (prefers-reduced-motion: reduce) { .ncah-perk, .ncah-perk .ncah-perk__n { transition: none; } .ncah-perk:hover, .ncah-perk:hover .ncah-perk__n { transform: none; } }
