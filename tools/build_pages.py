@@ -52,7 +52,7 @@ a.append(band(split(U + '2024/05/NCAH-Contsitution-and-Bye-law.webp', 'Our Found
 write('about-us.html', a)
 
 # ---------- Membership ----------
-m = [page_head('Membership', U + '2024/01/Google-Form-Header.webp')]
+m = [page_head('Membership', U + '2025/07/118A9755-scaled.webp', focus_y=0.5, extra_cls='ncah-head-crowd')]
 def flow_step(n, t, d):
     return ('<!-- wp:group {"className":"ncah-flow__step","layout":{"type":"default"}} -->\n<div class="wp-block-group ncah-flow__step">'
             + para(n, 'ncah-flow__n') + '\n\n' + heading(t, 3, 'ncah-flow__t') + '\n\n' + para(d, 'ncah-flow__d') + '</div>\n<!-- /wp:group -->')
