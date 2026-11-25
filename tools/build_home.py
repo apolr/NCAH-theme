@@ -101,14 +101,14 @@ q = ('<!-- wp:query {"query":{"perPage":3,"pages":0,"offset":0,"postType":"post"
      '<div class="wp-block-query ncah-events"><!-- wp:post-template {"layout":{"type":"grid","columnCount":3}} -->\n'
      '<!-- wp:post-featured-image {"isLink":true,"aspectRatio":"4/3"} /-->\n\n<!-- wp:post-date /-->\n\n'
      '<!-- wp:post-title {"level":3,"isLink":true,"fontSize":"large"} /-->\n<!-- /wp:post-template --></div>\n<!-- /wp:query -->')
-out.append(band(heading('NCAH news and events', 2, '', 'center', 'x-large') + '\n\n' + q + '\n\n' + buttons([button('View the Event Gallery', '/event-gallery/', True)]), None, 'ncah-news'))
+out.append(band(heading('News and Events', 2, '', 'center', 'x-large') + '\n\n' + q + '\n\n' + buttons([button('View the Event Gallery', '/event-gallery/', True)]), None, 'ncah-news'))
 
 # 7. Videos (first three; the rest can live on a Gallery page later)
 from build_home_vids import VIDS as vids
 
 grid = ('<!-- wp:group {"className":"ncah-watch","layout":{"type":"grid","columnCount":3}} -->\n<div class="wp-block-group ncah-watch">'
         + '\n\n'.join(youtube(u, t) for t, u in vids[:3]) + '</div>\n<!-- /wp:group -->')
-out.append(band(heading('Watch', 2, '', 'center', 'x-large') + '\n\n' + grid + '\n\n' + buttons([button('More videos', '/gallery/', True)]), 'mist', 'ncah-videos'))
+out.append(band(heading('NCAH TV', 2, '', 'center', 'x-large') + '\n\n' + grid + '\n\n' + buttons([button('More videos', '/gallery/', True)]), 'mist', 'ncah-videos'))
 
 # 8. Partners
 partners = [('2025/12/ACCA.webp', 'ACCA'), ('2025/12/Davisol.webp', 'Davisol'), ('2025/12/Hamilton-Urban-Core.webp', 'Hamilton Urban Core'),
