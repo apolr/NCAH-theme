@@ -136,7 +136,7 @@ write('programs.html', [page_head('Programs', U + '2023/07/IMG-20230730-WA0012.w
 
 # ---------- Gallery (all videos) ----------
 from build_home_vids import VIDS
-gg = ('<!-- wp:group {"layout":{"type":"grid","columnCount":3}} -->\n<div class="wp-block-group">' + '\n\n'.join(youtube(u, t) for t, u in VIDS) + '</div>\n<!-- /wp:group -->')
+gg = ('<!-- wp:group {"className":"ncah-watch","layout":{"type":"grid","columnCount":3}} -->\n<div class="wp-block-group ncah-watch">' + '\n\n'.join(youtube(u, t) for t, u in VIDS) + '</div>\n<!-- /wp:group -->')
 write('gallery.html', [page_head('Gallery', U + '2023/07/IMG-20230730-WA0012.webp'), band(section_title('Watch', 'NCAH videos') + '\n\n' + gg, None, 'ncah-gallery')])
 
 # ---------- Business directory ----------

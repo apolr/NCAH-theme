@@ -980,3 +980,11 @@ h3, h4 { font-weight: 600; line-height: 1.25; }
   .ncah-videos .ncah-watch .wp-element-caption { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; min-height: 2.7em; box-sizing: content-box; }
   .ncah-videos .ncah-watch::after { content: ""; flex: 0 0 1px; }
 }
+
+/* Gallery page: full-width stacked video cards on phones, two columns on small tablets */
+@media (max-width: 781px) {
+  .ncah-gallery .ncah-watch { display: grid !important; grid-template-columns: 1fr !important; gap: 1.25rem; }
+}
+@media (min-width: 560px) and (max-width: 781px) {
+  .ncah-gallery .ncah-watch { grid-template-columns: repeat(2, 1fr) !important; }
+}
