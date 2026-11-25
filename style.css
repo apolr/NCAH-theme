@@ -1113,3 +1113,9 @@ h3, h4 { font-weight: 600; line-height: 1.25; }
 @media (prefers-reduced-motion: reduce) { .ncah-pcard, .ncah-pcard__img img { transition: none; } .ncah-pcard:hover, .ncah-pcard:hover .ncah-pcard__img img { transform: none; } }
 .ncah-head-sub { max-width: 38rem; margin: .9rem auto 0 !important; font-size: 1.15rem; line-height: 1.55; color: #fff !important; text-shadow: 0 2px 10px rgba(0, 0, 0, .7); }
 .ncah-programs-band .ncah-pgrid { margin-top: 0; }
+
+/* Back to top: arrow only (label kept for screen readers) */
+.ncah-top { width: 52px; min-width: 0; height: 52px; padding: 0; gap: 0; border-radius: 50%; justify-content: center; }
+.ncah-top .ncah-top__label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.ncah-top svg { width: 26px; height: 26px; }
+@media (max-width: 600px) { .ncah-top { min-width: 0; width: 48px; height: 48px; } }
