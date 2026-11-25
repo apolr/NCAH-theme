@@ -82,7 +82,8 @@ out.append(band(gala, None, 'ncah-upcoming'))
 # 5. Green Spirit Initiative and video (video right on desktop)
 gsi = assoc_section(U + '2026/09/Back-to-School-Supplies-9.webp', 'Volunteers smiling as they unload donated backpacks and school supplies from a car', 'Green Spirit Initiative', 'The charitable arm of the NCAH',
     'The Green Spirit Initiative (GSI) is the charitable arm of the NCAH, dedicated to empowering visible minorities and newcomers through community-focused support. Inspired by the Nigerian flag, the initiative focuses on improving social determinants of health to build a more inclusive and prosperous society.',
-    ['Empowering newcomers', 'Visible minorities', 'Social determinants of health'], 'Charity', 'GSI', rev=True)
+    ['Empowering newcomers', 'Visible minorities', 'Social determinants of health'], 'Charity', 'GSI', rev=True,
+    extra=buttons([button('Donate', '/donate/', True)], center=False))
 out.append(band(gsi, 'mist', 'ncah-gsi'))
 
 # 5b. Golden Eagles
