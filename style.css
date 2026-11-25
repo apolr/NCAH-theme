@@ -915,3 +915,13 @@ h3, h4 { font-weight: 600; line-height: 1.25; }
 .ncah-assoc__chip { margin: 0; padding: .45rem 1.05rem; border-radius: 999px; background: #e8f3e8; color: #005f00; font-size: .95rem; font-weight: 600; line-height: 1.3; }
 .ncah-assoc__chip::before { content: ""; display: inline-block; width: .5rem; height: .5rem; margin-right: .5rem; border-radius: 50%; background: #d42402; vertical-align: .1em; }
 @media (max-width: 781px) { .ncah-assoc { gap: 1.5rem; } .ncah-assoc__badge { width: 4.5rem; height: 4.5rem; font-size: .64rem; } .ncah-assoc__badge strong { font-size: 1.25rem; } }
+
+/* Mission variant: mirrored (photo right on desktop), wider crop to keep the whole group in frame */
+.ncah-assoc--rev .ncah-assoc__img img { aspect-ratio: 16 / 10; object-position: 50% 25%; }
+@media (min-width: 782px) {
+  .ncah-assoc--rev { flex-direction: row-reverse; }
+  .ncah-assoc--rev .ncah-assoc__media { margin: 1rem 1rem 1.25rem 1.25rem; }
+  .ncah-assoc--rev .ncah-assoc__media::before { inset: 1.25rem 1.25rem -1.25rem -1.25rem; background: #fff; }
+  .ncah-assoc--rev .ncah-assoc__badge { left: auto; right: -1rem; }
+}
+.ncah-about-mission .ncah-assoc__chip { background: #fff; }

@@ -117,7 +117,7 @@ def write(name, blocks):
     print('wrote', p.name, len('\n\n'.join(blocks)), 'bytes')
 
 
-def assoc_section(img, alt, eyebrow, title, text, chips, badge_top='Since', badge_big='1999'):
+def assoc_section(img, alt, eyebrow, title, text, chips, badge_top='Since', badge_big='1999', rev=False):
     """Creative split: rounded photo with an offset tint panel and a red badge, text with topic chips."""
     im = (f'<!-- wp:image {{"sizeSlug":"large","className":"ncah-assoc__img"}} -->\n<figure class="wp-block-image size-large ncah-assoc__img"><img src="{img}" alt="{html.escape(alt)}"/></figure>\n<!-- /wp:image -->')
     badge = para(f'{e(badge_top)}<strong>{e(badge_big)}</strong>', 'ncah-assoc__badge', None, None, None, raw=True)
@@ -126,6 +126,7 @@ def assoc_section(img, alt, eyebrow, title, text, chips, badge_top='Since', badg
     chips_g = ('<!-- wp:group {"className":"ncah-assoc__chips","layout":{"type":"default"}} -->\n<div class="wp-block-group ncah-assoc__chips">' + chip_html + '</div>\n<!-- /wp:group -->')
     tx = (para(eyebrow, 'ncah-eyebrow', None, None, 'ncah-red') + '\n\n' + heading(title, 2, '', None, 'x-large') + '\n\n' + para(text) + '\n\n' + chips_g)
     cols = [column(media, '50%'), column(tx, '50%')]
-    return ('<!-- wp:columns {"verticalAlignment":"center","className":"ncah-assoc"} -->\n<div class="wp-block-columns are-vertically-aligned-center ncah-assoc">'
+    ac = 'ncah-assoc' + (' ncah-assoc--rev' if rev else '')
+    return (f'<!-- wp:columns {{"verticalAlignment":"center","className":"{ac}"}} -->\n<div class="wp-block-columns are-vertically-aligned-center {ac}">'
             + '\n\n'.join(cols).replace('<!-- wp:column {"width":"50%"} -->', '<!-- wp:column {"verticalAlignment":"center","width":"50%"} -->').replace('<div class="wp-block-column" style', '<div class="wp-block-column is-vertically-aligned-center" style')
             + '</div>\n<!-- /wp:columns -->')

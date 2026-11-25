@@ -15,8 +15,9 @@ a.append(band(assoc_section(U + '2025/07/118A9755-scaled.webp', 'Families and co
     'The Nigerian Canadian Association, Hamilton and Environs (NCAH) is a non-profit organization founded in 1999. We support youth to embrace their heritage, pursue academic success and develop their creativity.',
     ['Heritage', 'Academic success', 'Creativity']),
     None, 'ncah-about-association'))
-a.append(band(split(U + '2023/12/The-Nigerian-Spirit-1.webp', 'Why we exist', 'Our Mission',
-    'Our mission is to promote unity and provide a conducive environment for individuals with Nigerian heritage to thrive in the community.', True),
+a.append(band(assoc_section(U + '2026/09/Back-to-School-Supplies-9.webp', 'NCAH volunteers smiling as they unload donated backpacks and school supplies from a car', 'Why we exist', 'Our Mission',
+    'Our mission is to promote unity and provide a conducive environment for individuals with Nigerian heritage to thrive in the community.',
+    ['Unity', 'Conducive environment', 'Thrive in community'], 'Promoting', 'Unity', rev=True),
     'mist', 'ncah-about-mission'))
 goals = ['Enrich Canadian culture with subtle infusions of Nigerian traditions.',
          'Create a welcoming hub for diverse social interaction.',
