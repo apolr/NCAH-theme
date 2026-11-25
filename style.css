@@ -1160,3 +1160,14 @@ h3, h4 { font-weight: 600; line-height: 1.25; }
 .ncah-head-people .wp-block-cover__inner-container { padding-top: clamp(1.5rem, 3vw, 2.5rem); }
 .ncah-head-people h1, .ncah-head-people .ncah-eyebrow { text-shadow: 0 2px 6px rgba(0, 0, 0, .75), 0 2px 22px rgba(0, 0, 0, .8); }
 @media (max-width: 781px) { .ncah-head-people.wp-block-cover { min-height: 580px !important; } .ncah-head-people .wp-block-cover__image-background { object-position: 55% 85%; } }
+
+/* Current page in the navigation */
+body.home .ncah-nav .current-menu-item > .wp-block-navigation-item__content { color: #fff; }
+.ncah-nav .current-menu-item > .wp-block-navigation-item__content { font-weight: 700; }
+.ncah-nav .current-menu-item > .wp-block-navigation-item__content::after { transform: scaleX(1) !important; height: 3px; background: var(--ncah-red); }
+.ncah-donate .wp-block-button__link[aria-current="page"] { background: var(--ncah-red) !important; border-color: var(--ncah-red) !important; color: #fff !important; }
+@media (max-width: 1023px) {
+  .ncah-nav .is-menu-open .current-menu-item { background: #eef6ee; box-shadow: inset 4px 0 0 var(--ncah-green); }
+  .ncah-nav .is-menu-open .current-menu-item > .wp-block-navigation-item__content { color: var(--ncah-green) !important; }
+  .ncah-nav .is-menu-open .current-menu-item > .wp-block-navigation-item__content::after { display: none; }
+}

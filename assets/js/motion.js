@@ -279,10 +279,27 @@
 	}
 
 	// Section blend: each band fades in from the colour of the band above it, so the seam flows instead of cutting.
+	// Marks the nav link for the page being viewed (custom links carry no current state of their own).
+	function initNavCurrent() {
+		var path = window.location.pathname.replace( /\/+$/, '' ) || '/';
+		document.querySelectorAll( '.ncah-nav .wp-block-navigation-item__content, .ncah-donate .wp-block-button__link' ).forEach( function ( a ) {
+			var href;
+			try { href = new URL( a.getAttribute( 'href' ), window.location.origin ); } catch ( e ) { return; }
+			if ( href.origin !== window.location.origin ) { return; }
+			var p = href.pathname.replace( /\/+$/, '' ) || '/';
+			if ( p === path || ( p !== '/' && path.indexOf( p + '/' ) === 0 ) ) {
+				a.setAttribute( 'aria-current', 'page' );
+				var li = a.closest( '.wp-block-navigation-item' );
+				if ( li ) { li.classList.add( 'current-menu-item' ); }
+			}
+		} );
+	}
+
 	function init() {
 		initScrollUI();
 		initMobileMenu();
 		initBackToTop();
+		initNavCurrent();
 		fixPrivacyLinks();
 		document.querySelectorAll( '.ncah-hero' ).forEach( function ( hero ) {
 			initHero( hero );
