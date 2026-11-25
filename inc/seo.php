@@ -10,11 +10,30 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+/** Hand-written meta descriptions by page slug (each under 158 characters). */
+function ncah_page_descriptions() {
+	return array(
+		'home'          => 'The Nigerian Canadian Association, Hamilton and Environs (NCAH) is a CRA-registered charity celebrating Nigerian culture and supporting our community.',
+		'about-us'      => 'Meet NCAH: our story, goals, executive team and the constitution and by-laws that guide the Nigerian Canadian Association in Hamilton and Environs.',
+		'membership'    => 'Join the Nigerian Canadian Association, Hamilton and Environs. Apply online and join the NCAH WhatsApp Community for events, programs and announcements.',
+		'event-gallery' => 'Photos and videos from NCAH galas, picnics, community events and Golden Eagles soccer, by year, from the Nigerian Canadian Association in Hamilton.',
+		'gallery'       => 'Photos and videos from NCAH galas, picnics, community events and Golden Eagles soccer, by year, from the Nigerian Canadian Association in Hamilton.',
+		'programs'      => 'NCAH programs for youth, sports and community, including the Golden Eagles of Hamilton soccer team, serving Hamilton and Environs.',
+		'contact-us'    => 'Contact the Nigerian Canadian Association, Hamilton and Environs by WhatsApp, phone or email, or visit us at Barton Street, Stoney Creek.',
+		'donate'        => 'Support NCAH, a CRA-registered charity, and help fund community programs, youth and sports in Hamilton and Environs.',
+		'privacy-policy' => 'How the Nigerian Canadian Association, Hamilton and Environs collects, uses and protects your personal information.',
+	);
+}
+
 /** Description for the current view: excerpt, else first words of content, else the site tagline. */
 function ncah_meta_description() {
 	if ( is_singular() ) {
 		$post = get_queried_object();
 		$text = has_excerpt( $post ) ? get_the_excerpt( $post ) : '';
+		if ( ! $text && $post instanceof WP_Post ) {
+			$map  = ncah_page_descriptions();
+			$text = $map[ $post->post_name ] ?? '';
+		}
 		if ( ! $text ) {
 			// First real paragraph (60+ characters) of the content, so banner lines and labels are skipped.
 			$content = (string) $post->post_content;
