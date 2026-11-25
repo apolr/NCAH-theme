@@ -138,3 +138,4 @@ add_filter( 'do_shortcode_tag', function ( $output, $tag ) {
 }, 20, 2 );
 
 require_once get_template_directory() . '/inc/member-form.php';
+require_once get_template_directory() . '/inc/videos.php';

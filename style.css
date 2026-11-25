@@ -763,3 +763,23 @@ p, li { text-wrap: pretty; }
   .ncah-foundations .wp-block-buttons { justify-content: flex-start; }
   .ncah-foundations .wp-block-button__link { min-height: 50px; }
 }
+
+/* Videos gallery */
+.ncah-videos__grid{list-style:none;margin:0;padding:0;display:grid;gap:1.25rem;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+.ncah-videos__grid li{margin:0}
+.ncah-video{all:unset;box-sizing:border-box;display:flex;flex-direction:column;gap:.5rem;width:100%;cursor:pointer;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08);transition:transform .2s,box-shadow .2s;height:100%}
+.ncah-video:hover{transform:translateY(-3px);box-shadow:0 8px 22px rgba(0,0,0,.14)}
+.ncah-video:focus-visible{outline:3px solid #008000;outline-offset:2px}
+.ncah-video__thumb{position:relative;display:block;aspect-ratio:16/9;background:#111;overflow:hidden}
+.ncah-video__thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.ncah-video__play{position:absolute;inset:0;margin:auto;width:56px;height:56px;border-radius:50%;background:#D40000;display:grid;place-items:center;box-shadow:0 4px 14px rgba(0,0,0,.35)}
+.ncah-video__play svg{width:26px;height:26px;fill:#fff;margin-left:3px}
+.ncah-video__title{padding:.2rem 1rem 0;font-weight:700;line-height:1.35;color:#1a1a1a}
+.ncah-video__date{padding:0 1rem 1rem;font-size:.85rem;color:#5b6b5b}
+.ncah-videos__more{text-align:center;margin:2rem 0 0}
+.ncah-video-dialog{border:0;padding:0;background:#000;border-radius:14px;width:min(960px,94vw);overflow:visible}
+.ncah-video-dialog::backdrop{background:rgba(0,0,0,.78)}
+.ncah-video-dialog__frame{aspect-ratio:16/9;width:100%}
+.ncah-video-dialog__frame iframe{width:100%;height:100%;border:0;border-radius:14px}
+.ncah-video-dialog__close{position:absolute;top:-14px;right:-14px;width:40px;height:40px;border-radius:50%;border:0;background:#fff;color:#111;font-size:26px;line-height:1;cursor:pointer;z-index:2;box-shadow:0 2px 8px rgba(0,0,0,.4)}
+@media(max-width:600px){.ncah-videos__grid{grid-template-columns:1fr}.ncah-video-dialog__close{top:-48px;right:0}}

@@ -17,11 +17,11 @@ a.append(band(split(U + '2023/12/About-the-Association.webp', 'Who we are', 'The
 a.append(band(split(U + '2023/12/The-Nigerian-Spirit-1.webp', 'Why we exist', 'Our Mission',
     'Our mission is to promote unity and provide a conducive environment for individuals with Nigerian heritage to thrive in the community.', True),
     'mist', 'ncah-about-mission'))
-goals = ['Enrich Canadian culture with Nigerian traditions.',
-         'Be a welcoming hub for diverse social interaction.',
-         'Connect children of Nigerian heritage, and others, to their cultural roots.',
-         'Provide essential support to community members in need.',
-         'Enhance the social and economic well-being of the community.']
+goals = ['Enrich Canadian culture with subtle infusions of Nigerian traditions.',
+         'Create a welcoming hub for diverse social interaction.',
+         'Connect children of Nigerian heritage (and others) to their cultural roots.',
+         'Provide essential support to members in need.',
+         'Enhance social and economic well-being for members and the community.']
 lst = ('<!-- wp:list {"ordered":true} -->\n<ol class="wp-block-list">' +
        ''.join(f'<!-- wp:list-item -->\n<li>{e(g)}</li>\n<!-- /wp:list-item -->' for g in goals) + '</ol>\n<!-- /wp:list -->')
 a.append(band(section_title('What we work toward', 'Our Goals') + '\n\n' + lst, 'ncah-green', 'ncah-green-band ncah-about-goals', '900px'))
@@ -54,7 +54,7 @@ m = [page_head('Membership', U + '2024/01/Google-Form-Header.webp')]
 what = ('Membership of the Nigerian Canadian Association, Hamilton and Environs (NCAH) is how you join our community. '
         'Members are invited into the NCAH WhatsApp Community, where announcements, events and programs are shared. '
         'Registration is voluntary and open to all peoples of Nigeria by birth, naturalization, marriage or heritage, and to others committed to the principles of the Association.')
-m.append(band(split(U + '2023/12/hi-res-be6cc83762096029bbf781b08a079cb8_crop_north-scaled.webp', 'What membership means', 'Join the NCAH community', what), None, 'ncah-member-intro'))
+m.append(band(split(U + '2023/12/hi-res-be6cc83762096029bbf781b08a079cb8_crop_north-scaled.webp', 'What membership means', 'Join the NCAH community', what, extra=para('Membership is open to people from other regions and backgrounds who are committed to abiding by the principles and the established goals of the Association. The primary geographic regions that are encompassed in the activities of the Association are the Hamilton-Wentworth region and the surroundings, which include Burlington, Oakville, Kitchener, Waterloo, Guelph, Grimsby and St. Catharines.')), None, 'ncah-member-intro'))
 def li(t): return f'<!-- wp:list-item -->\n<li>{e(t)}</li>\n<!-- /wp:list-item -->'
 steps = ['Complete the form below with your full name, a Canadian WhatsApp number, your address and the name of the person who referred you.',
          'An administrator verifies your address.',
@@ -75,7 +75,8 @@ q = ('<!-- wp:query {"query":{"perPage":12,"pages":0,"offset":0,"postType":"post
      '<!-- wp:query-pagination {"layout":{"type":"flex","justifyContent":"center"}} -->\n<!-- wp:query-pagination-previous /-->\n\n<!-- wp:query-pagination-numbers /-->\n\n<!-- wp:query-pagination-next /-->\n<!-- /wp:query-pagination -->'
      '</div>\n<!-- /wp:query -->')
 tabs = '<!-- wp:shortcode -->\n[ncah_year_tabs]\n<!-- /wp:shortcode -->'
-write('event-gallery.html', [page_head('Event Gallery', U + '2023/07/IMG-20230730-WA0012.webp'), band(tabs + '\n\n' + q, None, 'ncah-events-band')])
+write('event-gallery.html', [page_head('Event Gallery', U + '2023/07/IMG-20230730-WA0012.webp'), band(tabs + '\n\n' + q, None, 'ncah-events-band'),
+    band('<!-- wp:html -->\n<div id="videos"></div>\n<!-- /wp:html -->\n\n' + section_title('Watch', 'Videos') + '\n\n' + para('Recaps and highlights from our YouTube channel.', align='center') + '\n\n<!-- wp:shortcode -->\n[ncah_videos]\n<!-- /wp:shortcode -->', 'mist', 'ncah-videos-band')])
 
 # ---------- Contact Us ----------
 c = [page_head('Contact Us', U + '2024/01/contact-us.webp')]
