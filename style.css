@@ -621,3 +621,79 @@ p, li { text-wrap: pretty; }
   .ncah-menu-foot .ncah-menu-mail { min-height: 46px; }
 }
 @media (max-height: 700px) { .ncah-nav .is-menu-open .wp-block-navigation-item__content { min-height: 46px; } .ncah-menu-logo { padding-bottom: .5rem; } }
+
+/* ===== Inner pages: mobile-first components (About, Membership, Event Gallery, Programs, Contact) ===== */
+
+/* Shared: readable eyebrows, section rhythm, comfortable measure */
+.ncah-eyebrow, .ncah-eyebrow.wp-block-heading { font-size: max(.8125rem, .78rem); }
+.entry-content > .ncah-reveal p { overflow-wrap: break-word; }
+@media (max-width: 781px) {
+  .entry-content > .wp-block-group.alignfull.ncah-reveal { --ncah-section-y: clamp(2.5rem, 9vw, 3.5rem); }
+  .entry-content h2.wp-block-heading { line-height: 1.15; }
+  .entry-content .wp-block-buttons { justify-content: center; }
+  .entry-content .wp-block-button, .entry-content .wp-block-button__link { max-width: 100%; }
+  .entry-content .wp-block-buttons .wp-block-button__link { min-height: 50px; display: inline-flex; align-items: center; justify-content: center; }
+}
+
+/* About: executives become compact profile rows on phones */
+@media (max-width: 560px) {
+  .ncah-exec-grid.wp-block-group { gap: .9rem !important; }
+  .ncah-exec.wp-block-group { display: grid !important; grid-template-columns: 88px minmax(0, 1fr); column-gap: 1rem; align-items: center; text-align: left; padding: 1rem !important; border-radius: 14px !important; border-bottom-width: 4px; }
+  .ncah-exec .ncah-exec-photo { grid-row: 1 / span 3; grid-column: 1; margin: 0; }
+  .ncah-exec .ncah-exec-photo img { width: 88px; height: 88px; aspect-ratio: 1 / 1; border-radius: 50%; object-fit: cover; object-position: center 20%; border: 3px solid #e3efe3; }
+  .ncah-exec > h3 { grid-column: 2; margin: 0 0 .1rem; font-size: 1.15rem; line-height: 1.2; }
+  .ncah-exec > p { grid-column: 2; margin: 0; line-height: 1.35; }
+  .ncah-exec > p a { display: inline-flex; align-items: center; min-height: 44px; font-size: .9rem; }
+}
+@media (min-width: 561px) and (max-width: 900px) { .ncah-exec > p a { display: inline-flex; align-items: center; min-height: 44px; } }
+.ncah-exec > p a { display: inline-flex; align-items: center; min-height: 44px; }
+
+/* Membership: steps as numbered cards */
+.ncah-steps { list-style: none; counter-reset: ncah-step; padding: 0; display: grid; gap: .75rem; max-width: 720px; }
+.ncah-steps li { counter-increment: ncah-step; position: relative; background: #fff; border: 1px solid #dfe8df; border-radius: 14px; padding: 1rem 1rem 1rem 4rem; margin: 0; min-height: 3.5rem; display: flex; align-items: center; box-shadow: 0 10px 24px -20px rgba(0, 60, 0, .5); }
+.ncah-steps li::before { content: counter(ncah-step); position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); width: 2.2rem; height: 2.2rem; border-radius: 50%; background: var(--ncah-green); color: #fff; font-weight: 800; display: grid; place-items: center; }
+.ncah-steps li:last-child::before { background: var(--ncah-red); }
+
+/* Event Gallery: year chips, calmer cards */
+.ncah-year-tabs ul { flex-wrap: nowrap; justify-content: center; }
+.ncah-year-tabs a { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; padding: .55rem 1.35rem; transition: background-color .2s ease, color .2s ease; }
+@media (max-width: 600px) {
+  .ncah-year-tabs { margin-inline: -1rem; }
+  .ncah-year-tabs ul { justify-content: flex-start; overflow-x: auto; scroll-snap-type: x proximity; padding: .25rem 1rem .6rem; gap: .5rem; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .ncah-year-tabs ul::-webkit-scrollbar { display: none; }
+  .ncah-year-tabs li { flex: none; scroll-snap-align: center; }
+}
+.ncah-events .wp-block-post-template > li, .ncah-programs .wp-block-post-template > li { position: relative; border-radius: 16px; overflow: hidden; transition: transform .25s ease, box-shadow .25s ease; }
+.ncah-events .wp-block-post-featured-image img { border-radius: 0; }
+.ncah-events .wp-block-post-title { font-size: clamp(1.1rem, 1rem + .5vw, 1.35rem); line-height: 1.25; }
+.ncah-events .wp-block-post-title a, .ncah-programs .wp-block-post-title a { display: inline-block; padding-block: .15rem; }
+.ncah-events .wp-block-post-title a::after, .ncah-programs .wp-block-post-title a::after { content: ""; position: absolute; inset: 0; z-index: 1; }
+.ncah-events .wp-block-post-featured-image a { position: relative; z-index: 0; }
+@media (hover: hover) { .ncah-events .wp-block-post-template > li:hover, .ncah-programs .wp-block-post-template > li:hover { transform: translateY(-4px); box-shadow: 0 18px 36px -18px rgba(0, 0, 0, .3); } }
+@media (max-width: 900px) { .ncah-events .wp-block-post-template.is-layout-grid, .ncah-programs .wp-block-post-template.is-layout-grid { grid-template-columns: repeat(2, minmax(0, 1fr)) !important; gap: 1.1rem !important; } }
+@media (max-width: 600px) { .ncah-events .wp-block-post-template.is-layout-grid, .ncah-programs .wp-block-post-template.is-layout-grid { grid-template-columns: minmax(0, 1fr) !important; gap: 1.1rem !important; } }
+
+/* Programs: status chip and card body */
+.ncah-programs .wp-block-post-template > li { display: flex; flex-direction: column; gap: .35rem; }
+.ncah-programs .ncah-status { align-self: flex-start; font-size: .8125rem; font-weight: 700; padding: .25rem .75rem; }
+.ncah-programs .wp-block-post-excerpt { margin: 0; color: #3a4a3e; }
+.ncah-programs .wp-block-post-title { margin: .25rem 0 0; }
+
+/* Contact: info card as tappable rows, form tuned for touch */
+.ncah-infocard { border-radius: 16px; height: auto; }
+.ncah-infocard p { margin: 0; }
+.ncah-infocard h3 { margin: 0 0 .5rem; }
+.ncah-infocard h3:not(:first-child) { margin-top: 1.5rem; }
+.ncah-infocard p a[href^="tel:"], .ncah-infocard p a[href^="mailto:"] { display: inline-flex; align-items: center; min-height: 48px; font-weight: 700; font-size: 1.05rem; text-decoration: none; word-break: break-word; }
+.ncah-infocard p:last-child { display: flex; flex-wrap: wrap; gap: .6rem; font-size: 0; }
+.ncah-infocard p:last-child a { display: inline-flex; align-items: center; justify-content: center; min-height: 46px; padding: .4rem 1.1rem; border: 1px solid #cfe0cf; border-radius: 999px; font-size: .95rem; font-weight: 700; text-decoration: none; transition: background-color .2s ease, border-color .2s ease; }
+.ncah-infocard p:last-child a:hover { background: #eef6ee; border-color: var(--ncah-green); }
+.ncah-contact-form .wpforms-container .wpforms-field { padding: 0 0 1rem; }
+.ncah-contact-form .wpforms-container input[type=text], .ncah-contact-form .wpforms-container input[type=email], .ncah-contact-form .wpforms-container input[type=tel], .ncah-contact-form .wpforms-container textarea, .ncah-contact-form .wpforms-container select { font-size: 1rem !important; min-height: 48px; max-width: 100% !important; width: 100% !important; border-radius: 10px !important; box-sizing: border-box; padding: .65rem .85rem; }
+.ncah-contact-form .wpforms-container textarea { min-height: 150px; }
+.ncah-contact-form .wpforms-container input:focus, .ncah-contact-form .wpforms-container textarea:focus { border-color: var(--ncah-green) !important; box-shadow: 0 0 0 3px rgba(0, 128, 0, .22) !important; outline: none; }
+.ncah-contact-form .wpforms-submit { min-height: 52px; border-radius: 999px !important; padding: .9rem 2.2rem !important; }
+@media (max-width: 600px) { .ncah-contact-form .wpforms-submit { width: 100%; } .ncah-infocard { padding: 1.25rem; } }
+@media (max-width: 781px) { .ncah-contact-info .wp-block-columns { gap: 1.25rem; } }
+
+@media (prefers-reduced-motion: reduce) { .ncah-events .wp-block-post-template > li, .ncah-programs .wp-block-post-template > li { transition: none; transform: none !important; } }
