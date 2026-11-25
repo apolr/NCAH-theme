@@ -988,3 +988,15 @@ h3, h4 { font-weight: 600; line-height: 1.25; }
 @media (min-width: 560px) and (max-width: 781px) {
   .ncah-gallery .ncah-watch { grid-template-columns: repeat(2, 1fr) !important; }
 }
+
+/* Home membership: six brief perk cards */
+.ncah-perks { display: grid !important; grid-template-columns: 1fr; gap: .85rem; margin-top: 1.75rem; }
+@media (min-width: 560px) { .ncah-perks { grid-template-columns: repeat(2, 1fr); gap: 1rem; } }
+@media (min-width: 900px) { .ncah-perks { grid-template-columns: repeat(3, 1fr); gap: 1.25rem; } }
+.ncah-perk { position: relative; background: #fff; border-radius: 16px; padding: 1.1rem 1.25rem 1.2rem 4.25rem; box-shadow: 0 8px 24px rgba(0, 0, 0, .14); overflow: hidden; transition: transform .2s; }
+.ncah-perk::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 4px; background: #d42402; }
+.ncah-perk:hover { transform: translateY(-3px); }
+.ncah-perk .ncah-perk__n { position: absolute; left: 1.1rem; top: 1.1rem; margin: 0; width: 2.4rem; height: 2.4rem; border-radius: 50%; background: #e8f3e8; color: #008000; font-weight: 700; font-size: .9rem; display: grid; place-items: center; }
+.ncah-perk .ncah-perk__t { margin: .1rem 0 .25rem; font-size: 1.15rem; color: #008000 !important; }
+.ncah-perk .ncah-perk__d { margin: 0; font-size: .95rem; line-height: 1.45; color: #4a524a; }
+@media (min-width: 900px) { .ncah-perk { padding: 4.4rem 1.4rem 1.4rem; } .ncah-perk .ncah-perk__n { top: 1.2rem; left: 1.4rem; } }

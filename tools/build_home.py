@@ -50,24 +50,20 @@ tiles = columns([
 ], 'ncah-tiles')
 out.append('<!-- wp:group {"align":"full","layout":{"type":"default"}} -->\n<div class="wp-block-group alignfull">' + tiles + '</div>\n<!-- /wp:group -->')
 
-# 3. Membership: green band, text left, button right, four cards
-benefits = [('Networking Opportunities', 'Access to a network of professionals and community members for personal and professional growth.'),
-            ('Engagement', 'Participate in events, discussions, and activities promoting Nigerian culture and heritage.'),
-            ('Educational Resources', 'Access to workshops, virtual clinics, and resources aimed at personal and professional development.'),
-            ('Community Support', 'Receive support during challenging times, and contribute to the support of others within the community.'),
-            ('Information Sharing', 'Stay informed on community news, events, and other relevant updates through regular meetings and communications.'),
-            ('Leadership Development', 'Opportunities to take on leadership roles within the community, contributing to its growth and direction.'),
-            ('Discounts', 'Enjoy discounts on event tickets, hall rentals, and selected community businesses.'),
-            ('Representation', 'Have a voice in community matters and contribute to the collective decisions impacting the association.')]
-
-cards = [(U + '2023/12/binds-us-1.webp',) , (U + '2023/12/About-the-Association.webp',), (U + '2023/12/hi-res-be6cc83762096029bbf781b08a079cb8_crop_north-scaled.webp',), (U + '2023/07/IMG-20230730-WA0012.webp',)]
-def mcard(img, t, d):
-    return column('<!-- wp:group {"className":"ncah-mcard","layout":{"type":"default"}} -->\n<div class="wp-block-group ncah-mcard">'
-                  f'<!-- wp:image {{"sizeSlug":"large","linkDestination":"none"}} -->\n<figure class="wp-block-image size-large"><img src="{img}" alt=""/></figure>\n<!-- /wp:image -->\n\n'
-                  '<!-- wp:group {"className":"ncah-mbody","layout":{"type":"default"}} -->\n<div class="wp-block-group ncah-mbody">' + eyebrow(t) + '\n\n' + para(d) + '</div>\n<!-- /wp:group --></div>\n<!-- /wp:group -->')
-cards += [(U + '2023/12/settlement.webp',), (U + '2023/12/The-Nigerian-Spirit-1.webp',), (U + '2026/10/DSC_6472-scaled.webp',), (U + '2026/10/DSC_6368-scaled.webp',)]
-four = columns([mcard(cards[i][0], benefits[i][0], benefits[i][1]) for i in range(4)]) + '\n\n' + columns([mcard(cards[i][0], benefits[i][0], benefits[i][1]) for i in range(4, 8)])
-memtext = ('Registration is voluntary and open to all peoples of Nigeria by birth, naturalization, marriage or heritage, and to others committed to the principles of the Association.')
+# 3. Membership: green band, brief intro, six perk cards
+perks = [('Connect', 'Meet professionals and neighbours, and stay informed on community news.'),
+         ('Engage', 'Join events and activities that celebrate Nigerian culture.'),
+         ('Learn', 'Workshops, virtual clinics and resources for growth.'),
+         ('Support', 'Help in hard times, and a chance to help others.'),
+         ('Lead', 'Take on leadership roles and help shape our direction.'),
+         ('Have a voice', 'Have a say in decisions that shape the association.')]
+def perk(n, t, d):
+    return ('<!-- wp:group {"className":"ncah-perk","layout":{"type":"default"}} -->\n<div class="wp-block-group ncah-perk">'
+            f'<!-- wp:paragraph {{"className":"ncah-perk__n"}} -->\n<p class="ncah-perk__n">{n:02d}</p>\n<!-- /wp:paragraph -->\n\n'
+            + heading(t, 3, 'ncah-perk__t') + '\n\n' + para(d, 'ncah-perk__d') + '</div>\n<!-- /wp:group -->')
+four = ('<!-- wp:group {"className":"ncah-perks","layout":{"type":"default"}} -->\n<div class="wp-block-group ncah-perks">'
+        + '\n\n'.join(perk(i + 1, t, d) for i, (t, d) in enumerate(perks)) + '</div>\n<!-- /wp:group -->')
+memtext = 'Voluntary and open to all peoples of Nigeria by birth, naturalization, marriage or heritage, and to others who share our principles.'
 mem = (columns([column(heading('Become a Member', 2, '', None, 'x-large', 'white') + '\n\n' + para(memtext, color='white'), '70%'),
                 column(buttons([button('Register today', '/membership/', True)], center=False), '30%')]) + '\n\n' + four)
 out.append(band(mem, None, 'ncah-green-band ncah-membership'))
