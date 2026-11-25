@@ -132,8 +132,6 @@ write('donate.html', d)
 
 # ---------- Programs (one page, all programs as cards) ----------
 PROGS = [
-    dict(id='golden-eagles', title='Golden Eagles of Hamilton', img=U + '2026/10/DSC_7787.webp',
-         desc='Our community soccer team. Visit the Golden Eagles site for news, fixtures and the squad.', href='https://soccer.ncahamilton.ca/'),
     dict(id='family-fun-festival', title='Family Fun Festival', img=U + '2026/07/IMGL0574-scaled.webp',
          desc='A community celebration that promotes multicultural awareness and community integration.',
          more='A community celebration that promotes multicultural awareness and community integration. Browse photos from past festivals and picnics, or watch the highlights.',
@@ -146,6 +144,8 @@ PROGS = [
          desc='Food support and resource referrals for low-income individuals and families in Hamilton and surrounding areas.',
          more='Food support and resource referrals for low-income individuals and families in Hamilton and surrounding areas.',
          links=[('View event gallery', '/category/ethnic-food-bank/', True)]),
+    dict(id='golden-eagles', title='Golden Eagles of Hamilton', img=U + '2026/10/DSC_7787.webp',
+         desc='Our community soccer team. Visit the Golden Eagles site for news, fixtures and the squad.', href='https://soccer.ncahamilton.ca/'),
 ]
 def pcard(d):
     img = f'<span class="ncah-pcard__img"><img src="{d["img"]}" alt="" loading="lazy" decoding="async"></span>'
