@@ -80,17 +80,26 @@ write('event-gallery.html', [page_head('Event Gallery', U + '2023/07/IMG-2023073
 # ---------- Contact Us ----------
 c = [page_head('Contact Us', U + '2024/01/contact-us.webp')]
 c.append(band(section_title('Contact us', 'Get in touch') + '\n\n' +
-              para('Get in touch to learn more about our community, membership, and upcoming events.', align='center'), None, 'ncah-contact-intro', '800px'))
-info = (heading('Contact', 3, '', None, 'medium', 'ncah-green') + '\n\n' +
-        para('Phone: <a href="tel:+12892442568">+1 (289) 244-2568</a>', raw=True) + '\n\n' +
-        para('Email: <a href="mailto:info@ncahamilton.ca">info@ncahamilton.ca</a>', raw=True) + '\n\n' +
-        heading('Follow us', 3, '', None, 'medium', 'ncah-green') + '\n\n' +
+              para('Chat with us instantly on WhatsApp, or reach us by phone or email.', align='center'), None, 'ncah-contact-intro', '800px'))
+ICON_WA = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>'
+ICON_TEL = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>'
+ICON_MAIL = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>'
+def action(cls, href, icon, title, sub, ext=False):
+    t = ' target="_blank" rel="noopener"' if ext else ''
+    return (f'<a class="ncah-action {cls}" href="{href}"{t}><span class="ncah-action__icon">{icon}</span>'
+            f'<span class="ncah-action__text"><strong>{title}</strong><small>{sub}</small></span>'
+            '<span class="ncah-action__arrow" aria-hidden="true">&rarr;</span></a>')
+actions = ('<!-- wp:html -->\n<div class="ncah-contact-actions">'
+           + action('ncah-action--wa', 'https://wa.me/12892442568?text=Hello%20NCAH%2C%20I%20would%20like%20to%20get%20in%20touch.', ICON_WA, 'Chat on WhatsApp', 'Start an instant chat with the NCAH team', True)
+           + action('ncah-action--tel', 'tel:+12892442568', ICON_TEL, 'Give us a call', '+1 (289) 244-2568')
+           + action('ncah-action--mail', 'mailto:info@ncahamilton.ca', ICON_MAIL, 'Send us an Email', 'info@ncahamilton.ca')
+           + '</div>\n<!-- /wp:html -->')
+c.append(band(actions, None, 'ncah-contact-actions-band', '900px'))
+info = (heading('Follow us', 3, '', None, 'medium', 'ncah-green') + '\n\n' +
         para('<a href="https://www.facebook.com/NCAHamilton">Facebook</a> · <a href="https://www.instagram.com/ncahamilton/">Instagram</a> · <a href="https://www.youtube.com/@NCAHamilton">YouTube</a>', raw=True))
 mapb = ('<!-- wp:html -->\n<iframe title="Map of Hamilton, Ontario" src="https://maps.google.com/maps?q=Hamilton%2C%20Ontario&amp;output=embed" '
         'width="100%" height="320" style="border:0;border-radius:12px" loading="lazy"></iframe>\n<!-- /wp:html -->')
 c.append(band(columns([column('<!-- wp:group {"className":"ncah-infocard","layout":{"type":"default"}} -->\n<div class="wp-block-group ncah-infocard">' + info + '</div>\n<!-- /wp:group -->', '40%'), column(heading('Find Us', 3, '', None, 'medium', 'ncah-green') + '\n\n' + mapb, '60%')]), 'mist', 'ncah-contact-info'))
-formph = '<!-- wp:shortcode -->\n[wpforms id="810"]\n<!-- /wp:shortcode -->'
-c.append(band(section_title('Write to us', 'Send us a message') + '\n\n' + formph, None, 'ncah-contact-form', '800px'))
 write('contact-us.html', c)
 
 # ---------- Donate ----------

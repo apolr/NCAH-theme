@@ -697,3 +697,23 @@ p, li { text-wrap: pretty; }
 @media (max-width: 781px) { .ncah-contact-info .wp-block-columns { gap: 1.25rem; } }
 
 @media (prefers-reduced-motion: reduce) { .ncah-events .wp-block-post-template > li, .ncah-programs .wp-block-post-template > li { transition: none; transform: none !important; } }
+
+/* Contact: instant-contact action cards */
+.ncah-contact-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.ncah-action { display: flex; align-items: center; gap: 1rem; padding: 1.1rem 1.25rem; min-height: 84px; background: #fff; border: 1px solid #dfe8df; border-radius: 18px; text-decoration: none !important; color: #14201a !important; box-shadow: 0 14px 30px -22px rgba(0, 60, 0, .55); transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease; box-sizing: border-box; }
+.ncah-action__icon { flex: none; width: 56px; height: 56px; border-radius: 50%; display: grid; place-items: center; background: #e8f3e8; color: var(--ncah-green); }
+.ncah-action__icon svg { width: 28px; height: 28px; fill: currentColor; }
+.ncah-action__text { display: flex; flex-direction: column; gap: .15rem; min-width: 0; flex: 1; }
+.ncah-action__text strong { font-size: 1.15rem; line-height: 1.2; }
+.ncah-action__text small { font-size: .95rem; color: #4a5a4e; overflow-wrap: anywhere; }
+.ncah-action__arrow { flex: none; font-size: 1.4rem; color: var(--ncah-green); transition: transform .2s ease; }
+.ncah-action--wa { grid-column: 1 / -1; background: #128c3e; border-color: #128c3e; color: #fff !important; min-height: 104px; box-shadow: 0 18px 34px -18px rgba(18, 140, 62, .8); }
+.ncah-action--wa .ncah-action__icon { background: #fff; color: #128c3e; width: 64px; height: 64px; }
+.ncah-action--wa .ncah-action__icon svg { width: 32px; height: 32px; }
+.ncah-action--wa .ncah-action__text strong { font-size: 1.4rem; }
+.ncah-action--wa .ncah-action__text small, .ncah-action--wa .ncah-action__arrow { color: #fff; }
+.ncah-action--mail .ncah-action__icon { background: #fbe9e9; color: var(--ncah-red); }
+.ncah-action:focus-visible { outline: 3px solid var(--ncah-green); outline-offset: 3px; }
+@media (hover: hover) { .ncah-action:hover { transform: translateY(-3px); box-shadow: 0 20px 36px -18px rgba(0, 60, 0, .5); border-color: var(--ncah-green); } .ncah-action:hover .ncah-action__arrow { transform: translateX(4px); } .ncah-action--wa:hover { border-color: #0e6f31; background: #0e6f31; } }
+@media (max-width: 640px) { .ncah-contact-actions { grid-template-columns: 1fr; gap: .8rem; } .ncah-action--wa { min-height: 96px; } .ncah-action__text strong { font-size: 1.1rem; } .ncah-action--wa .ncah-action__text strong { font-size: 1.25rem; } }
+@media (prefers-reduced-motion: reduce) { .ncah-action, .ncah-action__arrow { transition: none; transform: none !important; } }
