@@ -124,9 +124,8 @@ add_shortcode( 'ncah_member_form', function () {
 			<div class="ncah-form-row">
 				<p><label for="ncah-city">City</label><input id="ncah-city" name="city" type="text" autocomplete="address-level2" required></p>
 				<p><label for="ncah-prov">Province</label>
-					<select id="ncah-prov" name="province" autocomplete="address-level1" required>
-						<?php foreach ( ncah_member_provinces() as $code => $name ) : ?><option value="<?php echo esc_attr( $code ); ?>"><?php echo esc_html( $name ); ?></option><?php endforeach; ?>
-					</select></p>
+					<input id="ncah-prov" type="text" value="Ontario" readonly aria-readonly="true" autocomplete="address-level1">
+					<input type="hidden" name="province" value="ON"></p>
 				<p><label for="ncah-postal">Postal code</label><input id="ncah-postal" name="postal" type="text" autocomplete="postal-code" placeholder="L8P 1A1" required></p>
 			</div>
 			<small>An administrator verifies every address before the invitation is sent.</small>
@@ -181,7 +180,7 @@ function ncah_member_handle() {
 		ncah_member_redirect( 'wait' );
 	}
 	$g = function ( $k ) { return sanitize_text_field( wp_unslash( $_POST[ $k ] ?? '' ) ); };
-	$name = $g( 'full_name' ); $street = $g( 'street' ); $city = $g( 'city' ); $prov = $g( 'province' ); $postal = strtoupper( $g( 'postal' ) ); $ref = $g( 'referral' );
+	$name = $g( 'full_name' ); $street = $g( 'street' ); $city = $g( 'city' ); $prov = 'ON'; $postal = strtoupper( $g( 'postal' ) ); $ref = $g( 'referral' );
 	if ( '' === $name || '' === $street || '' === $city || empty( $_POST['consent'] ) || ! isset( ncah_member_provinces()[ $prov ] ) ) {
 		ncah_member_redirect( 'missing' );
 	}

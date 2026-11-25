@@ -510,3 +510,6 @@ p, li { text-wrap: pretty; }
 .ncah-member-how h3 { text-align: center; margin-top: 2rem; }
 .ncah-member-how > p { max-width: 720px; margin-inline: auto; }
 @media (max-width: 600px) { .ncah-form .ncah-form-row { grid-template-columns: 1fr; gap: 0; } }
+
+/* Province is fixed to Ontario */
+.ncah-form input[readonly]{background:#f1f5f1;color:#1f2a1f;cursor:not-allowed}
