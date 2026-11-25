@@ -1084,3 +1084,4 @@ h3, h4 { font-weight: 600; line-height: 1.25; }
 .ncah-goal:hover { background: rgba(255, 255, 255, .13); }
 .ncah-goal .ncah-goal__ico { color: #006b00; box-shadow: 0 0 0 5px rgba(255, 255, 255, .14); }
 .ncah-goal .ncah-goal__num { -webkit-text-stroke-color: rgba(255, 255, 255, .3); }
+.ncah-goals > .ncah-goal { margin: 0 !important; }
