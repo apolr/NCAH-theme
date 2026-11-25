@@ -783,3 +783,11 @@ p, li { text-wrap: pretty; }
 .ncah-video-dialog__frame iframe{width:100%;height:100%;border:0;border-radius:14px}
 .ncah-video-dialog__close{position:absolute;top:-14px;right:-14px;width:40px;height:40px;border-radius:50%;border:0;background:#fff;color:#111;font-size:26px;line-height:1;cursor:pointer;z-index:2;box-shadow:0 2px 8px rgba(0,0,0,.4)}
 @media(max-width:600px){.ncah-videos__grid{grid-template-columns:1fr}.ncah-video-dialog__close{top:-48px;right:0}}
+
+/* Gala flyer: landscape on wide screens, the portrait flyer as supplied on phones and small tablets */
+.ncah-gala-flyer--tall{display:none}
+@media (max-width:781px){
+	.ncah-gala-slide .ncah-gala-flyer--wide{display:none}
+	.ncah-gala-slide .ncah-gala-flyer--tall{display:block;flex:0 0 auto !important;width:auto;max-width:min(100%,480px);margin-inline:auto}
+	.ncah-gala-slide .ncah-gala-flyer--tall img{width:100%;height:auto !important;aspect-ratio:4/5;object-fit:contain}
+}

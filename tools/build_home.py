@@ -26,11 +26,14 @@ hero_cover = cover(U + '2026/10/DSC_6472-scaled.webp', hero_inner, 'ncah-hero1 a
 
 # 1a. Annual Gala flyer slide: first slide, image only plus one ticket button. Removed automatically after Dec 5, 2026 (see functions.php).
 FLYER = U + '2026/10/IMG_3257-2048x1026.webp'
+FLYER_TALL = U + '2026/11/gala-flyer-portrait.webp'
 gala_alt = '5V5, Honouring Our Root, Annual Gala. December 5, 2026, red carpet 4 PM, party 5 PM, The Grand Olympia, Stoney Creek.'
 gala_slide = ('<!-- wp:group {"className":"ncah-hero__slide ncah-gala-slide","layout":{"type":"flex","orientation":"vertical","justifyContent":"center"}} -->\n'
               '<div class="wp-block-group ncah-hero__slide ncah-gala-slide">'
-              '<!-- wp:image {"sizeSlug":"full","className":"ncah-gala-flyer"} -->\n'
-              f'<figure class="wp-block-image size-full ncah-gala-flyer"><img src="{FLYER}" alt="{gala_alt}"/></figure>\n<!-- /wp:image -->\n\n'
+              '<!-- wp:image {"sizeSlug":"full","className":"ncah-gala-flyer ncah-gala-flyer--wide"} -->\n'
+              f'<figure class="wp-block-image size-full ncah-gala-flyer ncah-gala-flyer--wide"><img src="{FLYER}" alt="{gala_alt}"/></figure>\n<!-- /wp:image -->\n\n'
+              '<!-- wp:image {"sizeSlug":"full","className":"ncah-gala-flyer ncah-gala-flyer--tall"} -->\n'
+              f'<figure class="wp-block-image size-full ncah-gala-flyer ncah-gala-flyer--tall"><img src="{FLYER_TALL}" alt="{gala_alt}" width="1280" height="1600"/></figure>\n<!-- /wp:image -->\n\n'
               + buttons([button('Get your tickets', 'https://www.zeffy.com/en-CA/ticketing/annual-gala-8173', True)], cls='ncah-gala-cta') +
               '</div>\n<!-- /wp:group -->')
 out.append('<!-- wp:group {"align":"full","className":"ncah-hero ncah-home-hero","layout":{"type":"default"}} -->\n<div class="wp-block-group alignfull ncah-hero ncah-home-hero">\n' + gala_slide + '\n\n' + hero_cover + '</div>\n<!-- /wp:group -->')
