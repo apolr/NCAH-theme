@@ -72,26 +72,26 @@ mem = (columns([column(heading('Become a Member', 2, '', None, 'x-large', 'white
                 column(buttons([button('Register today', '/membership/', True)], center=False), '30%')]) + '\n\n' + four)
 out.append(band(mem, None, 'ncah-green-band ncah-membership'))
 
-# 4. Upcoming event: the Gala
-gala_text = (eyebrow('Saturday, December 5, 2026, 5 PM') + '\n\n' + heading('2026 NCAH Annual Gala: 5v5!', 3, '', None, None) + '\n\n' +
-             para('Grand Olympia, Stoney Creek') + '\n\n' + buttons([button('Get your tickets', 'https://www.zeffy.com/en-CA/ticketing/annual-gala-8173', True)], center=False))
-gala = ('<!-- wp:group {"className":"ncah-event-card","layout":{"type":"default"}} -->\n<div class="wp-block-group ncah-event-card">' +
-        columns([column(f'<!-- wp:image {{"sizeSlug":"large","linkDestination":"none"}} -->\n<figure class="wp-block-image size-large"><img src="{U}2026/10/IMG_3257-scaled.webp" alt="2026 NCAH Annual Gala"/></figure>\n<!-- /wp:image -->', '45%'),
-                 column('<!-- wp:group {"style":{"spacing":{"padding":{"top":"2.5rem","bottom":"2.5rem","left":"2.5rem","right":"2.5rem"}}},"layout":{"type":"default"}} -->\n<div class="wp-block-group" style="padding:2.5rem">' + gala_text + '</div>\n<!-- /wp:group -->', '55%')]) +
-        '</div>\n<!-- /wp:group -->')
-out.append(band(heading('Upcoming events', 2, '', 'center', 'x-large') + '\n\n' + gala, None, 'ncah-upcoming', '1100px'))
+# 4. Upcoming event: the Gala (creative split, same system as About us)
+gala = assoc_section(U + '2026/10/IMG_3257-scaled.webp', '2026 NCAH Annual Gala', 'Upcoming event', '2026 NCAH Annual Gala: 5v5!',
+    'Join us for the 2026 NCAH Annual Gala at Grand Olympia, Stoney Creek.',
+    ['Saturday, December 5, 2026', '5 PM', 'Theme: 5v5!'], 'Dec', '5',
+    extra=buttons([button('Get your tickets', 'https://www.zeffy.com/en-CA/ticketing/annual-gala-8173', True)], center=False), img_cls='ncah-assoc__img--poster')
+out.append(band(gala, None, 'ncah-upcoming'))
 
-# 5. Green Spirit Initiative and video
-gsi = (eyebrow('Green Spirit Initiative') + '\n\n' + heading('The charitable arm of the NCAH', 2, '', None, 'x-large') + '\n\n' +
-       para('The Green Spirit Initiative (GSI) is the charitable arm of the NCAH, dedicated to empowering visible minorities and newcomers through community-focused support. Inspired by the Nigerian flag, the initiative focuses on improving social determinants of health to build a more inclusive and prosperous society.'))
-out.append(band(columns([column(gsi, '55%'), column(youtube('https://youtu.be/sX1wZYc0SRE', '25th Annual Community BBQ'), '45%')]), 'mist', 'ncah-gsi'))
+# 5. Green Spirit Initiative and video (video right on desktop)
+gsi = assoc_section(None, None, 'Green Spirit Initiative', 'The charitable arm of the NCAH',
+    'The Green Spirit Initiative (GSI) is the charitable arm of the NCAH, dedicated to empowering visible minorities and newcomers through community-focused support. Inspired by the Nigerian flag, the initiative focuses on improving social determinants of health to build a more inclusive and prosperous society.',
+    ['Empowering newcomers', 'Visible minorities', 'Social determinants of health'], 'Charity', 'GSI', rev=True,
+    media_html=youtube('https://youtu.be/sX1wZYc0SRE', '25th Annual Community BBQ'))
+out.append(band(gsi, 'mist', 'ncah-gsi'))
 
 # 5b. Golden Eagles
-ge = (eyebrow('Youth and Sports Directorate', 'ncah-red') + '\n\n' + heading('Golden Eagles, Winners 2026 Hamilton AFCON', 2, '', None, 'x-large') + '\n\n' +
-      para('Our community soccer team plays under the Youth and Sports Directorate. Visit the Golden Eagles site for news, fixtures and the squad.') + '\n\n' +
-      buttons([button('Discover Golden Eagles', 'https://soccer.ncahamilton.ca/', True)], center=False))
-geimg = f'<!-- wp:image {{"sizeSlug":"large","className":"ncah-split-img"}} -->\n<figure class="wp-block-image size-large ncah-split-img"><img src="{U}2026/10/DSC_7787.webp" alt="Golden Eagles of Hamilton"/></figure>\n<!-- /wp:image -->'
-out.append(band(columns([column(geimg, '50%'), column(ge, '50%')], 'ncah-split'), None, 'ncah-golden'))
+ge = assoc_section(U + '2026/10/DSC_7787.webp', 'Golden Eagles of Hamilton', 'Youth and Sports Directorate', 'Golden Eagles, Winners 2026 Hamilton AFCON',
+    'Our community soccer team plays under the Youth and Sports Directorate. Visit the Golden Eagles site for news, fixtures and the squad.',
+    ['News', 'Fixtures', 'The squad'], 'Winners', '2026',
+    extra=buttons([button('Discover Golden Eagles', 'https://soccer.ncahamilton.ca/', True)], center=False))
+out.append(band(ge, None, 'ncah-golden'))
 
 # 6. News: latest posts
 q = ('<!-- wp:query {"query":{"perPage":6,"pages":0,"offset":0,"postType":"post","order":"desc","orderBy":"date","inherit":false},"className":"ncah-events"} -->\n'

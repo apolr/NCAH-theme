@@ -117,14 +117,15 @@ def write(name, blocks):
     print('wrote', p.name, len('\n\n'.join(blocks)), 'bytes')
 
 
-def assoc_section(img, alt, eyebrow, title, text, chips, badge_top='Since', badge_big='1999', rev=False):
+def assoc_section(img, alt, eyebrow, title, text, chips, badge_top='Since', badge_big='1999', rev=False, media_html=None, extra='', img_cls=''):
     """Creative split: rounded photo with an offset tint panel and a red badge, text with topic chips."""
-    im = (f'<!-- wp:image {{"sizeSlug":"large","className":"ncah-assoc__img"}} -->\n<figure class="wp-block-image size-large ncah-assoc__img"><img src="{img}" alt="{html.escape(alt)}"/></figure>\n<!-- /wp:image -->')
-    badge = para(f'{e(badge_top)}<strong>{e(badge_big)}</strong>', 'ncah-assoc__badge', None, None, None, raw=True)
+    ic = 'ncah-assoc__img' + ((' ' + img_cls) if img_cls else '')
+    im = media_html or (f'<!-- wp:image {{"sizeSlug":"large","className":"{ic}"}} -->\n<figure class="wp-block-image size-large {ic}"><img src="{img}" alt="{html.escape(alt)}"/></figure>\n<!-- /wp:image -->')
+    badge = para(f'{e(badge_top)}<strong>{e(badge_big)}</strong>', 'ncah-assoc__badge', None, None, None, raw=True) if badge_big else ''
     media = ('<!-- wp:group {"className":"ncah-assoc__media","layout":{"type":"default"}} -->\n<div class="wp-block-group ncah-assoc__media">' + im + '\n\n' + badge + '</div>\n<!-- /wp:group -->')
     chip_html = '\n\n'.join(para(c, 'ncah-assoc__chip') for c in chips)
     chips_g = ('<!-- wp:group {"className":"ncah-assoc__chips","layout":{"type":"default"}} -->\n<div class="wp-block-group ncah-assoc__chips">' + chip_html + '</div>\n<!-- /wp:group -->')
-    tx = (para(eyebrow, 'ncah-eyebrow', None, None, 'ncah-red') + '\n\n' + heading(title, 2, '', None, 'x-large') + '\n\n' + para(text) + '\n\n' + chips_g)
+    tx = (para(eyebrow, 'ncah-eyebrow', None, None, 'ncah-red') + '\n\n' + heading(title, 2, '', None, 'x-large') + '\n\n' + para(text) + '\n\n' + chips_g + (('\n\n' + extra) if extra else ''))
     cols = [column(media, '50%'), column(tx, '50%')]
     ac = 'ncah-assoc' + (' ncah-assoc--rev' if rev else '')
     return (f'<!-- wp:columns {{"verticalAlignment":"center","className":"{ac}"}} -->\n<div class="wp-block-columns are-vertically-aligned-center {ac}">'

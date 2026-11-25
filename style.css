@@ -925,3 +925,11 @@ h3, h4 { font-weight: 600; line-height: 1.25; }
   .ncah-assoc--rev .ncah-assoc__badge { left: auto; right: -1rem; }
 }
 .ncah-about-mission .ncah-assoc__chip { background: #fff; }
+
+/* Home: Gala poster uncropped, video media, section tints */
+.ncah-assoc__img--poster img { aspect-ratio: auto; object-fit: contain; background: #fff; }
+.ncah-assoc__media .wp-block-embed { position: relative; z-index: 1; margin: 0; }
+.ncah-assoc__media .wp-block-embed__wrapper { border-radius: 20px; overflow: hidden; box-shadow: 0 14px 34px rgba(16, 21, 16, .18); }
+.ncah-assoc__media .wp-block-embed figcaption { margin: .75rem 0 0; font-size: .85rem; color: #4a524a; text-align: left; }
+.ncah-gsi .ncah-assoc__chip { background: #fff; }
+.ncah-assoc .wp-block-buttons { margin-top: 1.5rem; }
