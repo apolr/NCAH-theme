@@ -1119,3 +1119,9 @@ h3, h4 { font-weight: 600; line-height: 1.25; }
 .ncah-top .ncah-top__label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 .ncah-top svg { width: 26px; height: 26px; }
 @media (max-width: 600px) { .ncah-top { min-width: 0; width: 48px; height: 48px; } }
+
+/* Section blend: the colour of the band above melts into the top of this one (set by motion.js) */
+.ncah-blend { position: relative; isolation: isolate; }
+.ncah-blend::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: clamp(48px, 10vw, 120px); z-index: -1; pointer-events: none;
+  background: radial-gradient(140% 150% at 50% -20%, var(--ncah-prev) 0 38%, var(--ncah-prev0) 100%), linear-gradient(to bottom, var(--ncah-prev), var(--ncah-prev0)); }
+@media print { .ncah-blend::before { display: none; } }
