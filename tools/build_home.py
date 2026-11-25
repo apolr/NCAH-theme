@@ -90,8 +90,8 @@ gsi = assoc_section(U + '2026/09/Back-to-School-Supplies-9.webp', 'Volunteers sm
 out.append(band(gsi, 'mist', 'ncah-gsi'))
 
 # 5b. Golden Eagles
-ge = assoc_section(U + '2026/10/DSC_7787.webp', 'Golden Eagles of Hamilton', 'Youth and Sports Directorate', 'Golden Eagles, Winners 2026 Hamilton AFCON',
-    'Our community soccer team plays under the Youth and Sports Directorate. Visit the Golden Eagles site for news, fixtures and the squad.',
+ge = assoc_section(U + '2026/10/DSC_7787.webp', 'Golden Eagles of Hamilton', 'Community soccer', 'Golden Eagles, Winners 2026 Hamilton AFCON',
+    'Our community soccer team. Visit the Golden Eagles site for news, fixtures and the squad.',
     ['News', 'Fixtures', 'The squad'], 'Winners', '2026',
     extra=buttons([button('Discover Golden Eagles', 'https://soccer.ncahamilton.ca/', True)], center=False))
 out.append(band(ge, None, 'ncah-golden'))

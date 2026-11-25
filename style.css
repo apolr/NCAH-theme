@@ -1085,3 +1085,29 @@ h3, h4 { font-weight: 600; line-height: 1.25; }
 .ncah-goal .ncah-goal__ico { color: #006b00; box-shadow: 0 0 0 5px rgba(255, 255, 255, .14); }
 .ncah-goal .ncah-goal__num { -webkit-text-stroke-color: rgba(255, 255, 255, .3); }
 .ncah-goals > .ncah-goal { margin: 0 !important; }
+
+/* ===== Programs: one page of cards, modal for details ===== */
+.ncah-pgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1.5rem; margin-top: 2rem; }
+.ncah-pcard { all: unset; box-sizing: border-box; cursor: pointer; display: flex; flex-direction: column; background: #fff; border-radius: 18px; overflow: hidden; box-shadow: 0 8px 26px rgba(16, 21, 16, .1); border-bottom: 4px solid #d42402; transition: transform .25s, box-shadow .25s; height: 100%; }
+.ncah-pcard:hover { transform: translateY(-5px); box-shadow: 0 18px 36px -14px rgba(16, 21, 16, .35); }
+.ncah-pcard:focus-visible { outline: 3px solid #008000; outline-offset: 3px; }
+.ncah-pcard__img { display: block; aspect-ratio: 4/3; overflow: hidden; background: #e8f3e8; }
+.ncah-pcard__img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s; }
+.ncah-pcard:hover .ncah-pcard__img img { transform: scale(1.06); }
+.ncah-pcard__body { display: flex; flex-direction: column; gap: .5rem; padding: 1.15rem 1.25rem 1.3rem; flex: 1; }
+.ncah-pcard__t { font-size: 1.2rem; line-height: 1.25; color: #101510; }
+.ncah-pcard__d { font-size: .97rem; line-height: 1.5; color: #4a524a; }
+.ncah-pcard__cta { margin-top: auto; padding-top: .35rem; font-weight: 700; color: #008000; }
+.ncah-pmodal { border: 0; padding: 0; border-radius: 20px; width: min(560px, 94vw); max-height: 90vh; overflow: auto; background: #fff; color: #101510; box-shadow: 0 30px 80px rgba(0, 0, 0, .5); }
+.ncah-pmodal::backdrop { background: rgba(0, 20, 0, .72); }
+.ncah-pmodal__img { width: 100%; aspect-ratio: 16/9; object-fit: cover; display: block; }
+.ncah-pmodal__body { padding: 1.4rem 1.5rem 1.6rem; }
+.ncah-pmodal__body h3 { margin: 0 0 .6rem; font-size: 1.5rem; color: #008000; }
+.ncah-pmodal__body p { margin: 0 0 1.2rem; line-height: 1.6; color: #2c332c; }
+.ncah-pmodal__links { display: flex; flex-wrap: wrap; gap: .6rem; }
+.ncah-pmodal__btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: .6rem 1.1rem; border-radius: 999px; background: #d42402; color: #fff !important; font-weight: 700; text-decoration: none !important; border: 2px solid #d42402; }
+.ncah-pmodal__btn.is-alt { background: #fff; color: #008000 !important; border-color: #008000; }
+.ncah-pmodal__btn:hover { filter: brightness(.92); }
+.ncah-pmodal__x { position: absolute; top: .7rem; right: .7rem; width: 40px; height: 40px; border-radius: 50%; border: 0; background: #fff; color: #111; font-size: 26px; line-height: 1; cursor: pointer; box-shadow: 0 2px 8px rgba(0, 0, 0, .4); z-index: 2; }
+@media (max-width: 600px) { .ncah-pgrid { grid-template-columns: 1fr; gap: 1.1rem; } .ncah-pmodal { width: 94vw; } .ncah-pmodal__links a { flex: 1 1 100%; } }
+@media (prefers-reduced-motion: reduce) { .ncah-pcard, .ncah-pcard__img img { transition: none; } .ncah-pcard:hover, .ncah-pcard:hover .ncah-pcard__img img { transform: none; } }

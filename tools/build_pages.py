@@ -130,18 +130,43 @@ d = [page_head('Donate', U + '2024/01/contact-us.webp'),
           '<!-- wp:shortcode -->\n[zeffy-donate fullwidth=true height=1100]\n<!-- /wp:shortcode -->', None, 'ncah-donate', '800px')]
 write('donate.html', d)
 
-# ---------- Programs (one section per directorate) ----------
-def dsec(slug, title, blurb):
-    q = ('<!-- wp:query {"query":{"perPage":12,"postType":"program","order":"asc","orderBy":"title","inherit":false},"className":"ncah-programs ncah-dir-' + slug + '"} -->\n'
-         '<div class="wp-block-query ncah-programs ncah-dir-' + slug + '"><!-- wp:post-template {"layout":{"type":"grid","columnCount":3}} -->\n'
-         '<!-- wp:shortcode -->\n[ncah_status]\n<!-- /wp:shortcode -->\n\n'
-         '<!-- wp:post-title {"level":3,"isLink":true,"fontSize":"medium"} /-->\n\n<!-- wp:post-excerpt {"excerptLength":24} /-->\n'
-         '<!-- /wp:post-template -->\n\n<!-- wp:query-no-results -->\n' + para('Programs for this directorate will be listed here soon.') + '\n<!-- /wp:query-no-results --></div>\n<!-- /wp:query -->')
-    return band(section_title('Directorate', title) + '\n\n' + para(blurb, align='center') + '\n\n' + q, None, 'ncah-directorate-' + slug)
+# ---------- Programs (one page, all programs as cards) ----------
+PROGS = [
+    dict(id='golden-eagles', title='Golden Eagles of Hamilton', img=U + '2026/10/DSC_7787.webp',
+         desc='Our community soccer team. Visit the Golden Eagles site for news, fixtures and the squad.', href='https://soccer.ncahamilton.ca/'),
+    dict(id='family-fun-festival', title='Family Fun Festival', img=U + '2026/07/IMGL0574-scaled.webp',
+         desc='A community celebration that promotes multicultural awareness and community integration.',
+         more='A community celebration that promotes multicultural awareness and community integration. Browse photos from past festivals and picnics, or watch the highlights.',
+         links=[('View event gallery', '/category/summer-picnic/', True), ('Watch videos', '/gallery/', False)]),
+    dict(id='annual-gala', title='Annual Gala', img=U + '2025/02/MACL3788-scaled.webp',
+         desc='Our annual gala brings the community together and raises funds for our charitable programs.',
+         more='Our annual gala brings the community together and raises funds for our charitable programs. The 2026 theme is 5v5, on December 5, 2026 at Grand Olympia, Stoney Creek.',
+         links=[('View event gallery', '/category/end-of-the-year-gala/', True), ('Watch videos', '/gallery/', False), ('Get your tickets', 'https://www.zeffy.com/en-CA/ticketing/annual-gala-8173', False)]),
+    dict(id='ethnic-food-bank', title='Ethnic Food Bank', img=U + '2026/10/Ethnic-Food-Bank-6.webp',
+         desc='Food support and resource referrals for low-income individuals and families in Hamilton and surrounding areas.',
+         more='Food support and resource referrals for low-income individuals and families in Hamilton and surrounding areas.',
+         links=[('View event gallery', '/category/ethnic-food-bank/', True)]),
+]
+def pcard(d):
+    img = f'<span class="ncah-pcard__img"><img src="{d["img"]}" alt="" loading="lazy" decoding="async"></span>'
+    if 'href' in d:
+        return (f'<a class="ncah-pcard" href="{d["href"]}" target="_blank" rel="noopener">{img}<span class="ncah-pcard__body"><strong class="ncah-pcard__t">{e(d["title"])}</strong>'
+                f'<span class="ncah-pcard__d">{e(d["desc"])}</span><span class="ncah-pcard__cta">Visit website <span aria-hidden="true">&#8599;</span></span></span></a>')
+    return (f'<button type="button" class="ncah-pcard" data-modal="pm-{d["id"]}" aria-haspopup="dialog">{img}<span class="ncah-pcard__body"><strong class="ncah-pcard__t">{e(d["title"])}</strong>'
+            f'<span class="ncah-pcard__d">{e(d["desc"])}</span><span class="ncah-pcard__cta">Learn more <span aria-hidden="true">&rarr;</span></span></span></button>')
+def pmodal(d):
+    if 'href' in d: return ''
+    links = ''.join(f'<a class="ncah-pmodal__btn{"" if first else " is-alt"}" href="{h}"{" target=_blank rel=noopener" if h.startswith("http") else ""}>{e(t)}</a>' for (t, h, first) in d['links'])
+    return (f'<dialog class="ncah-pmodal" id="pm-{d["id"]}" aria-labelledby="pm-{d["id"]}-t"><button type="button" class="ncah-pmodal__x" aria-label="Close">&times;</button>'
+            f'<img class="ncah-pmodal__img" src="{d["img"]}" alt="" loading="lazy"><div class="ncah-pmodal__body"><h3 id="pm-{d["id"]}-t">{e(d["title"])}</h3><p>{e(d["more"])}</p>'
+            f'<div class="ncah-pmodal__links">{links}</div></div></dialog>')
+PJS = ("<script>(function(){var r=document.currentScript.parentNode;"
+       "r.querySelectorAll('[data-modal]').forEach(function(b){b.addEventListener('click',function(){var d=document.getElementById(b.getAttribute('data-modal'));if(d&&d.showModal){d.showModal();d.dataset.from=b.getAttribute('data-modal');}});});"
+       "r.querySelectorAll('dialog.ncah-pmodal').forEach(function(d){d.addEventListener('click',function(ev){if(ev.target===d||ev.target.classList.contains('ncah-pmodal__x')){d.close();}});"
+       "d.addEventListener('close',function(){var b=r.querySelector('[data-modal=\"'+d.id+'\"]');if(b){b.focus();}});});})();</script>")
+pg = '<div class="ncah-programs-page"><div class="ncah-pgrid">' + ''.join(pcard(d) for d in PROGS) + '</div>' + ''.join(pmodal(d) for d in PROGS) + PJS + '</div>'
 write('programs.html', [page_head('Programs', U + '2023/07/IMG-20230730-WA0012.webp'),
-    band(para('Our programs are organised by directorate. Each program shows whether it is running now or proposed for a future year.', align='center'), 'mist', 'ncah-programs-intro', '800px'),
-    dsec('youth-sports', 'Youth and Sports Directorate', 'Youth development programs that use culturally relevant physical activity and mentorship, including the Golden Eagles of Hamilton.'),
-    dsec('social', 'Social Directorate', 'Community celebrations and food support that build connection, multicultural awareness and integration in Hamilton and surrounding areas.')])
+    band(section_title('What we do', 'Our programs') + '\n\n' + para('Explore what NCAH runs for the community. Select a program to learn more.', align='center') + '\n\n<!-- wp:html -->\n' + pg + '\n<!-- /wp:html -->', None, 'ncah-programs-band', '1200px')])
 
 # ---------- Gallery (all videos) ----------
 from build_home_vids import VIDS
