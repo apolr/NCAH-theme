@@ -12,7 +12,7 @@
 				{
 					"slug": "black",
 					"name": "Black",
-					"color": "#111111"
+					"color": "#101510"
 				},
 				{
 					"slug": "white",
@@ -22,7 +22,7 @@
 				{
 					"slug": "grey",
 					"name": "Grey",
-					"color": "#54595F"
+					"color": "#4a524a"
 				},
 				{
 					"slug": "ncah-green",
@@ -32,22 +32,32 @@
 				{
 					"slug": "ncah-green-dark",
 					"name": "NCAH Green dark",
-					"color": "#005A00"
+					"color": "#005f00"
 				},
 				{
 					"slug": "ncah-red",
 					"name": "NCAH Red",
-					"color": "#D40000"
+					"color": "#d42402"
 				},
 				{
 					"slug": "ncah-red-dark",
 					"name": "NCAH Red dark",
-					"color": "#A60000"
+					"color": "#a81b00"
 				},
 				{
 					"slug": "mist",
 					"name": "Alternate section background",
-					"color": "#F4F5F6"
+					"color": "#f3f7f3"
+				},
+				{
+					"slug": "ncah-green-tint",
+					"name": "NCAH Green tint",
+					"color": "#e8f3e8"
+				},
+				{
+					"slug": "ncah-red-tint",
+					"name": "NCAH Red tint",
+					"color": "#fdeeea"
 				}
 			]
 		},
@@ -55,99 +65,79 @@
 			"fluid": true,
 			"fontFamilies": [
 				{
-					"slug": "heading",
-					"name": "Heading (Cormorant Garamond)",
-					"fontFamily": "\"Cormorant Garamond\", Georgia, serif",
+					"slug": "body",
+					"name": "Fira Sans",
+					"fontFamily": "\"Fira Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif",
 					"fontFace": [
 						{
-							"fontFamily": "Cormorant Garamond",
+							"fontFamily": "Fira Sans",
+							"fontStyle": "normal",
+							"fontWeight": "400",
+							"fontDisplay": "swap",
+							"src": [
+								"file:./assets/fonts/fira-sans-latin-400-normal.woff2"
+							]
+						},
+						{
+							"fontFamily": "Fira Sans",
 							"fontStyle": "normal",
 							"fontWeight": "500",
 							"fontDisplay": "swap",
 							"src": [
-								"file:./assets/fonts/cormorant-garamond-latin-500-normal.woff2"
+								"file:./assets/fonts/fira-sans-latin-500-normal.woff2"
 							]
 						},
 						{
-							"fontFamily": "Cormorant Garamond",
+							"fontFamily": "Fira Sans",
 							"fontStyle": "normal",
 							"fontWeight": "600",
 							"fontDisplay": "swap",
 							"src": [
-								"file:./assets/fonts/cormorant-garamond-latin-600-normal.woff2"
+								"file:./assets/fonts/fira-sans-latin-600-normal.woff2"
+							]
+						},
+						{
+							"fontFamily": "Fira Sans",
+							"fontStyle": "normal",
+							"fontWeight": "700",
+							"fontDisplay": "swap",
+							"src": [
+								"file:./assets/fonts/fira-sans-latin-700-normal.woff2"
 							]
 						}
 					]
 				},
 				{
-					"slug": "body",
-					"name": "Body (Nunito Sans)",
-					"fontFamily": "\"Nunito Sans\", \"Helvetica Neue\", Arial, sans-serif",
-					"fontFace": [
-						{
-							"fontFamily": "Nunito Sans",
-							"fontStyle": "normal",
-							"fontWeight": "300",
-							"fontDisplay": "swap",
-							"src": [
-								"file:./assets/fonts/nunito-sans-latin-300-normal.woff2"
-							]
-						},
-						{
-							"fontFamily": "Nunito Sans",
-							"fontStyle": "normal",
-							"fontWeight": "400",
-							"fontDisplay": "swap",
-							"src": [
-								"file:./assets/fonts/nunito-sans-latin-400-normal.woff2"
-							]
-						},
-						{
-							"fontFamily": "Nunito Sans",
-							"fontStyle": "normal",
-							"fontWeight": "600",
-							"fontDisplay": "swap",
-							"src": [
-								"file:./assets/fonts/nunito-sans-latin-600-normal.woff2"
-							]
-						},
-						{
-							"fontFamily": "Nunito Sans",
-							"fontStyle": "normal",
-							"fontWeight": "800",
-							"fontDisplay": "swap",
-							"src": [
-								"file:./assets/fonts/nunito-sans-latin-800-normal.woff2"
-							]
-						}
-					]
+					"slug": "heading",
+					"name": "Fira Sans (headings)",
+					"fontFamily": "\"Fira Sans\", system-ui, -apple-system, \"Segoe UI\", sans-serif"
 				}
 			],
 			"fontSizes": [
 				{
 					"slug": "small",
 					"name": "Small",
-					"size": "0.9rem"
+					"size": "0.875rem"
 				},
 				{
 					"slug": "medium",
-					"name": "Medium",
-					"size": "1.125rem"
+					"name": "Body",
+					"size": "1rem"
 				},
 				{
 					"slug": "large",
-					"name": "Large",
-					"size": "clamp(1.5rem, 1.2rem + 1vw, 2rem)"
+					"name": "Heading 2",
+					"size": "clamp(1.5rem, 1.25rem + 0.9vw, 1.75rem)"
 				},
 				{
 					"slug": "x-large",
-					"name": "Extra large",
-					"size": "clamp(2.25rem, 1.6rem + 2vw, 3.5rem)"
+					"name": "Heading 1",
+					"size": "clamp(1.875rem, 1.5rem + 1.4vw, 2.5rem)"
 				},
 				{
 					"slug": "hero",
-					"name": "Hero",
-					"size": "clamp(2.75rem, 1.6rem + 4.2vw, 4.5rem)"
+					"name": "Display",
+					"size": "clamp(2.25rem, 1.5rem + 3vw, 3.5rem)"
 				}
 			]
 		},
@@ -196,15 +186,15 @@
 		"typography": {
 			"fontFamily": "var(--wp--preset--font-family--body)",
 			"fontSize": "var(--wp--preset--font-size--medium)",
-			"lineHeight": "1.7",
+			"lineHeight": "1.5",
 			"fontWeight": "400"
 		},
 		"elements": {
 			"heading": {
 				"typography": {
 					"fontFamily": "var(--wp--preset--font-family--heading)",
-					"lineHeight": "1.1",
-					"fontWeight": "500"
+					"lineHeight": "1.2",
+					"fontWeight": "600"
 				}
 			},
 			"link": {
@@ -213,7 +203,7 @@
 				},
 				":hover": {
 					"color": {
-						"text": "var(--wp--preset--color--ncah-red)"
+						"text": "var(--wp--preset--color--ncah-green-dark)"
 					}
 				}
 			},
@@ -223,21 +213,21 @@
 					"text": "var(--wp--preset--color--white)"
 				},
 				"border": {
-					"radius": "0px"
+					"radius": "8px"
 				},
 				"typography": {
 					"fontFamily": "var(--wp--preset--font-family--body)",
 					"fontWeight": "600",
-					"fontSize": "0.78rem",
-					"textTransform": "uppercase",
-					"letterSpacing": "0.12em"
+					"fontSize": "0.9375rem",
+					"textTransform": "none",
+					"letterSpacing": "0"
 				},
 				"spacing": {
 					"padding": {
-						"top": "0.85em",
-						"bottom": "0.85em",
-						"left": "1.8em",
-						"right": "1.8em"
+						"top": "0.7em",
+						"bottom": "0.7em",
+						"left": "1.4em",
+						"right": "1.4em"
 					}
 				}
 			}
