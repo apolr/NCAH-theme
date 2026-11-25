@@ -89,17 +89,26 @@ def action(cls, href, icon, title, sub, ext=False):
     return (f'<a class="ncah-action {cls}" href="{href}"{t}><span class="ncah-action__icon">{icon}</span>'
             f'<span class="ncah-action__text"><strong>{title}</strong><small>{sub}</small></span>'
             '<span class="ncah-action__arrow" aria-hidden="true">&rarr;</span></a>')
-actions = ('<!-- wp:html -->\n<div class="ncah-contact-actions">'
-           + action('ncah-action--wa', 'https://wa.me/12892442568?text=Hello%20NCAH%2C%20I%20would%20like%20to%20get%20in%20touch.', ICON_WA, 'Chat on WhatsApp', 'Start an instant chat with the NCAH team', True)
-           + action('ncah-action--tel', 'tel:+12892442568', ICON_TEL, 'Give us a call', '+1 (289) 244-2568')
-           + action('ncah-action--mail', 'mailto:info@ncahamilton.ca', ICON_MAIL, 'Send us an Email', 'info@ncahamilton.ca')
-           + '</div>\n<!-- /wp:html -->')
-c.append(band(actions, None, 'ncah-contact-actions-band', '900px'))
-info = (heading('Follow us', 3, '', None, 'medium', 'ncah-green') + '\n\n' +
-        para('<a href="https://www.facebook.com/NCAHamilton">Facebook</a> · <a href="https://www.instagram.com/ncahamilton/">Instagram</a> · <a href="https://www.youtube.com/@NCAHamilton">YouTube</a>', raw=True))
-mapb = ('<!-- wp:html -->\n<iframe title="Map of Hamilton, Ontario" src="https://maps.google.com/maps?q=Hamilton%2C%20Ontario&amp;output=embed" '
-        'width="100%" height="320" style="border:0;border-radius:12px" loading="lazy"></iframe>\n<!-- /wp:html -->')
-c.append(band(columns([column('<!-- wp:group {"className":"ncah-infocard","layout":{"type":"default"}} -->\n<div class="wp-block-group ncah-infocard">' + info + '</div>\n<!-- /wp:group -->', '40%'), column(heading('Find Us', 3, '', None, 'medium', 'ncah-green') + '\n\n' + mapb, '60%')]), 'mist', 'ncah-contact-info'))
+ICON_PIN = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>'
+ADDR = 'Suite 124 4-168 Barton Street, Stoney Creek ON L8E 4V6'
+ADDR_Q = 'Suite%20124%204-168%20Barton%20Street%2C%20Stoney%20Creek%20ON%20L8E%204V6'
+card = ('<div class="ncah-contact-card"><p class="ncah-eyebrow">Reach us</p><h3 class="ncah-contact-card__title">Talk to the NCAH team</h3>'
+        '<div class="ncah-contact-actions">'
+        + action('ncah-action--wa', 'https://wa.me/12892442568?text=Hello%20NCAH%2C%20I%20would%20like%20to%20get%20in%20touch.', ICON_WA, 'Chat on WhatsApp', 'Start an instant chat with the NCAH team', True)
+        + action('ncah-action--tel', 'tel:+12892442568', ICON_TEL, 'Give us a call', '+1 (289) 244-2568')
+        + action('ncah-action--mail', 'mailto:info@ncahamilton.ca', ICON_MAIL, 'Send us an Email', 'info@ncahamilton.ca')
+        + f'<a class="ncah-action ncah-action--pin" href="https://www.google.com/maps/search/?api=1&amp;query={ADDR_Q}" target="_blank" rel="noopener"><span class="ncah-action__icon">{ICON_PIN}</span>'
+        f'<span class="ncah-action__text"><strong>Visit us</strong><small>{ADDR}</small></span><span class="ncah-action__arrow" aria-hidden="true">&rarr;</span></a>'
+        '</div>'
+        '<div class="ncah-contact-social"><p class="ncah-contact-social__label">Follow us</p><div class="ncah-contact-social__links">'
+        '<a href="https://www.facebook.com/NCAHamilton" target="_blank" rel="noopener">Facebook</a>'
+        '<a href="https://www.instagram.com/ncahamilton/" target="_blank" rel="noopener">Instagram</a>'
+        '<a href="https://www.youtube.com/@NCAHamilton" target="_blank" rel="noopener">YouTube</a></div></div></div>')
+mapb = (f'<div class="ncah-contact-map"><iframe title="Map showing the NCAH office at {ADDR}" src="https://maps.google.com/maps?q={ADDR_Q}&amp;z=16&amp;output=embed" '
+        'loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>'
+        f'<div class="ncah-contact-map__bar"><span class="ncah-contact-map__addr">{ICON_PIN}<span>{ADDR}</span></span>'
+        f'<a class="ncah-contact-map__btn" href="https://www.google.com/maps/dir/?api=1&amp;destination={ADDR_Q}" target="_blank" rel="noopener">Get directions</a></div></div>')
+c.append(band('<!-- wp:html -->\n<div class="ncah-contact-grid">' + card + mapb + '</div>\n<!-- /wp:html -->', 'mist', 'ncah-contact-info', '1200px'))
 write('contact-us.html', c)
 
 # ---------- Donate ----------
