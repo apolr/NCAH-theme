@@ -279,43 +279,10 @@
 	}
 
 	// Section blend: each band fades in from the colour of the band above it, so the seam flows instead of cutting.
-	function initBlend() {
-		var content = document.querySelector( '.wp-block-post-content' );
-		if ( ! content ) { return; }
-		function toRgb( el ) {
-			var c = window.getComputedStyle( el ).backgroundColor, m = c.match( /rgba?\(([^)]+)\)/ );
-			if ( ! m ) { return [ 255, 255, 255 ]; }
-			var p = m[1].split( ',' ).map( parseFloat );
-			if ( p.length > 3 && p[3] === 0 ) { return [ 255, 255, 255 ]; }
-			return [ p[0], p[1], p[2] ];
-		}
-		function skip( prev ) {
-			var cs = window.getComputedStyle( prev );
-			return prev.classList.contains( 'wp-block-cover' ) || prev.classList.contains( 'ncah-hero' ) || cs.backgroundImage !== 'none' ||
-				( cs.backgroundColor === 'rgba(0, 0, 0, 0)' && prev.querySelector( ':scope > .wp-block-cover, :scope > .ncah-tiles, .ncah-tile' ) );
-		}
-		function apply( el, prev ) {
-			if ( ! prev || skip( prev ) ) { return; }
-			var a = toRgb( prev ), b = toRgb( el );
-			if ( a[0] === b[0] && a[1] === b[1] && a[2] === b[2] ) { return; }
-			el.style.setProperty( '--ncah-self', 'rgb(' + b.join( ',' ) + ')' );
-			el.style.setProperty( '--ncah-line', ( 0.299 * b[0] + 0.587 * b[1] + 0.114 * b[2] ) < 110 ? '#d42402' : '#008000' );
-			el.classList.add( 'ncah-edge' );
-		}
-		var kids = Array.prototype.slice.call( content.children ).filter( function ( k ) { return k.classList.contains( 'alignfull' ); } );
-		kids.forEach( function ( el, i ) {
-			if ( el.classList.contains( 'wp-block-cover' ) || el.classList.contains( 'ncah-hero' ) || el.querySelector( ':scope > .wp-block-cover, :scope > .ncah-tiles' ) ) { return; }
-			apply( el, kids[ i - 1 ] );
-		} );
-		var footer = document.querySelector( '.ncah-footer' ), last = kids[ kids.length - 1 ];
-		if ( footer && last ) { apply( footer, last ); }
-	}
-
 	function init() {
 		initScrollUI();
 		initMobileMenu();
 		initBackToTop();
-		initBlend();
 		fixPrivacyLinks();
 		document.querySelectorAll( '.ncah-hero' ).forEach( function ( hero ) {
 			initHero( hero );
