@@ -68,7 +68,7 @@ def mcard(img, t, d):
 cards += [(U + '2023/12/settlement.webp',), (U + '2023/12/The-Nigerian-Spirit-1.webp',), (U + '2026/10/DSC_6472-scaled.webp',), (U + '2026/10/DSC_6368-scaled.webp',)]
 four = columns([mcard(cards[i][0], benefits[i][0], benefits[i][1]) for i in range(4)]) + '\n\n' + columns([mcard(cards[i][0], benefits[i][0], benefits[i][1]) for i in range(4, 8)])
 memtext = ('Registration is voluntary and open to all peoples of Nigeria by birth, naturalization, marriage or heritage, and to others committed to the principles of the Association.')
-mem = (columns([column(heading('Become a Registered Donor', 2, '', None, 'x-large', 'white') + '\n\n' + para(memtext, color='white'), '70%'),
+mem = (columns([column(heading('Become a Member', 2, '', None, 'x-large', 'white') + '\n\n' + para(memtext, color='white'), '70%'),
                 column(buttons([button('Register today', '/membership/', True)], center=False), '30%')]) + '\n\n' + four)
 out.append(band(mem, None, 'ncah-green-band ncah-membership'))
 
