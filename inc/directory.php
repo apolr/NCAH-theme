@@ -201,6 +201,11 @@ add_action( 'add_meta_boxes', function () {
 		foreach ( array( 'address' => 'Address', 'contact_person' => 'Contact person', 'phone' => 'Phone', 'whatsapp' => 'WhatsApp number', 'email' => 'Email', 'website' => 'Website' ) as $k => $label ) {
 			echo '<tr><th><label for="' . esc_attr( $k ) . '">' . esc_html( $label ) . '</label></th><td><input type="text" class="large-text" id="' . esc_attr( $k ) . '" name="' . esc_attr( $k ) . '" value="' . esc_attr( (string) get_post_meta( $post->ID, $k, true ) ) . '"></td></tr>';
 		}
+		foreach ( array( 'logo_id' => 'Business logo', 'flyer_id' => 'Flyer' ) as $k => $label ) {
+			$aid = (int) get_post_meta( $post->ID, $k, true );
+			$url = $aid ? wp_get_attachment_url( $aid ) : '';
+			echo '<tr><th>' . esc_html( $label ) . '</th><td>' . ( $url ? '<a href="' . esc_url( $url ) . '" target="_blank" rel="noopener">' . ( 'logo_id' === $k ? '<img src="' . esc_url( wp_get_attachment_image_url( $aid, 'thumbnail' ) ?: $url ) . '" alt="" style="max-height:80px;display:block;margin-bottom:.4rem">' : '' ) . 'View file</a>' : 'None uploaded' ) . '</td></tr>';
+		}
 		$consent = get_post_meta( $post->ID, 'consent', true );
 		if ( $consent ) {
 			echo '<tr><th>Consent to public listing</th><td>' . esc_html( $consent ) . '</td></tr>';
@@ -229,6 +234,42 @@ add_action( 'save_post_ncah_business', function ( $id ) {
 } );
 
 /* ---------------------------------------------------------------- Public list */
+
+function ncah_dir_upload_rules() {
+	return array(
+		'logo'  => array( 'max' => 2 * MB_IN_BYTES, 'mimes' => array( 'jpg|jpeg|jpe' => 'image/jpeg', 'png' => 'image/png', 'webp' => 'image/webp' ), 'label' => 'JPG, PNG or WebP, up to 2 MB' ),
+		'flyer' => array( 'max' => 5 * MB_IN_BYTES, 'mimes' => array( 'jpg|jpeg|jpe' => 'image/jpeg', 'png' => 'image/png', 'webp' => 'image/webp', 'pdf' => 'application/pdf' ), 'label' => 'JPG, PNG, WebP or PDF, up to 5 MB' ),
+	);
+}
+
+/** Returns '' when the field is empty or valid, otherwise an error code. */
+function ncah_dir_check_upload( $field ) {
+	$f = $_FILES[ $field ] ?? null;
+	if ( ! $f || UPLOAD_ERR_NO_FILE === (int) $f['error'] ) {
+		return '';
+	}
+	$rule = ncah_dir_upload_rules()[ $field ];
+	if ( UPLOAD_ERR_OK !== (int) $f['error'] || $f['size'] > $rule['max'] || ! is_uploaded_file( $f['tmp_name'] ) ) {
+		return 'filesize';
+	}
+	$ck = wp_check_filetype_and_ext( $f['tmp_name'], $f['name'], $rule['mimes'] );
+	return ( $ck['ext'] && $ck['type'] && in_array( $ck['type'], $rule['mimes'], true ) ) ? '' : 'filetype';
+}
+
+function ncah_dir_save_upload( $field, $post_id ) {
+	if ( '' !== ncah_dir_check_upload( $field ) || empty( $_FILES[ $field ]['name'] ) ) {
+		return 0;
+	}
+	require_once ABSPATH . 'wp-admin/includes/file.php';
+	require_once ABSPATH . 'wp-admin/includes/media.php';
+	require_once ABSPATH . 'wp-admin/includes/image.php';
+	$mimes = ncah_dir_upload_rules()[ $field ]['mimes'];
+	$cb    = function () use ( $mimes ) { return $mimes; };
+	add_filter( 'upload_mimes', $cb );
+	$att = media_handle_upload( $field, $post_id, array( 'post_title' => get_the_title( $post_id ) . ( 'logo' === $field ? ' logo' : ' flyer' ) ) );
+	remove_filter( 'upload_mimes', $cb );
+	return is_wp_error( $att ) ? 0 : (int) $att;
+}
 
 function ncah_dir_wa_link( $raw ) {
 	$d = preg_replace( '/\D+/', '', (string) $raw );
@@ -264,6 +305,10 @@ add_shortcode( 'ncah_business_directory', function () {
 		if ( $cat ) {
 			$cards .= '<span class="ncah-biz__cat">' . esc_html( $cat ) . '</span>';
 		}
+		$logo_id = (int) $m( 'logo_id' );
+		if ( $logo_id && wp_get_attachment_image_url( $logo_id, 'medium' ) ) {
+			$cards .= '<img class="ncah-biz__logo" src="' . esc_url( wp_get_attachment_image_url( $logo_id, 'medium' ) ) . '" alt="' . esc_attr( $p->post_title . ' logo' ) . '" loading="lazy">';
+		}
 		$cards .= '<h3>' . esc_html( $p->post_title ) . '</h3>';
 		$cards .= '<p class="ncah-biz__desc">' . esc_html( $m( 'description' ) ) . '</p><ul class="ncah-biz__meta">';
 		if ( $m( 'address' ) ) {
@@ -281,6 +326,10 @@ add_shortcode( 'ncah_business_directory', function () {
 		$cards .= '</ul><p class="ncah-biz__links">';
 		if ( $wa ) {
 			$cards .= '<a class="ncah-biz__btn" href="' . esc_url( $wa ) . '" target="_blank" rel="noopener">WhatsApp</a>';
+		}
+		$flyer_url = (int) $m( 'flyer_id' ) ? wp_get_attachment_url( (int) $m( 'flyer_id' ) ) : '';
+		if ( $flyer_url ) {
+			$cards .= '<a class="ncah-biz__btn ncah-biz__btn--ghost" href="' . esc_url( $flyer_url ) . '" target="_blank" rel="noopener">Flyer</a>';
 		}
 		if ( $web ) {
 			$cards .= '<a class="ncah-biz__btn ncah-biz__btn--ghost" href="' . esc_url( $web ) . '" target="_blank" rel="noopener">Website</a>';
@@ -333,6 +382,8 @@ add_shortcode( 'ncah_business_form', function () {
 		'wa'      => 'Please enter the WhatsApp number as a Canadian number, for example 289 244 2568, or leave it empty.',
 		'email'   => 'Please enter a valid email address.',
 		'postal'  => 'Please enter a valid Canadian postal code, for example L8P 1A1.',
+		'filesize' => 'A file could not be uploaded. The logo can be up to 2 MB and the flyer up to 5 MB.',
+		'filetype' => 'Please upload the logo as a JPG, PNG or WebP image, and the flyer as a JPG, PNG, WebP or PDF file.',
 		'missing' => 'Please complete all required fields.',
 		'spam'    => 'We could not submit your request. Please try again.',
 		'wait'    => 'Too many requests from this connection. Please try again later.',
@@ -342,7 +393,7 @@ add_shortcode( 'ncah_business_form', function () {
 	$join  = home_url( '/membership/#join' );
 	ob_start();
 	?>
-	<form class="ncah-form ncah-bizform" method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" novalidate>
+	<form class="ncah-form ncah-bizform" method="post" enctype="multipart/form-data" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" novalidate>
 		<?php if ( $msg ) : ?>
 			<div class="ncah-form-note ncah-form-note--err" role="alert"><?php echo esc_html( $msg ); ?>
 			<?php if ( 'member' === $status ) : ?> <a href="<?php echo esc_url( $join ); ?>">Register as a member</a><?php endif; ?></div>
@@ -411,7 +462,15 @@ add_shortcode( 'ncah_business_form', function () {
 			<p><label for="biz-web">Website <span class="ncah-opt">(optional)</span></label>
 				<input id="biz-web" name="website" type="url" inputmode="url" placeholder="https://"></p>
 
-			<p class="ncah-check"><label><input type="checkbox" name="consent" value="yes" required> I agree that NCAH may store these details and show the business name, description, address, contact person, phone, email and WhatsApp number publicly in the directory once approved, as described in the <a href="<?php echo esc_url( home_url( '/privacy-policy/' ) ); ?>">Privacy Policy</a>. <span aria-hidden="true">*</span></label></p>
+			<p><label for="biz-logo">Business logo <span class="ncah-opt">(optional)</span></label>
+				<input id="biz-logo" name="logo" type="file" accept="image/jpeg,image/png,image/webp">
+				<small>JPG, PNG or WebP, up to 2 MB.</small></p>
+
+			<p><label for="biz-flyer">Business flyer <span class="ncah-opt">(optional)</span></label>
+				<input id="biz-flyer" name="flyer" type="file" accept="image/jpeg,image/png,image/webp,application/pdf">
+				<small>JPG, PNG, WebP or PDF, up to 5 MB.</small></p>
+
+			<p class="ncah-check"><label><input type="checkbox" name="consent" value="yes" required> I agree that NCAH may store these details and show the business name, description, address, contact person, phone, email, WhatsApp number, logo and flyer publicly in the directory once approved, as described in the <a href="<?php echo esc_url( home_url( '/privacy-policy/' ) ); ?>">Privacy Policy</a>. <span aria-hidden="true">*</span></label></p>
 
 			<p class="ncah-biz-note"><small>Every request is checked by an administrator against the member list before it is listed.</small></p>
 			<p><button type="submit" class="wp-block-button__link wp-element-button has-white-color has-ncah-red-background-color has-text-color has-background">Request a listing</button></p>
@@ -507,6 +566,12 @@ function ncah_dir_handle() {
 	if ( ncah_dir_is_blacklisted( $name, $email ) ) {
 		ncah_dir_redirect( 'spam' );
 	}
+	foreach ( array( 'logo', 'flyer' ) as $field ) {
+		$bad = ncah_dir_check_upload( $field );
+		if ( $bad ) {
+			ncah_dir_redirect( $bad );
+		}
+	}
 	set_transient( $ip, $hit + 1, HOUR_IN_SECONDS );
 	$id = wp_insert_post( array( 'post_type' => 'ncah_business', 'post_status' => 'publish', 'post_title' => $name ) );
 	if ( ! $id || is_wp_error( $id ) ) {
@@ -516,6 +581,12 @@ function ncah_dir_handle() {
 	$address = $street . ', ' . $city . ', ' . $prov . ' ' . $postal;
 	foreach ( array( 'reg_status' => $reg, 'description' => $desc, 'address' => $address, 'contact_person' => $person, 'phone' => $phone, 'whatsapp' => $wa, 'email' => $email, 'website' => $web, 'directory_status' => 'pending', 'member_claimed' => 'yes', 'consent' => 'yes ' . gmdate( 'Y-m-d H:i' ) . ' UTC' ) as $k => $v ) {
 		update_post_meta( $id, $k, $v );
+	}
+	foreach ( array( 'logo' => 'logo_id', 'flyer' => 'flyer_id' ) as $field => $meta ) {
+		$att = ncah_dir_save_upload( $field, $id );
+		if ( $att ) {
+			update_post_meta( $id, $meta, $att );
+		}
 	}
 	$to   = get_option( 'ncah_member_notify', 'info@ncahamilton.ca' );
 	$body = "New business directory request\n\nBusiness: $name\nRegistration: " . ncah_dir_reg_options()[ $reg ] . "\nContact: $person\nPhone: $phone\nWhatsApp: $wa\nEmail: $email\nAddress: $address\n\nVerify that the contact is a registered member, then approve or reject:\n" . admin_url( 'edit.php?post_type=ncah_business&dir_status=pending' );
