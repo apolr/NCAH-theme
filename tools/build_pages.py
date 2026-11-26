@@ -86,7 +86,7 @@ q = ('<!-- wp:query {"query":{"perPage":12,"pages":0,"offset":0,"postType":"post
      '<!-- wp:query-pagination {"layout":{"type":"flex","justifyContent":"center"}} -->\n<!-- wp:query-pagination-previous /-->\n\n<!-- wp:query-pagination-numbers /-->\n\n<!-- wp:query-pagination-next /-->\n<!-- /wp:query-pagination -->'
      '</div>\n<!-- /wp:query -->')
 tabs = '<!-- wp:shortcode -->\n[ncah_year_tabs]\n<!-- /wp:shortcode -->'
-write('event-gallery.html', [page_head('Event Gallery', U + '2023/07/IMG-20230730-WA0012.webp'), band(tabs + '\n\n' + q, None, 'ncah-events-band'),
+write('event-gallery.html', [page_head('Event Gallery', U + '2026/11/event-gallery-header.webp', focus_y=0.22), band(tabs + '\n\n' + q, None, 'ncah-events-band'),
     band('<!-- wp:html -->\n<div id="videos"></div>\n<!-- /wp:html -->\n\n' + section_title('Watch', 'Videos') + '\n\n' + para('Recaps and highlights from our YouTube channel.', align='center') + '\n\n<!-- wp:shortcode -->\n[ncah_videos]\n<!-- /wp:shortcode -->', 'mist', 'ncah-videos-band')])
 
 # ---------- Contact Us ----------
