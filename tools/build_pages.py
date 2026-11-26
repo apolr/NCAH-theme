@@ -121,10 +121,8 @@ c.append(band('<!-- wp:html -->\n<div class="ncah-contact-grid">' + card + mapb 
 write('contact-us.html', c)
 
 # ---------- Donate ----------
-d = [page_head('Donate', U + '2024/01/contact-us.webp'),
-     band(section_title('Give', 'Support NCAH') + '\n\n' +
-          para('Your gift supports our community programs and the Youth and Sports Directorate. Donations are made securely through Zeffy. Official donation receipts are issued by NCAH for eligible gifts, in line with our bylaws and Canada Revenue Agency rules. Questions about receipts? Email info@ncahamilton.ca.') + '\n\n' +
-          '<!-- wp:shortcode -->\n[zeffy-donate fullwidth=true height=1100]\n<!-- /wp:shortcode -->', None, 'ncah-donate', '800px')]
+d = [page_head('Donate', U + '2024/01/contact-us.webp', eyebrow='Give', sub='Your gift supports our community programs and the Youth and Sports Directorate. Donations are made securely through Zeffy. Official donation receipts are issued by NCAH for eligible gifts, in line with our bylaws and Canada Revenue Agency rules. Questions about receipts? Email info@ncahamilton.ca.'),
+     band('<!-- wp:shortcode -->\n[zeffy-donate fullwidth=true height=1100]\n<!-- /wp:shortcode -->', None, 'ncah-donate', '800px')]
 write('donate.html', d)
 
 # ---------- Programs (one page, all programs as cards) ----------
