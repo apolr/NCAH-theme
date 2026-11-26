@@ -147,7 +147,7 @@ add_shortcode( 'ncah_member_form', function () {
 
 		<p class="ncah-check"><label><input type="checkbox" name="consent" value="yes" required> I agree that NCAH may store these details to process my membership, as described in the <a href="<?php echo esc_url( home_url( '/privacy-policy/' ) ); ?>">Privacy Policy</a>. <span aria-hidden="true">*</span></label></p>
 
-		<p><button type="submit" class="wp-block-button__link wp-element-button has-white-color has-ncah-red-background-color has-text-color has-background">Request to join</button></p>
+		<p><button type="submit" class="wp-block-button__link wp-element-button has-white-color has-ncah-red-background-color has-text-color has-background">Send Request</button></p>
 	</form>
 	<script>
 	( function () {
