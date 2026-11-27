@@ -111,7 +111,7 @@ grid = ('<!-- wp:group {"className":"ncah-watch","layout":{"type":"grid","column
 out.append(band(heading('NCAH TV', 2, '', 'center', 'x-large') + '\n\n' + grid + '\n\n' + buttons([button('More videos', '/gallery/', True)]), 'mist', 'ncah-videos'))
 
 # 8. Partners
-partners = [('2025/12/ACCA.webp', 'ACCA'), ('2025/12/Davisol.webp', 'Davisol'), ('2025/12/Hamilton-Urban-Core.webp', 'Hamilton Urban Core'),
+partners = [('2025/12/ACCA.webp', 'ACCA'), ('2026/11/Black-AI-Centre.webp', 'Black AI Centre'), ('2025/12/Davisol.webp', 'Davisol'), ('2025/12/Hamilton-Urban-Core.webp', 'Hamilton Urban Core'),
             ('2025/12/HBHCLF.webp', 'Hamilton Black Health Community Leaders Forum'), ('2025/12/Isreal-Iyamu.webp', 'Israel Iyamu'),
             ('2025/12/Refune-Newcomer-Health.webp', 'Refuge Newcomer Health'), ('2025/07/CEFund-and-Hamilton-logo-black.webp', 'City Enrichment Fund, City of Hamilton')]
 
