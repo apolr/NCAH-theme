@@ -1236,3 +1236,6 @@ body:has(.wa__popup_chat_box.wa__active) .ncah-top { opacity: 0 !important; visi
 /* Land acknowledgement and Nigerian pledge appear on the home page only */
 body:not(.home) .ncah-footer-notes, body:not(.home) .ncah-footer .ncah-footer-notes + .ncah-footer-rule { display: none; }
 body:not(.home) .ncah-footer .ncah-footer-notes { display: none !important; }
+
+/* Partners and Funders: two rows of six on desktop */
+@media (min-width: 901px) { .ncah-partners .ncah-logos { max-width: 1200px; } .ncah-partners .ncah-logos > .wp-block-image { flex-basis: calc((100% - 5rem) / 6); border-radius: 14px; } .ncah-partners .ncah-logos > .wp-block-image:last-child img { padding: 1rem .85rem; } }
