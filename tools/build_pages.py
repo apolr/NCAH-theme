@@ -102,7 +102,7 @@ def action(cls, href, icon, title, sub, ext=False):
 ICON_PIN = '<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 010-5 2.5 2.5 0 010 5z"/></svg>'
 ADDR = 'Suite 124 4-168 Barton Street, Stoney Creek ON L8E 4V6'
 ADDR_Q = 'Suite%20124%204-168%20Barton%20Street%2C%20Stoney%20Creek%20ON%20L8E%204V6'
-card = ('<div class="ncah-contact-card"><p class="ncah-eyebrow">Reach us</p><h3 class="ncah-contact-card__title">Talk to the NCAH team</h3>'
+card = ('<div class="ncah-contact-card"><p class="ncah-eyebrow">Reach us</p>'
         '<div class="ncah-contact-actions">'
         + action('ncah-action--wa', 'https://wa.me/12892442568?text=Hello%20NCAH%2C%20I%20would%20like%20to%20get%20in%20touch.', ICON_WA, 'Chat on WhatsApp', 'Start an instant chat with the NCAH team', True)
         + action('ncah-action--tel', 'tel:+12892442568', ICON_TEL, 'Give us a call', '+1 (289) 244-2568')
