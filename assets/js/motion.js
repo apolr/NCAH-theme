@@ -122,8 +122,25 @@
 			},
 			{ threshold: 0.15, rootMargin: '0px 0px -5% 0px' }
 		);
+		// Sections taller than the screen (the Event Gallery grid on a phone)
+		// can never show 15% of themselves, so they reveal as soon as they enter.
+		var ioTall = new IntersectionObserver(
+			function ( entries ) {
+				entries.forEach( function ( entry ) {
+					if ( entry.isIntersecting ) {
+						entry.target.classList.add( 'is-visible' );
+						ioTall.unobserve( entry.target );
+					}
+				} );
+			},
+			{ threshold: 0, rootMargin: '0px 0px -5% 0px' }
+		);
 		items.forEach( function ( el ) {
-			io.observe( el );
+			if ( el.offsetHeight * 0.15 > window.innerHeight * 0.8 ) {
+				ioTall.observe( el );
+			} else {
+				io.observe( el );
+			}
 		} );
 	}
 
