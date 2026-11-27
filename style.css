@@ -1229,3 +1229,9 @@ body:has(.wa__popup_chat_box.wa__active) .ncah-top { opacity: 0 !important; visi
 
 /* Mobile and tablet header: Donate first, hamburger last */
 @media (max-width: 1023px) { .ncah-header .ncah-donate { order: -1; } }
+
+/* Partners and Funders band now lives in a template part shown on every page */
+.wp-site-blocks > .ncah-partners, .wp-site-blocks > section > .ncah-partners { padding-left: var(--ncah-gutter) !important; padding-right: var(--ncah-gutter) !important; padding-top: var(--ncah-section-y) !important; padding-bottom: var(--ncah-section-y) !important; margin-block: 0; }
+
+/* Land acknowledgement and Nigerian pledge appear on the home page only */
+body:not(.home) .ncah-footer-notes, body:not(.home) .ncah-footer .ncah-footer-notes + .ncah-footer-rule { display: none; }
