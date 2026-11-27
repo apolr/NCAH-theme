@@ -1219,3 +1219,10 @@ html body .wa__btn_popup .wa__btn_popup_icon { width: 56px; height: 56px; box-sh
 html body .ncah-top { width: 56px; height: 56px; min-width: 0; right: calc(max(1rem, env(safe-area-inset-right)) + 56px + .75rem); bottom: calc(1rem + env(safe-area-inset-bottom)); }
 html body .ncah-top svg { width: 26px; height: 26px; }
 @media (max-width: 600px) { html body .ncah-top { width: 52px; height: 52px; right: calc(max(.75rem, env(safe-area-inset-right)) + 52px + .6rem); bottom: calc(.75rem + env(safe-area-inset-bottom)); } html body .wa__btn_popup { right: max(.75rem, env(safe-area-inset-right)) !important; bottom: calc(.75rem + env(safe-area-inset-bottom)) !important; } html body .wa__btn_popup .wa__btn_popup_icon { width: 52px; height: 52px; } }
+
+/* Floating buttons v2: WhatsApp stays in the thumb corner; Back to top stacks above it, smaller and centred on the same axis */
+html body .ncah-top { width: 46px; height: 46px; right: calc(max(1rem, env(safe-area-inset-right)) + 5px); bottom: calc(1rem + 56px + .75rem + env(safe-area-inset-bottom)); }
+html body .ncah-top svg { width: 22px; height: 22px; }
+@media (max-width: 600px) { html body .ncah-top { width: 44px; height: 44px; right: calc(max(.75rem, env(safe-area-inset-right)) + 4px); bottom: calc(.75rem + 52px + .6rem + env(safe-area-inset-bottom)); } }
+/* While the WhatsApp chat box is open it occupies the space above the button, so Back to top steps aside */
+body:has(.wa__popup_chat_box.wa__active) .ncah-top { opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; }
