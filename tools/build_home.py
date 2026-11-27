@@ -117,7 +117,7 @@ partners = [('2025/12/ACCA.webp', 'ACCA'), ('2026/11/Black-AI-Centre.webp', 'Bla
 
 logos = ('<!-- wp:group {"className":"ncah-logos","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"center","verticalAlignment":"center"}} -->\n<div class="wp-block-group ncah-logos">'
          + '\n\n'.join(logo(U + p, a) for p, a in partners) + '</div>\n<!-- /wp:group -->')
-out.append(band(heading('Our partners', 2, '', 'center', 'x-large') + '\n\n' +
+out.append(band(heading('Our Partners & Funders', 2, '', 'center', 'x-large') + '\n\n' +
                 para('Thank you to the organizations and individuals whose generous support makes our work possible.', align='center') + '\n\n' + logos, 'mist', 'ncah-partners'))
 
 
