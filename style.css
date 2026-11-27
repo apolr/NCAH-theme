@@ -1226,3 +1226,6 @@ html body .ncah-top svg { width: 22px; height: 22px; }
 @media (max-width: 600px) { html body .ncah-top { width: 44px; height: 44px; right: calc(max(.75rem, env(safe-area-inset-right)) + 4px); bottom: calc(.75rem + 52px + .6rem + env(safe-area-inset-bottom)); } }
 /* While the WhatsApp chat box is open it occupies the space above the button, so Back to top steps aside */
 body:has(.wa__popup_chat_box.wa__active) .ncah-top { opacity: 0 !important; visibility: hidden !important; pointer-events: none !important; }
+
+/* Mobile and tablet header: Donate first, hamburger last */
+@media (max-width: 1023px) { .ncah-header .ncah-donate { order: -1; } }
