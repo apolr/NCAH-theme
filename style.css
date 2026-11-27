@@ -1211,3 +1211,11 @@ body.home .ncah-nav .current-menu-item > .wp-block-navigation-item__content { co
   .ncah-footsocial .wp-social-link svg { width: 22px !important; height: 22px !important; flex: none; }
   .ncah-footsocial .wp-block-social-link-label { position: static !important; width: auto !important; height: auto !important; margin: 0 !important; overflow: visible !important; clip: auto !important; clip-path: none !important; white-space: nowrap; font-size: .95rem !important; line-height: 1.1 !important; color: #fff; }
 }
+
+/* Floating buttons: WhatsApp and Back to top side by side, same size, no text bubble */
+html body .wa__btn_popup_txt { display: none !important; }
+html body .wa__btn_popup { right: max(1rem, env(safe-area-inset-right)) !important; left: auto !important; bottom: calc(1rem + env(safe-area-inset-bottom)) !important; }
+html body .wa__btn_popup .wa__btn_popup_icon { width: 56px; height: 56px; box-shadow: 0 6px 18px rgba(0, 0, 0, .28); }
+html body .ncah-top { width: 56px; height: 56px; min-width: 0; right: calc(max(1rem, env(safe-area-inset-right)) + 56px + .75rem); bottom: calc(1rem + env(safe-area-inset-bottom)); }
+html body .ncah-top svg { width: 26px; height: 26px; }
+@media (max-width: 600px) { html body .ncah-top { width: 52px; height: 52px; right: calc(max(.75rem, env(safe-area-inset-right)) + 52px + .6rem); bottom: calc(.75rem + env(safe-area-inset-bottom)); } html body .wa__btn_popup { right: max(.75rem, env(safe-area-inset-right)) !important; bottom: calc(.75rem + env(safe-area-inset-bottom)) !important; } html body .wa__btn_popup .wa__btn_popup_icon { width: 52px; height: 52px; } }
