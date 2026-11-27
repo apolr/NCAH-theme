@@ -1199,3 +1199,6 @@ body.home .ncah-nav .current-menu-item > .wp-block-navigation-item__content { co
 .ncah-partners .ncah-logos > .wp-block-image > a:hover { transform: scale(1.03); }
 .ncah-partners .ncah-logos > .wp-block-image > a:focus-visible { outline: 3px solid #008000; outline-offset: -3px; }
 @media (prefers-reduced-motion: reduce) { .ncah-partners .ncah-logos > .wp-block-image > a { transition: none; } .ncah-partners .ncah-logos > .wp-block-image > a:hover { transform: none; } }
+
+/* Left-aligned headings and card titles use the full width (balanced wrapping only for centred headings) */
+:is(h1, h2, h3, h4):not(.has-text-align-center), .wp-block-post-title:not(.has-text-align-center) { text-wrap: wrap; }
