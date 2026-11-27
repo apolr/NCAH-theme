@@ -29,18 +29,23 @@
 		var root = document.querySelector( SCOPE );
 		if ( ! root ) { return []; }
 		var sets = [];
-		// The first photo in an event post is its master (cover) image: it is not enlarged.
-		var master = root.querySelector( '.wp-block-image img' );
+		var hasGallery = !! root.querySelector( '.wp-block-gallery' );
+		// In a post with galleries, the first loose photo is its master (cover) image and is not enlarged.
+		// In a post made only of loose photos, every photo belongs to the viewer.
+		var master = hasGallery ? root.querySelector( '.wp-block-image img' ) : null;
 		if ( master && master.closest( '.wp-block-gallery' ) ) { master = null; }
 		root.querySelectorAll( '.wp-block-gallery' ).forEach( function ( g ) {
 			if ( g.matches( EXCLUDE ) ) { return; }
 			var imgs = [].slice.call( g.querySelectorAll( 'img' ) ).filter( plain );
 			if ( imgs.length ) { sets.push( imgs ); }
 		} );
+		// Loose photos in one post are browsed together, so previous and next always work.
+		var loose = [];
 		root.querySelectorAll( '.wp-block-image img' ).forEach( function ( i ) {
 			if ( i === master || i.closest( '.wp-block-gallery' ) || ! plain( i ) || i.closest( EXCLUDE ) ) { return; }
-			sets.push( [ i ] );
+			loose.push( i );
 		} );
+		if ( loose.length ) { sets.push( loose ); }
 		return sets;
 	}
 
