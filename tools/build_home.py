@@ -113,7 +113,7 @@ out.append(band(heading('NCAH TV', 2, '', 'center', 'x-large') + '\n\n' + grid +
 # 8. Partners
 partners = [('2025/12/ACCA.webp', 'ACCA'), ('2026/11/Black-AI-Centre.webp', 'Black AI Centre'), ('2025/12/Davisol.webp', 'Davisol'), ('2025/12/Hamilton-Urban-Core.webp', 'Hamilton Urban Core'),
             ('2025/12/HBHCLF.webp', 'Hamilton Black Health Community Leaders Forum'), ('2025/12/Isreal-Iyamu.webp', 'Israel Iyamu'),
-            ('2025/12/Refune-Newcomer-Health.webp', 'Refuge Newcomer Health'), ('2025/07/CEFund-and-Hamilton-logo-black.webp', 'City Enrichment Fund, City of Hamilton')]
+            ('2025/12/Refune-Newcomer-Health.webp', 'Refuge Newcomer Health'), ('2026/11/CEFund-and-Hamilton-logo-blue.webp', 'City Enrichment Fund, City of Hamilton')]
 
 logos = ('<!-- wp:group {"className":"ncah-logos","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"center","verticalAlignment":"center"}} -->\n<div class="wp-block-group ncah-logos">'
          + '\n\n'.join(logo(U + p, a) for p, a in partners) + '</div>\n<!-- /wp:group -->')
