@@ -1214,7 +1214,7 @@ body.home .ncah-nav .current-menu-item > .wp-block-navigation-item__content { co
     box-shadow: 0 6px 22px rgba(0, 40, 0, .10);
   }
   body.home .wp-block-post-content > .wp-block-group.alignfull:not(.has-background):not(.ncah-green-band):not(.ncah-hero) { background: #fff; }
-  body.home .wp-block-post-content > .wp-block-group.alignfull:has(> .ncah-tiles) { min-height: 0; background: transparent; box-shadow: none; border-radius: 0; display: block; }
+  body.home .wp-block-post-content > .wp-block-group.alignfull:has(> .ncah-tiles) .ncah-tile.wp-block-cover { min-height: min(62svh, 520px) !important; }
   body.home .wp-block-post-content > .ncah-hero { scroll-snap-align: start; }
   body.home .wp-block-post-content > .wp-block-columns { width: calc(100% - 1rem); margin: .5rem auto 0 !important; scroll-snap-align: start; }
   body.home .wp-block-post-content > .wp-block-columns .ncah-tile { border-radius: 20px; overflow: hidden; }
