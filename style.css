@@ -1199,3 +1199,25 @@ body.home .ncah-nav .current-menu-item > .wp-block-navigation-item__content { co
 .ncah-partners .ncah-logos > .wp-block-image > a:hover { transform: scale(1.03); }
 .ncah-partners .ncah-logos > .wp-block-image > a:focus-visible { outline: 3px solid #008000; outline-offset: -3px; }
 @media (prefers-reduced-motion: reduce) { .ncah-partners .ncah-logos > .wp-block-image > a { transition: none; } .ncah-partners .ncah-logos > .wp-block-image > a:hover { transform: none; } }
+
+/* Mobile app-style cards (home page pilot): each section fills the screen as a rounded card, gentle snap */
+@media (max-width: 781px) {
+  html:has(body.home) { scroll-snap-type: y proximity; scroll-padding-top: .5rem; }
+  body.home { background: #dfe8df; }
+  body.home .wp-block-post-content { padding-bottom: .5rem; }
+  body.home .wp-block-post-content > .wp-block-group.alignfull:not(.ncah-hero):not(.ncah-green-band),
+  body.home .wp-block-post-content > .ncah-green-band {
+    width: calc(100% - 1rem) !important; max-width: none !important; margin: .5rem auto 0 !important;
+    min-height: calc(100svh - 1rem); box-sizing: border-box;
+    display: flex; flex-direction: column; justify-content: center;
+    border-radius: 24px; overflow: hidden; scroll-snap-align: start; scroll-snap-stop: normal;
+    box-shadow: 0 6px 22px rgba(0, 40, 0, .10);
+  }
+  body.home .wp-block-post-content > .wp-block-group.alignfull:not(.has-background):not(.ncah-green-band):not(.ncah-hero) { background: #fff; }
+  body.home .wp-block-post-content > .wp-block-group.alignfull:has(> .ncah-tiles) { min-height: 0; background: transparent; box-shadow: none; border-radius: 0; display: block; }
+  body.home .wp-block-post-content > .ncah-hero { scroll-snap-align: start; }
+  body.home .wp-block-post-content > .wp-block-columns { width: calc(100% - 1rem); margin: .5rem auto 0 !important; scroll-snap-align: start; }
+  body.home .wp-block-post-content > .wp-block-columns .ncah-tile { border-radius: 20px; overflow: hidden; }
+  body.home .wp-block-post-content > .ncah-reveal { --ncah-section-y: 2rem; }
+}
+@media (max-width: 781px) and (prefers-reduced-motion: reduce) { html:has(body.home) { scroll-snap-type: none; } }
