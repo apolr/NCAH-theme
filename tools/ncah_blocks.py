@@ -81,7 +81,11 @@ def youtube(url, caption):
     return (f'<!-- wp:embed {j({"url": url, "type": "video", "providerNameSlug": "youtube", "responsive": True, "className": "wp-embed-aspect-16-9 wp-has-aspect-ratio"})} -->\n'
             f'<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-16-9 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">\n{url}\n</div><figcaption class="wp-element-caption">{e(caption)}</figcaption></figure>\n<!-- /wp:embed -->')
 
-def logo(src, alt):
+def logo(src, alt, href=None):
+    if href:
+        a = j({"sizeSlug": "medium", "linkDestination": "custom", "href": href, "linkTarget": "_blank", "rel": "noreferrer noopener"})
+        return (f'<!-- wp:image {a} -->\n<figure class="wp-block-image size-medium"><a href="{href}" target="_blank" rel="noreferrer noopener">'
+                f'<img src="{src}" alt="{html.escape(alt)}"/></a></figure>\n<!-- /wp:image -->')
     return f'<!-- wp:image {{"sizeSlug":"medium","linkDestination":"none"}} -->\n<figure class="wp-block-image size-medium"><img src="{src}" alt="{html.escape(alt)}"/></figure>\n<!-- /wp:image -->'
 
 

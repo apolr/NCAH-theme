@@ -111,12 +111,13 @@ grid = ('<!-- wp:group {"className":"ncah-watch","layout":{"type":"grid","column
 out.append(band(heading('NCAH TV', 2, '', 'center', 'x-large') + '\n\n' + grid + '\n\n' + buttons([button('More videos', '/gallery/', True)]), 'mist', 'ncah-videos'))
 
 # 8. Partners
+PLINKS = {'ACCA': 'https://accahamilton.com/', 'Black AI Centre': 'https://blackaicentre.ca/', 'Davisol': 'https://davisolfoods.com/', 'Hamilton Urban Core': 'https://hucchc.com/', 'Hamilton Black Health Community Leaders Forum': 'https://hbhclf.org/', 'Refuge Newcomer Health': 'https://www.newcomerhealth.ca/', 'HARRC, Hamilton Anti-Racism Resource Centre': 'https://www.harrc.ca/', 'STAC Hamilton': 'https://stachamilton.ca/', 'Miles High Run Club': 'https://www.instagram.com/mileshighrunclub.co', 'Your Area Dental': 'https://yourareadental.com/', 'City Enrichment Fund, City of Hamilton': 'https://www.hamilton.ca/'}
 partners = [('2025/12/ACCA.webp', 'ACCA'), ('2026/11/Black-AI-Centre.webp', 'Black AI Centre'), ('2025/12/Davisol.webp', 'Davisol'), ('2025/12/Hamilton-Urban-Core.webp', 'Hamilton Urban Core'),
             ('2025/12/HBHCLF.webp', 'Hamilton Black Health Community Leaders Forum'), ('2025/12/Isreal-Iyamu.webp', 'Israel Iyamu'),
             ('2025/12/Refune-Newcomer-Health.webp', 'Refuge Newcomer Health'), ('2026/11/HARRC.webp', 'HARRC, Hamilton Anti-Racism Resource Centre'), ('2026/11/STAC-Hamilton.webp', 'STAC Hamilton'), ('2026/11/Miles-High-Run-Club.webp', 'Miles High Run Club'), ('2026/11/Your-Area-Dental.webp', 'Your Area Dental'), ('2026/11/CEFund-and-Hamilton-logo-blue.webp', 'City Enrichment Fund, City of Hamilton')]
 
 logos = ('<!-- wp:group {"className":"ncah-logos","layout":{"type":"flex","flexWrap":"wrap","justifyContent":"center","verticalAlignment":"center"}} -->\n<div class="wp-block-group ncah-logos">'
-         + '\n\n'.join(logo(U + p, a) for p, a in partners) + '</div>\n<!-- /wp:group -->')
+         + '\n\n'.join(logo(U + p, a, PLINKS.get(a)) for p, a in partners) + '</div>\n<!-- /wp:group -->')
 out.append(band(heading('Our Partners & Funders', 2, '', 'center', 'x-large') + '\n\n' +
                 para('Thank you to the organizations and individuals whose generous support makes our work possible.', align='center') + '\n\n' + logos, 'mist', 'ncah-partners'))
 

@@ -1192,3 +1192,10 @@ body.home .ncah-nav .current-menu-item > .wp-block-navigation-item__content { co
   .ncah-yt__year { padding: .45rem .75rem; }
 }
 @media (prefers-reduced-motion: reduce) { .ncah-yt__dot::before, .ncah-yt__year { transition: none; } }
+
+/* Linked partner logos */
+.ncah-partners .ncah-logos > .wp-block-image > a { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; border-radius: inherit; transition: transform .2s ease, box-shadow .2s ease; }
+.ncah-partners .ncah-logos > .wp-block-image:has(> a):hover { border-color: #008000; box-shadow: 0 6px 18px rgba(0,128,0,.15); }
+.ncah-partners .ncah-logos > .wp-block-image > a:hover { transform: scale(1.03); }
+.ncah-partners .ncah-logos > .wp-block-image > a:focus-visible { outline: 3px solid #008000; outline-offset: -3px; }
+@media (prefers-reduced-motion: reduce) { .ncah-partners .ncah-logos > .wp-block-image > a { transition: none; } .ncah-partners .ncah-logos > .wp-block-image > a:hover { transform: none; } }
