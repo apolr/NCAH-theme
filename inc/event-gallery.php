@@ -20,14 +20,12 @@ function ncah_event_year() {
 	return $years ? end( $years ) : (int) gmdate( 'Y' );
 }
 
-/** [ncah_year_tabs] prints the year timeline: one stop per year with its event count. */
+/** [ncah_year_tabs] prints the year timeline: one stop per year. */
 add_shortcode( 'ncah_year_tabs', function () {
-	global $wpdb;
 	$years = ncah_event_years();
 	if ( ! $years ) {
 		return '';
 	}
-	$rows   = $wpdb->get_results( "SELECT YEAR(post_date) AS y, COUNT(*) AS n FROM {$wpdb->posts} WHERE post_type = 'post' AND post_status = 'publish' GROUP BY 1", OBJECT_K );
 	$cur    = ncah_event_year();
 	$base   = get_permalink() ?: home_url( '/event-gallery/' );
 	$count  = count( $years );
@@ -36,11 +34,9 @@ add_shortcode( 'ncah_year_tabs', function () {
 	$out    = '<nav class="ncah-year-tabs" aria-label="Event Gallery years"><ul style="--n:' . (int) $count . ';--p:' . $prog . '%">';
 	foreach ( $years as $y ) {
 		$on   = ( $y === $cur );
-		$n    = isset( $rows[ $y ] ) ? (int) $rows[ $y ]->n : 0;
 		$out .= '<li><a href="' . esc_url( add_query_arg( 'event_year', $y, $base ) ) . '"' . ( $on ? ' class="is-active" aria-current="page"' : '' ) . '>'
 			. '<span class="ncah-yt__dot" aria-hidden="true"></span>'
 			. '<span class="ncah-yt__year">' . (int) $y . '</span>'
-			. '<span class="ncah-yt__count">' . esc_html( sprintf( _n( '%d event', '%d events', $n, 'ncah' ), $n ) ) . '</span>'
 			. '</a></li>';
 	}
 	return $out . '</ul></nav>';

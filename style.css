@@ -1183,7 +1183,6 @@ body.home .ncah-nav .current-menu-item > .wp-block-navigation-item__content { co
 .ncah-yt__year { font-family: var(--wp--preset--font-family--heading, inherit); font-weight: 700; font-size: clamp(1.05rem, 4.4vw, 1.35rem); line-height: 1; padding: .5rem 1rem; border-radius: 999px; transition: background-color .25s ease, color .25s ease; }
 .ncah-year-tabs a:not(.is-active):hover .ncah-yt__year { background: var(--ncah-mist, #eef5ee); }
 .ncah-year-tabs a.is-active .ncah-yt__year { background: var(--ncah-green); color: #fff; }
-.ncah-yt__count { font-size: .75rem; font-weight: 600; color: #5d6b5d; line-height: 1.2; text-align: center; }
 .ncah-year-tabs a:focus-visible { outline: 3px solid var(--ncah-red, #d42402); outline-offset: 3px; border-radius: 12px; }
 @media (max-width: 480px) {
   .ncah-year-tabs ul { grid-auto-columns: minmax(78px, 1fr); }
