@@ -238,11 +238,6 @@ body.home .ncah-logo img { content: url('assets/brand/ncah-logo-dark.png'); filt
 @media (max-width: 600px) { .ncah-logo img { height: 52px; } }
 
 /* Event Gallery year navigation */
-.ncah-year-tabs { margin: 0 0 2rem; }
-.ncah-year-tabs ul { list-style: none; display: flex; flex-wrap: wrap; justify-content: center; gap: .6rem; margin: 0; padding: 0; }
-.ncah-year-tabs a { display: block; padding: .6rem 1.5rem; border: 2px solid var(--ncah-green); color: var(--ncah-green); font-weight: 700; letter-spacing: .08em; text-decoration: none; background: #fff; }
-.ncah-year-tabs a:hover { background: var(--ncah-mist, #eef5ee); }
-.ncah-year-tabs a.is-active, .ncah-year-tabs a[aria-current="page"] { background: var(--ncah-green); color: #fff; }
 
 /* Photo lightbox (event detail pages) */
 .ncah-lb-thumb{cursor:zoom-in}
@@ -309,7 +304,6 @@ html.ncah-lb-open{overflow:hidden}
 .wp-block-post-content .wp-block-group.alignfull > * + .wp-block-columns, .wp-block-post-content .wp-block-group.alignfull > * + .wp-block-query, .wp-block-post-content .wp-block-group.alignfull > * + .wp-block-gallery { margin-top: clamp(1.75rem, 4vw, 2.75rem); }
 .wp-block-post-content .wp-block-buttons { margin-top: 1.5rem; }
 .wp-block-post-content .wp-block-post-template { gap: clamp(1.5rem, 3vw, 2.25rem); }
-.ncah-year-tabs { margin-bottom: clamp(1.75rem, 4vw, 2.5rem); }
 .wp-block-query-pagination { margin-top: 2.5rem; }
 
 /* Home hero: the photo fills the top and the title, tagline and button sit in a green band along its bottom edge, so no faces are covered */
@@ -658,14 +652,6 @@ p, li { text-wrap: pretty; }
 .ncah-steps li:last-child::before { background: var(--ncah-red); }
 
 /* Event Gallery: year chips, calmer cards */
-.ncah-year-tabs ul { flex-wrap: nowrap; justify-content: center; }
-.ncah-year-tabs a { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; border-radius: 999px; padding: .55rem 1.35rem; transition: background-color .2s ease, color .2s ease; }
-@media (max-width: 600px) {
-  .ncah-year-tabs { margin-inline: -1rem; }
-  .ncah-year-tabs ul { justify-content: flex-start; overflow-x: auto; scroll-snap-type: x proximity; padding: .25rem 1rem .6rem; gap: .5rem; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
-  .ncah-year-tabs ul::-webkit-scrollbar { display: none; }
-  .ncah-year-tabs li { flex: none; scroll-snap-align: center; }
-}
 .ncah-events .wp-block-post-template > li, .ncah-programs .wp-block-post-template > li { position: relative; border-radius: 16px; overflow: hidden; transition: transform .25s ease, box-shadow .25s ease; }
 .ncah-events .wp-block-post-featured-image img { border-radius: 0; }
 .ncah-events .wp-block-post-title { font-size: clamp(1.1rem, 1rem + .5vw, 1.35rem); line-height: 1.25; }
@@ -813,7 +799,6 @@ h3, h4 { font-weight: 600; line-height: 1.25; }
 .ncah-eyebrow, .ncah-eyebrow.wp-block-heading { text-transform: none; letter-spacing: .02em; font-size: .875rem; font-weight: 600; }
 .ncah-nav, .ncah-nav .wp-block-navigation-item__content { text-transform: none; letter-spacing: 0; font-size: .9375rem; font-weight: 500; }
 .ncah-events .wp-block-post-date { text-transform: none; letter-spacing: .02em; font-size: .8125rem; font-weight: 600; }
-.ncah-year-tabs a { text-transform: none; letter-spacing: 0; font-weight: 600; }
 .wp-block-button__link, .wp-element-button, .ncah-form button[type=submit], .ncah-contact-form .wpforms-submit, .ncah-footer input[type="submit"], .ncah-footer button[type="submit"], .ncah-footer .mailpoet_submit, .ncah-menu-foot .ncah-menu-donate, .ncah-contact-map__btn {
 	text-transform: none !important; letter-spacing: 0 !important; font-family: var(--wp--preset--font-family--body); font-weight: 600; font-size: .9375rem; border-radius: 8px !important; }
 .ncah-foundations .ncah-split > .wp-block-column:last-child .wp-block-button__link { border-radius: 8px; }
@@ -1184,3 +1169,27 @@ body.home .ncah-nav .current-menu-item > .wp-block-navigation-item__content { co
 @media (max-width: 781px) {
   .ncah-assoc .wp-block-buttons { justify-content: flex-start !important; margin-top: 1.25rem; }
 }
+
+/* Event Gallery year timeline: a line with one stop per year, filled up to the year being viewed */
+.ncah-year-tabs { margin: 0 auto clamp(1.75rem, 4vw, 2.75rem); max-width: 640px; }
+.ncah-year-tabs ul { --line: #d6e4d6; list-style: none; margin: 0; padding: 0; display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); position: relative; }
+.ncah-year-tabs ul::before { content: ""; position: absolute; top: 10px; height: 4px; border-radius: 4px; left: calc(50% / var(--n)); right: calc(50% / var(--n)); background: linear-gradient(90deg, var(--ncah-green) var(--p), var(--line) var(--p)); }
+.ncah-year-tabs li { margin: 0; min-width: 0; }
+.ncah-year-tabs a { position: relative; display: flex; flex-direction: column; align-items: center; gap: .5rem; padding: 0 .25rem .25rem; text-decoration: none; color: var(--ncah-green); text-transform: none; letter-spacing: 0; min-height: 44px; -webkit-tap-highlight-color: transparent; }
+.ncah-yt__dot { width: 24px; height: 24px; border-radius: 50%; display: grid; place-items: center; position: relative; z-index: 1; }
+.ncah-yt__dot::before { content: ""; width: 14px; height: 14px; border-radius: 50%; background: #fff; border: 3px solid var(--ncah-green); box-sizing: border-box; transition: transform .25s ease, background-color .25s ease, border-color .25s ease; }
+.ncah-year-tabs a:not(.is-active):hover .ncah-yt__dot::before { transform: scale(1.25); background: var(--ncah-mist, #eef5ee); }
+.ncah-year-tabs a.is-active .ncah-yt__dot::before { width: 24px; height: 24px; background: var(--ncah-red, #d42402); border-color: #fff; box-shadow: 0 0 0 3px var(--ncah-green), 0 6px 14px -4px rgba(0, 80, 0, .55); }
+.ncah-yt__year { font-family: var(--wp--preset--font-family--heading, inherit); font-weight: 700; font-size: clamp(1.05rem, 4.4vw, 1.35rem); line-height: 1; padding: .5rem 1rem; border-radius: 999px; transition: background-color .25s ease, color .25s ease; }
+.ncah-year-tabs a:not(.is-active):hover .ncah-yt__year { background: var(--ncah-mist, #eef5ee); }
+.ncah-year-tabs a.is-active .ncah-yt__year { background: var(--ncah-green); color: #fff; }
+.ncah-yt__count { font-size: .75rem; font-weight: 600; color: #5d6b5d; line-height: 1.2; text-align: center; }
+.ncah-year-tabs a:focus-visible { outline: 3px solid var(--ncah-red, #d42402); outline-offset: 3px; border-radius: 12px; }
+@media (max-width: 480px) {
+  .ncah-year-tabs ul { grid-auto-columns: minmax(78px, 1fr); }
+  .ncah-year-tabs ul { overflow-x: auto; scrollbar-width: none; padding: 6px 0 8px; }
+  .ncah-year-tabs ul::before { top: 16px; }
+  .ncah-year-tabs ul::-webkit-scrollbar { display: none; }
+  .ncah-yt__year { padding: .45rem .75rem; }
+}
+@media (prefers-reduced-motion: reduce) { .ncah-yt__dot::before, .ncah-yt__year { transition: none; } }
