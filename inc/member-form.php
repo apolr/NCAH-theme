@@ -26,14 +26,16 @@ add_action( 'init', function () {
 } );
 
 function ncah_member_fields() {
-	return array( 'whatsapp' => 'WhatsApp number', 'address' => 'Address', 'referral' => 'Referral name', 'donor' => 'Also a donor', 'frequency' => 'Donation frequency', 'verified' => 'Address verified', 'consent' => 'Consent given' );
+	return array( 'whatsapp' => 'WhatsApp number', 'address' => 'Address', 'referral' => 'Referral name', 'donor' => 'Also a donor', 'frequency' => 'Donation frequency', 'volunteer' => 'Willing to volunteer', 'verified' => 'Address verified', 'consent' => 'Consent given' );
 }
 
 add_filter( 'manage_ncah_member_posts_columns', function () {
-	return array( 'cb' => '<input type="checkbox" />', 'title' => 'Full name', 'whatsapp' => 'WhatsApp', 'address' => 'Address', 'referral' => 'Referral', 'donor' => 'Donor / frequency', 'verified' => 'Address verified', 'date' => 'Submitted' );
+	return array( 'cb' => '<input type="checkbox" />', 'title' => 'Full name', 'whatsapp' => 'WhatsApp', 'address' => 'Address', 'referral' => 'Referral', 'donor' => 'Donor / frequency', 'volunteer' => 'Volunteer', 'verified' => 'Address verified', 'date' => 'Submitted' );
 } );
 add_action( 'manage_ncah_member_posts_custom_column', function ( $col, $id ) {
-	if ( 'donor' === $col ) {
+	if ( 'volunteer' === $col ) {
+		echo esc_html( get_post_meta( $id, 'volunteer', true ) === 'yes' ? 'Yes' : 'No' );
+	} elseif ( 'donor' === $col ) {
 		echo esc_html( get_post_meta( $id, 'donor', true ) === 'yes' ? 'Yes: ' . get_post_meta( $id, 'frequency', true ) : 'No' );
 	} elseif ( 'verified' === $col ) {
 		$v = get_post_meta( $id, 'verified', true ) === 'yes';
@@ -145,6 +147,8 @@ add_shortcode( 'ncah_member_form', function () {
 			<small>Donating is optional and does not affect your membership.</small>
 		</fieldset>
 
+		<p class="ncah-check"><label><input type="checkbox" name="volunteer" value="yes" id="ncah-volunteer"> I am willing to volunteer with NCAH.</label></p>
+
 		<p class="ncah-check"><label><input type="checkbox" name="consent" value="yes" required> I agree that NCAH may store these details to process my membership, as described in the <a href="<?php echo esc_url( home_url( '/privacy-policy/' ) ); ?>">Privacy Policy</a>. <span aria-hidden="true">*</span></label></p>
 
 		<p><button type="submit" class="wp-block-button__link wp-element-button has-white-color has-ncah-red-background-color has-text-color has-background">Send Request</button></p>
@@ -193,6 +197,7 @@ function ncah_member_handle() {
 	}
 	$postal = substr( $postal, 0, 3 ) . ' ' . substr( preg_replace( '/[ -]/', '', $postal ), 3 );
 	$donor  = ( 'yes' === ( $_POST['donor'] ?? '' ) ) ? 'yes' : 'no';
+	$volunteer = ( 'yes' === ( $_POST['volunteer'] ?? '' ) ) ? 'yes' : 'no';
 	$freq   = $g( 'frequency' );
 	if ( 'yes' === $donor && ! in_array( $freq, array( 'Monthly', 'Quarterly', 'Bi-annually', 'Annually' ), true ) ) {
 		ncah_member_redirect( 'freq' );
@@ -206,11 +211,11 @@ function ncah_member_handle() {
 		ncah_member_redirect( 'spam' );
 	}
 	$address = $street . ', ' . $city . ', ' . $prov . ' ' . $postal;
-	foreach ( array( 'whatsapp' => $phone, 'address' => $address, 'referral' => $ref, 'donor' => $donor, 'frequency' => $freq, 'verified' => 'no', 'consent' => 'yes ' . gmdate( 'Y-m-d H:i' ) . ' UTC' ) as $k => $v ) {
+	foreach ( array( 'whatsapp' => $phone, 'address' => $address, 'referral' => $ref, 'donor' => $donor, 'frequency' => $freq, 'volunteer' => $volunteer, 'verified' => 'no', 'consent' => 'yes ' . gmdate( 'Y-m-d H:i' ) . ' UTC' ) as $k => $v ) {
 		update_post_meta( $id, $k, $v );
 	}
 	$to   = get_option( 'ncah_member_notify', 'info@ncahamilton.ca' );
-	$body = "New membership request\n\nName: $name\nWhatsApp: $phone\nAddress (to verify): $address\nReferral: $ref\nDonor: $donor" . ( $freq ? " ($freq)" : '' ) . "\n\nReview: " . admin_url( 'edit.php?post_type=ncah_member' );
+	$body = "New membership request\n\nName: $name\nWhatsApp: $phone\nAddress (to verify): $address\nReferral: $ref\nDonor: $donor" . ( $freq ? " ($freq)" : '' ) . "\nWilling to volunteer: $volunteer\n\nReview: " . admin_url( 'edit.php?post_type=ncah_member' );
 	wp_mail( $to, 'New NCAH membership request: ' . $name, $body );
 	ncah_member_redirect( 'ok' );
 }
